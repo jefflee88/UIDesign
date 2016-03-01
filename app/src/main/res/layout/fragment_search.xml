@@ -56,7 +56,7 @@
             android:text="Food Details"
             android:textStyle="italic"
             android:id="@+id/rdoFood"
-            android:paddingRight="25dp"/>
+            android:paddingRight="50dp"/>
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -74,17 +74,37 @@
         android:layout_alignParentStart="true"
         android:gravity="center_horizontal"
         android:weightSum="1"
-        android:paddingTop="10dp">
+        android:paddingTop="10dp"
+        android:id="@+id/tr2">
 
         <Button
-            android:layout_width="267dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:text="Search Now"
             android:id="@+id/btnSearch"
             android:background="@drawable/button_style"
-            style="@style/button_text"
-            android:layout_weight="0.18" />
+            style="@style/button_text" />
+
     </TableRow>
 
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/tr2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:weightSum="1"
+        android:paddingTop="10dp"
+        android:id="@+id/tr3">
 
+        <Button
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:text="Advanced Search"
+            android:id="@+id/btnAdvancedSearch"
+            android:background="@drawable/button_style"
+            style="@style/button_text" />
+
+    </TableRow>
 </RelativeLayout>
