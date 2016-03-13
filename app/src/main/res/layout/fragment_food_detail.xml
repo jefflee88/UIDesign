@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.brotherj.uidesign.FoodDetailFragment">
+
+
+    <ImageView
+        android:layout_width="330dp"
+        android:layout_height="200dp"
+        android:id="@+id/imgFoodDetail"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/no_image"
+        android:background="#000000"
+        android:padding="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TableLayout
+        android:paddingTop="30dp"
+        android:paddingLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_below="@+id/imgFoodDetail"
+        android:id="@+id/tableLayout"
+        android:layout_alignLeft="@+id/imgFoodDetail"
+        android:layout_alignStart="@+id/imgFoodDetail"
+        android:layout_alignRight="@+id/btnAddToCart"
+        android:layout_alignEnd="@+id/btnAddToCart">
+
+        <TableRow>
+            <TextView
+                android:textStyle="bold"
+                android:text="Name : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtFoodDetailName"
+                android:text="txtFoodDetailName"
+                android:textStyle="italic"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Type : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtFoodDetailType"
+                android:text="txtFoodDetailType"
+                android:textStyle="italic"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Price : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtFoodDetailPrice"
+                android:text="txtFoodDetailPrice"
+                android:textStyle="italic"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="From : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtFoodDetailRestaurant"
+                android:text="txtFoodDetailRest"
+                android:textStyle="italic"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add to cart"
+        android:id="@+id/btnAddToCart"
+        android:background="@drawable/button_style"
+        style="@style/button_text"
+        android:layout_below="@+id/tableLayout"
+        android:layout_alignRight="@+id/imgFoodDetail"
+        android:layout_alignEnd="@+id/imgFoodDetail"
+        android:layout_alignLeft="@+id/imgFoodDetail"
+        android:layout_alignStart="@+id/imgFoodDetail" />
+
+
+</RelativeLayout>

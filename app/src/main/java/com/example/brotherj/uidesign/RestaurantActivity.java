@@ -13,7 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class CustomerActivity extends AppCompatActivity
+public class RestaurantActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     // new 1
@@ -23,7 +23,7 @@ public class CustomerActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer);
+        setContentView(R.layout.activity_restaurant);
 
         //new 2
         SearchFragment fragment = new SearchFragment();
@@ -49,7 +49,7 @@ public class CustomerActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -66,7 +66,7 @@ public class CustomerActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.customer, menu);
+        getMenuInflater().inflate(R.menu.restaurant, menu);
         return true;
     }
 
@@ -93,18 +93,14 @@ public class CustomerActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_search) {
-            // Handle the camera action
+        if (id == R.id.nav_camera) {
             SearchFragment fragment = new SearchFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_shoppingCart) {
-            FoodDetailFragment fragment = new FoodDetailFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
+        } else if (id == R.id.nav_gallery) {
+
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
