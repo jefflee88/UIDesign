@@ -34,15 +34,15 @@ public class SearchResultFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_search_result, container, false);
 
         ListView lstSearchResult = (ListView)view.findViewById(R.id.lstSearchResult);
-        String[] items = new String[] {"Item 1", "Item 2", "Item 3"};
+        String[] testList = new String[] {"test 1", "test 2", "test 3",  "test 4",  "test 5"};
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, items);
+                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, testList);
 
         lstSearchResult.setAdapter(adapter);
         lstSearchResult.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parentAdapter, View view, int position, long id) {
-                SearchResultFragment fragment = new SearchResultFragment();
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                FoodDetailFragment fragment = new FoodDetailFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
