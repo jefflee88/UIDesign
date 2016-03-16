@@ -1,0 +1,131 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.brotherj.uidesign.ModifyFoodFragment">
+
+    <ImageView
+        android:layout_marginRight="30dp"
+        android:layout_width="240dp"
+        android:layout_height="150dp"
+        android:id="@+id/imgModifyFood"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/no_image"
+        android:background="#000000"
+        android:padding="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true" />
+
+    <TableLayout
+        android:stretchColumns="1"
+        android:layout_alignLeft="@+id/imgBtnGallery"
+        android:layout_alignStart="@+id/imgBtnGallery"
+        android:layout_below="@+id/imgModifyFood"
+        android:paddingTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:id="@+id/tableLayout"
+        android:layout_alignRight="@+id/imgModifyFood"
+        android:layout_alignEnd="@+id/imgModifyFood">
+
+        <TableRow>
+            <TextView
+                android:textStyle="bold"
+                android:text="ID :"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtModifyFoodId"
+                android:text="txtModifyFoodId"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Name :"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <EditText
+                android:layout_span="3"
+                android:id="@+id/edtModifyFoodName"
+                android:hint="Enter food name"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Price :"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <EditText
+                android:id="@+id/edtModifyFoodPrice"
+                android:hint="Enter food price"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Type :"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <Spinner
+                android:gravity="left"
+                android:padding="3dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinType"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save changes"
+        android:id="@+id/btnModifySave"
+        android:background="@drawable/button_style"
+        style="@style/button_text"
+        android:layout_below="@+id/tableLayout"
+        android:layout_alignLeft="@+id/tableLayout"
+        android:layout_alignStart="@+id/tableLayout"
+        android:layout_alignRight="@+id/imgModifyFood"
+        android:layout_alignEnd="@+id/imgModifyFood" />
+
+    <ImageButton
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_menu_camera"
+        android:layout_marginLeft="30dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/imgBtnTakePhoto"
+        android:layout_alignTop="@+id/imgModifyFood"
+        android:layout_alignRight="@+id/imgBtnGallery"
+        android:layout_alignEnd="@+id/imgBtnGallery" />
+
+    <ImageButton
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_menu_gallery"
+        android:layout_marginLeft="30dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/imgBtnGallery"
+        android:layout_above="@+id/tableLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
