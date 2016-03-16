@@ -13,7 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class RestaurantActivity extends AppCompatActivity
+public class DriverActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     // new 1
@@ -23,7 +23,7 @@ public class RestaurantActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant);
+        setContentView(R.layout.activity_driver);
 
         //new 2
         BlankFragment fragment = new BlankFragment();
@@ -66,7 +66,7 @@ public class RestaurantActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.restaurant, menu);
+        getMenuInflater().inflate(R.menu.driver, menu);
         return true;
     }
 
@@ -94,17 +94,8 @@ public class RestaurantActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            ManageFoodFragment fragment = new ManageFoodFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
-
+            // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
-            AddFoodFragment fragment = new AddFoodFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_slideshow) {
 

@@ -49,69 +49,78 @@
 
         <TableRow>
             <TextView
+                android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:layout_weight="1"
-                android:text="Name"
+                android:text="1"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
             <TextView
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_weight="1"
-                android:text="Qty"
+                android:text="2"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
             <TextView
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_weight="1"
-                android:text="Price"
+                android:text="3"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
         </TableRow>
 
         <TableRow>
             <TextView
+                android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:layout_weight="1"
-                android:text="Name"
+                android:text="1"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
             <TextView
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_weight="1"
-                android:text="Qty"
+                android:text="2"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
             <TextView
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_weight="1"
-                android:text="Price"
+                android:text="3"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
         </TableRow>
 
         <TableRow>
             <TextView
+                android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:layout_weight="1"
-                android:text="Name"
+                android:text="1"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
             <TextView
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_weight="1"
-                android:text="Qty"
+                android:text="2"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
             <TextView
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_weight="1"
-                android:text="Price"
+                android:text="3"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
         </TableRow>
@@ -127,25 +136,33 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/button_style"
+        style="@style/button_text"/>
 
     <TextView
+        android:textColor="#FF0000"
+        android:paddingBottom="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Total : "
+        android:text="* Total : "
+        android:textStyle="bold"
         android:id="@+id/textView4"
         android:layout_above="@+id/button2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toLeftOf="@+id/txtTotalPrice"
+        android:layout_toStartOf="@+id/txtTotalPrice" />
 
     <TextView
+        android:textColor="#FF0000"
+        android:paddingBottom="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="txtTotalPrice"
-        android:id="@+id/textView5"
-        android:layout_alignTop="@+id/textView4"
+        android:id="@+id/txtTotalPrice"
+        android:textStyle="bold|italic"
+        android:layout_above="@+id/button2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

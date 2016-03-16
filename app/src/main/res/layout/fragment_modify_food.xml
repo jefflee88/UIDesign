@@ -24,7 +24,7 @@
         android:layout_below="@+id/imgModifyFood"
         android:paddingTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="250dp"
         android:id="@+id/tableLayout"
         android:layout_alignRight="@+id/imgModifyFood"
         android:layout_alignEnd="@+id/imgModifyFood">

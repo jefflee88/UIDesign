@@ -26,7 +26,7 @@ public class CustomerActivity extends AppCompatActivity
         setContentView(R.layout.activity_customer);
 
         //new 2
-        SearchFragment fragment = new SearchFragment();
+        BlankFragment fragment = new BlankFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
@@ -105,7 +105,12 @@ public class CustomerActivity extends AppCompatActivity
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
+
         } else if (id == R.id.nav_slideshow) {
+            RestaurantOrderFragment fragment = new RestaurantOrderFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_manage) {
 
