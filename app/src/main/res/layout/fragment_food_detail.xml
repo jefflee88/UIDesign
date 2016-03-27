@@ -21,7 +21,7 @@
         android:paddingTop="30dp"
         android:paddingLeft="30dp"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="220dp"
         android:layout_below="@+id/imgFoodDetail"
         android:id="@+id/tableLayout"
         android:layout_alignLeft="@+id/imgFoodDetail"
@@ -94,54 +94,54 @@
 
     </TableLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add to cart"
-        android:id="@+id/btnAddToCart"
-        android:background="@drawable/button_style"
-        style="@style/button_text"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/imgFoodDetail"
-        android:layout_alignStart="@+id/imgFoodDetail"
-        android:layout_alignRight="@+id/imgFoodDetail"
-        android:layout_alignEnd="@+id/imgFoodDetail" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:id="@+id/btnMinus"
+            android:layout_below="@+id/tableLayout"
+            android:background="@drawable/button_style"
+            style="@style/button_text"
+            android:layout_alignLeft="@+id/btnAddToCart"
+            android:layout_alignStart="@+id/btnAddToCart" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-"
-        android:id="@+id/btnMinus"
-        android:layout_below="@+id/tableLayout"
-        android:background="@drawable/button_style"
-        style="@style/button_text"
-        android:layout_alignLeft="@+id/btnAddToCart"
-        android:layout_alignStart="@+id/btnAddToCart" />
+        <EditText
+            android:background="@drawable/edit_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtQty"
+            android:gravity="center"
+            android:text="1"
+            android:textStyle="bold"
+            android:layout_alignBottom="@+id/btnMinus"
+            android:layout_toRightOf="@id/btnMinus"
+            android:layout_toEndOf="@id/btnMinus"
+            android:layout_toLeftOf="@+id/btnPlus"
+            android:layout_toStartOf="@+id/btnPlus"
+            android:layout_alignTop="@+id/btnMinus" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+"
-        android:id="@+id/btnPlus"
-        android:background="@drawable/button_style"
-        style="@style/button_text"
-        android:layout_below="@+id/tableLayout"
-        android:layout_alignRight="@+id/btnAddToCart"
-        android:layout_alignEnd="@+id/btnAddToCart" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:id="@+id/btnPlus"
+            android:background="@drawable/button_style"
+            style="@style/button_text"
+            android:layout_below="@+id/tableLayout"
+            android:layout_alignRight="@+id/btnAddToCart"
+            android:layout_alignEnd="@+id/btnAddToCart" />
 
-    <EditText
-        android:background="@drawable/edit_text_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtQty"
-        android:gravity="center"
-        android:text="1"
-        android:textStyle="bold"
-        android:layout_alignBottom="@+id/btnMinus"
-        android:layout_toRightOf="@id/btnMinus"
-        android:layout_toEndOf="@id/btnMinus"
-        android:layout_toLeftOf="@+id/btnPlus"
-        android:layout_toStartOf="@+id/btnPlus"
-        android:layout_alignTop="@+id/btnMinus" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add to cart"
+            android:id="@+id/btnAddToCart"
+            android:background="@drawable/button_style"
+            style="@style/button_text"
+            android:layout_below="@+id/btnMinus"
+            android:layout_alignRight="@+id/tableLayout"
+            android:layout_alignEnd="@+id/tableLayout"
+            android:layout_alignLeft="@+id/tableLayout"
+            android:layout_alignStart="@+id/tableLayout" />
 
 </RelativeLayout>

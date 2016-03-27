@@ -1,0 +1,169 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GetJobDetailFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Job details : "
+        android:textStyle="bold"
+        android:id="@+id/textView"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TableLayout
+        android:stretchColumns="1"
+        android:layout_alignLeft="@+id/imgBtnGallery"
+        android:layout_alignStart="@+id/imgBtnGallery"
+        android:layout_below="@+id/textView"
+        android:paddingTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:id="@+id/tableLayout"
+        android:layout_alignRight="@+id/imgAddFood"
+        android:layout_alignEnd="@+id/imgAddFood">
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Total food : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="4"
+                android:id="@+id/txtGetJobTotalQty"
+                android:text="txtGetJobTotalQty"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Date / Time : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="4"
+                android:id="@+id/txtGetJobDate"
+                android:text="txtGetJobDate"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Finish in : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="3"
+                android:id="@+id/txtGetJobFinish"
+                android:text="txtGetJobFinish"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="From : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="3"
+                android:id="@+id/txtGetJobFromRest"
+                android:text="txtGetJobFromRest"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+            <ImageButton
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_menu_mapmode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgBtnRest" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Deliver to : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="3"
+                android:id="@+id/txtGetJobDeliverTo"
+                android:text="txtGetJobDeliverTo"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+            <ImageButton
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_menu_mapmode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgBtnCust" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/tableLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:weightSum="1"
+        android:paddingTop="10dp"
+        android:id="@+id/tr2"
+        android:baselineAligned="false">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Check distance"
+            android:id="@+id/btnCheckDist"
+            android:background="@drawable/button_style"
+            style="@style/button_text" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/tr2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:weightSum="1"
+        android:id="@+id/tr3">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get this job"
+            android:id="@+id/btnGetThisJob"
+            android:background="@drawable/button_style"
+            style="@style/button_text" />
+    </TableRow>
+
+</RelativeLayout>

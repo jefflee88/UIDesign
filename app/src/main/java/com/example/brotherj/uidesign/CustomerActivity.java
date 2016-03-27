@@ -1,5 +1,6 @@
 package com.example.brotherj.uidesign;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -79,8 +80,15 @@ public class CustomerActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_home) {
+            BlankFragment fragment = new BlankFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
             return true;
         }else if(id == R.id.action_logout){
+            Intent intent = new Intent(CustomerActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
             return true;
         }
 
@@ -101,18 +109,12 @@ public class CustomerActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_shoppingCart) {
-            FoodDetailFragment fragment = new FoodDetailFragment();
+            ShoppingCartFragment fragment = new ShoppingCartFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_slideshow) {
-            RestaurantOrderFragment fragment = new RestaurantOrderFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
-
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_orderStatus) {
 
         } else if (id == R.id.nav_share) {
 

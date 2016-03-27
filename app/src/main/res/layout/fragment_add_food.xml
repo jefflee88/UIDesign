@@ -5,6 +5,7 @@
     tools:context="com.example.brotherj.uidesign.AddFoodFragment">
 
     <ImageView
+        android:layout_marginLeft="20dp"
         android:layout_marginRight="30dp"
         android:layout_width="240dp"
         android:layout_height="150dp"
@@ -15,7 +16,9 @@
         android:background="#000000"
         android:padding="2dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@+id/imgBtnTakePhoto"
+        android:layout_toRightOf="@+id/imgBtnTakePhoto" />
 
     <TableLayout
         android:stretchColumns="1"

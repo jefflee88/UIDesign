@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent Intent = new Intent(view.getContext(), RestaurantActivity.class);
+                Intent Intent = new Intent(view.getContext(), DriverActivity.class);
                 startActivityForResult(Intent, 0);
             }
         });

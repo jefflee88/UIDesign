@@ -2,14 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.brotherj.uidesign.ShoppingCartFragment">
-
+    tools:context="com.example.brotherj.uidesign.RestOrderDetailFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Your added food : "
+        android:text="Ordered food : "
         android:textStyle="bold"
         android:id="@+id/textView"
         android:paddingTop="10dp"
@@ -20,9 +19,9 @@
     <TableLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="200dp"
         android:layout_below="@+id/textView"
-        android:id="@+id/tableLayout">
+        android:id="@+id/tb1">
 
         <TableRow>
             <TextView
@@ -42,34 +41,7 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_weight="1"
-                android:text="Price"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:padding="3dip" />
-
-        </TableRow>
-
-        <TableRow>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                android:layout_weight="1"
-                android:text="1"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:padding="3dip" />
-            <TextView
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_weight="1"
-                android:text="2"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:padding="3dip" />
-            <TextView
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_weight="1"
-                android:text="3"
+                android:text="Type"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
         </TableRow>
@@ -98,7 +70,32 @@
                 android:text="3"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
+        </TableRow>
 
+        <TableRow>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="2"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="3"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
         </TableRow>
 
         <TableRow>
@@ -129,43 +126,83 @@
 
     </TableLayout>
 
+    <TableLayout
+        android:paddingTop="10dp"
+        android:stretchColumns="1"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:id="@+id/tableLayout"
+        android:layout_below="@+id/tb1">
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Total food : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="4"
+                android:id="@+id/txtRestTotalQty"
+                android:text="txtRestTotalQty"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Deliver to : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="4"
+                android:id="@+id/txtRestOrderDeliver"
+                android:text="txtRestOrderDeliverTo"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+            <ImageButton
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_menu_mapmode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgBtnCust" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Finish in :"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <EditText
+                android:layout_span="4"
+                android:id="@+id/edtModifyFoodName"
+                android:hint="Enter minutes"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+    </TableLayout>
+
     <Button
-        android:layout_width="350dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Take order"
-        android:id="@+id/btnTakeOrder"
-        android:background="@drawable/button_style"
-        style="@style/button_text"
-        android:layout_below="@+id/textView4"
+        android:text="Send to driver"
+        android:id="@+id/btnSendToDriver"
+        android:layout_below="@+id/tableLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:background="@drawable/button_style"
+        style="@style/button_text"/>
 
-    <TextView
-        android:textColor="#FF0000"
-        android:paddingBottom="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="* Total : "
-        android:textStyle="bold"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/tableLayout"
-        android:layout_toLeftOf="@+id/txtTotalPrice"
-        android:layout_toStartOf="@+id/txtTotalPrice" />
-
-    <TextView
-        android:textColor="#FF0000"
-        android:paddingBottom="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="txtTotalPrice"
-        android:id="@+id/txtTotalPrice"
-        android:textStyle="bold|italic"
-        android:layout_below="@+id/tableLayout"
-        android:layout_alignRight="@+id/btnTakeOrder"
-        android:layout_alignEnd="@+id/btnTakeOrder" />
 
 </RelativeLayout>

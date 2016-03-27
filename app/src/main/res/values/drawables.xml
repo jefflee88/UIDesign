@@ -7,4 +7,8 @@
     <item name="ic_menu_send" type="drawable">@android:drawable/ic_menu_send</item>
     <item name="ic_menu_search" type="drawable">@android:drawable/ic_menu_search</item>
     <item name="ic_menu_recent_history" type="drawable">@android:drawable/ic_menu_recent_history</item>
+    <item name="ic_menu_mapmode" type="drawable">@android:drawable/ic_menu_mapmode</item>
+    <item name="ic_menu_agenda" type="drawable">@android:drawable/ic_menu_agenda</item>
+    <item name="ic_menu_add" type="drawable">@android:drawable/ic_menu_add</item>
+    <item name="ic_menu_directions" type="drawable">@android:drawable/ic_menu_directions</item>
 </resources>

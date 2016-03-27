@@ -1,5 +1,6 @@
 package com.example.brotherj.uidesign;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -79,8 +80,15 @@ public class RestaurantActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_home) {
+            BlankFragment fragment = new BlankFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
             return true;
         }else if(id == R.id.action_logout){
+            Intent intent = new Intent(RestaurantActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
             return true;
         }
 
@@ -93,22 +101,25 @@ public class RestaurantActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_manageFood) {
             ManageFoodFragment fragment = new ManageFoodFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_addFood) {
 
             AddFoodFragment fragment = new AddFoodFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_confirmOrder) {
 
-        } else if (id == R.id.nav_manage) {
+            RestaurantOrderFragment fragment = new RestaurantOrderFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_share) {
 
