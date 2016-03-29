@@ -13,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.example.brotherj.uidesign.Data.SaveData;
 
 public class CustomerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,6 +28,9 @@ public class CustomerActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
+
+        TextView txtLoggedUsername = (TextView)findViewById(R.id.txtLoggedUsername);
+        txtLoggedUsername.setText(SaveData.customer.getName());
 
         //new 2
         BlankFragment fragment = new BlankFragment();
