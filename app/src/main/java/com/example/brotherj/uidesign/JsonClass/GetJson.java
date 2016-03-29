@@ -8,6 +8,7 @@ import android.util.Log;
 import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.bean.Customer;
 import com.example.brotherj.uidesign.bean.Driver;
+import com.example.brotherj.uidesign.bean.Restaurant;
 
 import org.json.JSONObject;
 
@@ -46,16 +47,28 @@ public class GetJson {
             JSONObject json = new JSONObject(reply);
             try {
                 if(type.equals("customer")){
-                for(int i=0; i<json.getJSONArray("user").length();i++) {
-                    JSONObject jsonObj = json.getJSONArray("user").getJSONObject(i);
-                    String id = jsonObj.getString("id");
-                    String name = jsonObj.getString("name");
-                    String address = jsonObj.getString("address");
-                    String email = jsonObj.getString("email");
-                    String telNum = jsonObj.getString("telNum");
-                    String Userid = jsonObj.getString("Userid");
-                    SaveData.customer=new Customer(id, name, address, email, telNum, Userid);
+                    for(int i=0; i<json.getJSONArray("user").length();i++) {
+                        JSONObject jsonObj = json.getJSONArray("user").getJSONObject(i);
+                        String id = jsonObj.getString("id");
+                        String name = jsonObj.getString("name");
+                        String address = jsonObj.getString("address");
+                        String email = jsonObj.getString("email");
+                        String telNum = jsonObj.getString("telNum");
+                        String Userid = jsonObj.getString("Userid");
+                        SaveData.customer=new Customer(id, name, address, email, telNum, Userid);
+                    }
                 }
+                if(type.equals("restaurant")) {
+                    for (int i = 0; i < json.getJSONArray("order").length(); i++) {
+                        JSONObject jsonObj = json.getJSONArray("order").getJSONObject(i);
+                        String id = jsonObj.getString("id");
+                        String name = jsonObj.getString("name");
+                        String address = jsonObj.getString("address");
+                        String type1 = jsonObj.getString("type");
+                        String telNum = jsonObj.getString("telNum");
+                        String Userid = jsonObj.getString("Userid");
+                        SaveData.restaurant = new Restaurant(id, name, address, type1, telNum, Userid);
+                    }
                 }
                 if(type.equals("driver")){
                     for(int i=0; i<json.getJSONArray("order").length();i++) {

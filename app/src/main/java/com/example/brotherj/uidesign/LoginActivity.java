@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent Intent = new Intent(view.getContext(), CustomerActivity.class);
                         startActivityForResult(Intent, 0);
                     }else if(type.equals("restaurant")){
+                        GetJson.getUserDetail(name,password,"restaurant");
                         Intent Intent = new Intent(view.getContext(), RestaurantActivity.class);
                         startActivityForResult(Intent, 0);
                     }else if(type.equals("driver")){
