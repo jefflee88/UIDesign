@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.bean.Customer;
+import com.example.brotherj.uidesign.bean.Driver;
 
 import org.json.JSONObject;
 
@@ -56,6 +57,18 @@ public class GetJson {
                     SaveData.customer=new Customer(id, name, address, email, telNum, Userid);
                 }
                 }
+                if(type.equals("driver")){
+                    for(int i=0; i<json.getJSONArray("order").length();i++) {
+                        JSONObject jsonObj = json.getJSONArray("order").getJSONObject(i);
+                        String id = jsonObj.getString("id");
+                        String name = jsonObj.getString("name");
+                        String telNum = jsonObj.getString("telNum");
+                        String Userid = jsonObj.getString("Userid");
+                        SaveData.driver=new Driver(id, name, telNum, Userid);
+                    }
+
+                }
+
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
