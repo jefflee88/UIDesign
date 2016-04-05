@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.JsonClass.GetJson;
 import com.example.brotherj.uidesign.bean.Food;
 
@@ -36,18 +37,22 @@ public class ManageFoodFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_manage_food, container, false);
 
         GetJson.changeVersion();
+        GetJson.getRestFoodDetail(SaveData.restaurant.getUserid());
 
+        food.add(SaveData.food);
         Food [] foodList = new Food[food.size()];
+        for(int i = 0 ;i<food.size();i++)
+            foodList[i] = food.get(i);
 
         ListView lstRestFood = (ListView)view.findViewById(R.id.lstRestFood);
         ArrayList<String> foodMenu = new ArrayList<String>();
         ArrayAdapter<String> listAdapter =
                 new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, foodMenu);
-        for (int i = 0; i < food.size(); i++) {
+        for (int i = 0; i < foodList.length; i++) {
             listAdapter.add("Name : " + foodList[i].getName() + "\n"
                     + "Type : " + foodList[i].getType() + "\n"
                     + "Price : " + foodList[i].getPrice() + "\n"
-                    + "Restaurantid : " + foodList[i].getRestaurantid());
+                    + "Restaurant Id : " + foodList[i].getRestaurantid());
         }
         lstRestFood.setAdapter(listAdapter);
         lstRestFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
