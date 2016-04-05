@@ -28,6 +28,7 @@ public class GetJson {
                 .penaltyLog()
                 .build());
     }
+
     public static void getUserDetail(String userId, String userPw, String type) {
         try {
             String url = "http://10.0.2.2/fyp_connect/get_user_details.php?id=" + userId + "&password=" + userPw;
