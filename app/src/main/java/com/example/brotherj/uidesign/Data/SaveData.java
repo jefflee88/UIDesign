@@ -14,4 +14,6 @@ public class SaveData {
     public static Customer customer;
     public static Driver driver;
     public static Restaurant restaurant;
+    public static Food searchFood;
+    public static Food ModifyFood;
 }
