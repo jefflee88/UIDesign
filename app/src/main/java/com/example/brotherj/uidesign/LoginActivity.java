@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = pwd.getText().toString();
                 boolean checkLogin = GetJson.CheckUser(name,password);
                 if(checkLogin == true){
-                    Toast.makeText(getApplicationContext(), "Hello " + name + "!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Hello, " + name + ". \nWelcome to Just To Go!!!", Toast.LENGTH_SHORT).show();
                     String type = GetJson.CheckUserType(name, password);
                     if(type.equals("customer")){
                         GetJson.getUserDetail(name,password,"customer");
@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivityForResult(Intent, 0);
                     }
                 }else{
-                    Toast.makeText(getApplicationContext(), "please input again!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Wrong password or user ID. \nPlease try again!!!", Toast.LENGTH_SHORT).show();
                 }
 
             }

@@ -13,29 +13,43 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.brotherj.uidesign.JsonClass.GetJson;
+import com.example.brotherj.uidesign.bean.Food;
+
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ManageFoodFragment extends Fragment {
 
+    ArrayList<Food> food = new ArrayList<Food>();
 
     public ManageFoodFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_manage_food, container, false);
 
-        ListView lstRestFood = (ListView)view.findViewById(R.id.lstRestFood);
-        String[] testList = new String[] {"test 1", "test 2", "test 3",  "test 4",  "test 5"};
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, testList);
+        GetJson.changeVersion();
 
-        lstRestFood.setAdapter(adapter);
+        Food [] foodList = new Food[food.size()];
+
+        ListView lstRestFood = (ListView)view.findViewById(R.id.lstRestFood);
+        ArrayList<String> foodMenu = new ArrayList<String>();
+        ArrayAdapter<String> listAdapter =
+                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, foodMenu);
+        for (int i = 0; i < food.size(); i++) {
+            listAdapter.add("Name : " + foodList[i].getName() + "\n"
+                    + "Type : " + foodList[i].getType() + "\n"
+                    + "Price : " + foodList[i].getPrice() + "\n"
+                    + "Restaurantid : " + foodList[i].getRestaurantid());
+        }
+        lstRestFood.setAdapter(listAdapter);
         lstRestFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {

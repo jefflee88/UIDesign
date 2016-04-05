@@ -8,6 +8,7 @@ import android.util.Log;
 import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.bean.Customer;
 import com.example.brotherj.uidesign.bean.Driver;
+import com.example.brotherj.uidesign.bean.Food;
 import com.example.brotherj.uidesign.bean.Restaurant;
 
 import org.json.JSONObject;
@@ -160,4 +161,44 @@ public class GetJson {
         }
         return type;
     }
+
+    public static void getRestFoodDetail(String userId) {
+        try {
+            String url = "http://10.0.2.2/fyp_connect/get_restaurant_food.php?id="+userId;
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            JSONObject json = new JSONObject(reply);
+            try {
+                    for(int i=0; i<json.getJSONArray("food").length();i++) {
+                        JSONObject jsonObj = json.getJSONArray("food").getJSONObject(i);
+                        String foodId = jsonObj.getString("id");
+                        String foodName = jsonObj.getString("name");
+                        String foodType = jsonObj.getString("type");
+                        String foodPrice = jsonObj.getString("price");
+                        String foodImage = jsonObj.getString("image");
+                        String foodRestId = jsonObj.getString("Restaurantid");
+                        SaveData.food = new Food(foodId, foodName, foodType, foodPrice, foodImage, foodRestId);
+                    }
+
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+    }
+
 }

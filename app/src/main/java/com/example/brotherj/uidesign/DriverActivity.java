@@ -13,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.example.brotherj.uidesign.Data.SaveData;
 
 public class DriverActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -67,6 +70,8 @@ public class DriverActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        TextView txtLoggedUsername = (TextView)findViewById(R.id.txtLoggedUsername);
+        txtLoggedUsername.setText(SaveData.driver.getName());
         getMenuInflater().inflate(R.menu.driver, menu);
         return true;
     }

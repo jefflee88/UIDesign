@@ -2,6 +2,7 @@ package com.example.brotherj.uidesign.Data;
 
 import com.example.brotherj.uidesign.bean.Customer;
 import com.example.brotherj.uidesign.bean.Driver;
+import com.example.brotherj.uidesign.bean.Food;
 import com.example.brotherj.uidesign.bean.Restaurant;
 
 import java.util.Objects;
@@ -13,4 +14,5 @@ public class SaveData {
     public static Customer customer;
     public static Driver driver;
     public static Restaurant restaurant;
+    public static Food food;
 }

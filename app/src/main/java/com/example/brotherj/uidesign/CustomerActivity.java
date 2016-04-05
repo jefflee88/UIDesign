@@ -29,9 +29,6 @@ public class CustomerActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
 
-        TextView txtLoggedUsername = (TextView)findViewById(R.id.txtLoggedUsername);
-        txtLoggedUsername.setText(SaveData.customer.getName());
-
         //new 2
         BlankFragment fragment = new BlankFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -73,6 +70,8 @@ public class CustomerActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        TextView txtLoggedUsername = (TextView)findViewById(R.id.txtLoggedUsername);
+        txtLoggedUsername.setText(SaveData.customer.getName());
         getMenuInflater().inflate(R.menu.customer, menu);
         return true;
     }

@@ -60,6 +60,6 @@ public class Restaurant {
     }
 
     public void setUserid(String userid) {
-        Userid = userid;
+        this.Userid = userid;
     }
 }
