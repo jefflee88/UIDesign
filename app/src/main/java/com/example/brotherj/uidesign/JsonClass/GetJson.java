@@ -18,15 +18,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class GetJson {
     public static void changeVersion() {
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                .detectDiskReads()
-                .detectDiskWrites()
-                .detectNetwork()   // or .detectAll() for all detectable problems
-                .penaltyLog()
-                .build());
+        if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.GINGERBREAD) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectDiskReads()
+                    .detectDiskWrites()
+                    .detectNetwork()   // or .detectAll() for all detectable problems
+                    .penaltyLog()
+                    .build());
+        }
     }
 
     public static void getUserDetail(String userId, String userPw, String type) {
@@ -163,9 +166,10 @@ public class GetJson {
         return type;
     }
 
-    public static void getRestFoodDetail(String userId) {
+    public static ArrayList<Food> getRestFoodDetail(String userId) {
+        ArrayList<Food> food = new ArrayList<Food>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/get_restaurant_food.php?id="+userId;
+            String url = "http://10.0.2.2/fyp_connect/get_restaurant_food.php?userid="+userId;
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -190,7 +194,7 @@ public class GetJson {
                         String foodPrice = jsonObj.getString("price");
                         String foodImage = jsonObj.getString("image");
                         String foodRestId = jsonObj.getString("Restaurantid");
-                        SaveData.food = new Food(foodId, foodName, foodType, foodPrice, foodImage, foodRestId);
+                        food.add(new Food(foodId, foodName, foodType, foodPrice, foodImage, foodRestId));
                     }
 
             } catch (Exception e1) {
@@ -200,6 +204,7 @@ public class GetJson {
         } catch (Exception e1) {
             e1.printStackTrace();
         }
+        return food;
     }
 
 }

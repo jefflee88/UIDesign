@@ -37,9 +37,8 @@ public class ManageFoodFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_manage_food, container, false);
 
         GetJson.changeVersion();
-        GetJson.getRestFoodDetail(SaveData.restaurant.getUserid());
+        food = GetJson.getRestFoodDetail(SaveData.restaurant.getUserid());
 
-        food.add(SaveData.food);
         Food [] foodList = new Food[food.size()];
         for(int i = 0 ;i<food.size();i++)
             foodList[i] = food.get(i);
