@@ -18,10 +18,10 @@
         android:layout_centerHorizontal="true" />
 
     <TableLayout
-        android:paddingTop="30dp"
+        android:paddingTop="10dp"
         android:paddingLeft="30dp"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="190dp"
         android:layout_below="@+id/imgFoodDetail"
         android:id="@+id/tableLayout"
         android:layout_alignLeft="@+id/imgFoodDetail"
