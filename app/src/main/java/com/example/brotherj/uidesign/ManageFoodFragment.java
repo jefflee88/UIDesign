@@ -57,7 +57,7 @@ public class ManageFoodFragment extends Fragment {
         lstRestFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                SaveData.searchFood = (Food)food.get(arg2);
+                SaveData.resSearchFood = (Food)food.get(arg2);
                 ModifyFoodFragment fragment = new ModifyFoodFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

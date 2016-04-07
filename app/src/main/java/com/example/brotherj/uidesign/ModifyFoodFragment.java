@@ -37,13 +37,13 @@ public class ModifyFoodFragment extends Fragment {
         txtModifyFoodId = (TextView) view.findViewById(R.id.txtModifyFoodId);
         edtModifyFoodName = (EditText) view.findViewById(R.id.edtModifyFoodName);
         edtModifyFoodPrice = (EditText) view.findViewById(R.id.edtModifyFoodPrice);
-        txtModifyFoodId.setText(SaveData.searchFood.getId());
-        edtModifyFoodName.setText(SaveData.searchFood.getName());
-        edtModifyFoodPrice.setText(SaveData.searchFood.getPrice());
+        txtModifyFoodId.setText(SaveData.resSearchFood.getId());
+        edtModifyFoodName.setText(SaveData.resSearchFood.getName());
+        edtModifyFoodPrice.setText(SaveData.resSearchFood.getPrice());
         Button btnModifySave = (Button) view.findViewById(R.id.btnModifySave);
         btnModifySave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                SaveData.ModifyFood = SaveData.searchFood;
+                SaveData.ModifyFood = SaveData.resSearchFood;
                 SaveData.ModifyFood.setName(edtModifyFoodName.getText().toString());
                 SaveData.ModifyFood.setPrice(edtModifyFoodPrice.getText().toString());
                 

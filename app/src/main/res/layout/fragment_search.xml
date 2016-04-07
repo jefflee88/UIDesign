@@ -49,6 +49,10 @@
         android:gravity="center_horizontal"
         android:paddingTop="10dp"
         android:layout_below="@+id/textView3">
+    <RadioGroup
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/rdoGroup">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -57,6 +61,8 @@
             android:textStyle="italic"
             android:id="@+id/rdoFood"
             android:paddingRight="50dp"/>
+
+    </RadioGroup>
 
         <RadioButton
             android:layout_width="wrap_content"

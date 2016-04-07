@@ -12,6 +12,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView;
 
+import com.example.brotherj.uidesign.Data.SaveData;
+import com.example.brotherj.uidesign.JsonClass.GetJson;
+import com.example.brotherj.uidesign.bean.Food;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,15 +37,27 @@ public class SearchResultFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search_result, container, false);
 
-        ListView lstSearchResult = (ListView)view.findViewById(R.id.lstSearchResult);
-        String[] testList = new String[] {"test 1", "test 2", "test 3",  "test 4",  "test 5"};
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, testList);
+        GetJson.changeVersion();
 
-        lstSearchResult.setAdapter(adapter);
+        Food[] foodList = new Food[SaveData.cusSearchFood.size()];
+        for(int i = 0 ;i<SaveData.cusSearchFood.size();i++)
+            foodList[i] = SaveData.cusSearchFood.get(i);
+
+        ListView lstSearchResult = (ListView)view.findViewById(R.id.lstSearchResult);
+        ArrayList<String> foodMenu = new ArrayList<String>();
+        ArrayAdapter<String> listAdapter =
+                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, foodMenu);
+        for (int i = 0; i < foodList.length; i++) {
+            listAdapter.add("Name : " + foodList[i].getName() + "\n"
+                    + "Type : " + foodList[i].getType() + "\n"
+                    + "Price : " + foodList[i].getPrice() + "\n"
+                    + "Restaurant Id : " + foodList[i].getRestaurantid());
+        }
+        lstSearchResult.setAdapter(listAdapter);
         lstSearchResult.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                SaveData.cusChooseFood = (Food)SaveData.cusSearchFood.get(arg2);
                 FoodDetailFragment fragment = new FoodDetailFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

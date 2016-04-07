@@ -5,6 +5,7 @@ import com.example.brotherj.uidesign.bean.Driver;
 import com.example.brotherj.uidesign.bean.Food;
 import com.example.brotherj.uidesign.bean.Restaurant;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -14,6 +15,8 @@ public class SaveData {
     public static Customer customer;
     public static Driver driver;
     public static Restaurant restaurant;
-    public static Food searchFood;
+    public static Food resSearchFood;
+    public static Food cusChooseFood;
     public static Food ModifyFood;
+    public static ArrayList<Food> cusSearchFood;
 }
