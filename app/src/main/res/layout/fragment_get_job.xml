@@ -19,9 +19,10 @@
     <ListView
         android:layout_below="@+id/textView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="220dp"
         android:id="@+id/lstGetJob"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/btnRefresh" />
 
     <Button
         android:layout_width="wrap_content"
@@ -30,7 +31,7 @@
         android:id="@+id/btnRefresh"
         android:background="@drawable/button_style"
         style="@style/button_text"
-        android:layout_below="@+id/lstGetJob"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"

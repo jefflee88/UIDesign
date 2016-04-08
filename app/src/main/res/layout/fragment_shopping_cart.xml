@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.brotherj.uidesign.ShoppingCartFragment">
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +44,6 @@
                 android:text="Price"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
-
         </TableRow>
 
         <TableRow>
@@ -136,7 +134,7 @@
         android:id="@+id/btnTakeOrder"
         android:background="@drawable/button_style"
         style="@style/button_text"
-        android:layout_below="@+id/textView4"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
@@ -151,7 +149,7 @@
         android:text="* Total : "
         android:textStyle="bold"
         android:id="@+id/textView4"
-        android:layout_below="@+id/tableLayout"
+        android:layout_above="@+id/btnTakeOrder"
         android:layout_toLeftOf="@+id/txtTotalPrice"
         android:layout_toStartOf="@+id/txtTotalPrice" />
 
@@ -164,8 +162,8 @@
         android:text="txtTotalPrice"
         android:id="@+id/txtTotalPrice"
         android:textStyle="bold|italic"
-        android:layout_below="@+id/tableLayout"
-        android:layout_alignRight="@+id/btnTakeOrder"
-        android:layout_alignEnd="@+id/btnTakeOrder" />
+        android:layout_above="@+id/btnTakeOrder"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
