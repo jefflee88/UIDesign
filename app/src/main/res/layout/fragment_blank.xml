@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="You can use different functions \ninside the navigation bar. The navigation \nbar is on top left coner. Enjoy!"
+        android:text="You can use different functions inside the navigation bar. The navigation bar is on top left coner. Enjoy!"
         android:id="@+id/textView8"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"

@@ -64,8 +64,11 @@ public class SearchFragment extends Fragment {
 
         @Override
             public void onClick(View v) {
+                if(type.equals("food"))
+                    SaveData.cusSearchFood = GetJson.searchFood(edtSearch.getText().toString(), type);
+                if(type.equals("restaurant"))
+                    SaveData.cusSearchFood = GetJson.searchFood(edtSearch.getText().toString(), type);
 
-                SaveData.cusSearchFood = GetJson.searchFood(edtSearch.getText().toString(), type);
                 SearchResultFragment fragment = new SearchResultFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

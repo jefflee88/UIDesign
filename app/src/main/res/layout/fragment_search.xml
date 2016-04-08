@@ -52,7 +52,9 @@
     <RadioGroup
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:orientation="horizontal"
         android:id="@+id/rdoGroup">
+
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -62,14 +64,13 @@
             android:id="@+id/rdoFood"
             android:paddingRight="50dp"/>
 
-    </RadioGroup>
-
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="italic"
             android:text="Restaurant Details"
             android:id="@+id/rdoRest" />
+    </RadioGroup>
     </TableRow>
 
     <TableRow

@@ -40,7 +40,7 @@ public class FoodDetailFragment extends Fragment {
         Button btnAddToCart = (Button) view.findViewById(R.id.btnAddToCart);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                
+
             }
         });
         return view;
