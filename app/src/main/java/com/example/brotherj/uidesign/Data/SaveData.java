@@ -18,6 +18,5 @@ public class SaveData {
     public static Restaurant restaurant;
     public static Food resSearchFood;
     public static Food cusChooseFood;
-    public static Food ModifyFood;
     public static ArrayList<Food> cusSearchFood;
 }

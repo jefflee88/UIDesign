@@ -248,4 +248,18 @@ public class GetJson {
         return food;
     }
 
+    public static void modifyFood(Food food){
+        try {
+            String url = "http://localhost/fyp_connect/update_food.php?id="+food.getId()+"&name="+food.getName()+"&type="+food.getType()+"&price="+food.getPrice()+"&image="+food.getImage();
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+    }
+
 }
