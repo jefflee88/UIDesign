@@ -45,13 +45,20 @@ public class ModifyFoodFragment extends Fragment {
         edtModifyFoodPrice = (EditText) view.findViewById(R.id.edtModifyFoodPrice);
         spinType=(Spinner) view.findViewById(R.id.spinType);
         String [] types = new String[5];
+        for(int i = 0; i<5 ; i++)
+        types[i] = SaveData.resSearchFood.getType();
         String[] items={ "french fries", "chicken", "drink", "food", "dessert"};
-        for(int i = 0; i<4; i++)
-        if (SaveData.resSearchFood.getType().equals(items[i])){}
-        else{types[i]=items[i];}
-        ArrayAdapter<String> aa=new ArrayAdapter<String>(this.getActivity(), R.layout.fragment_modify_food, types);
-        aa.setDropDownViewResource(R.layout.fragment_modify_food);
-        spinType.setAdapter(aa);
+        int y =0;
+        for(int i = 0; i<5; i++) {
+            if (SaveData.resSearchFood.getType().equals(items[i])==false) {
+                types[y+1] =items[i];
+                y++;
+            } else {
+            }
+        }
+        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, types);
+        LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinType.setAdapter(LTRadapter);
 
 
         txtModifyFoodId.setText(SaveData.resSearchFood.getId());
@@ -66,6 +73,7 @@ public class ModifyFoodFragment extends Fragment {
                 modifyFood.setPrice(edtModifyFoodPrice.getText().toString());
                 modifyFood.setType(spinType.getSelectedItem().toString());
                 GetJson.modifyFood(modifyFood);
+                SaveData.resSearchFood = modifyFood;
             }
         });
         return view;

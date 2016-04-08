@@ -250,13 +250,22 @@ public class GetJson {
 
     public static void modifyFood(Food food){
         try {
-            String url = "http://localhost/fyp_connect/update_food.php?id="+food.getId()+"&name="+food.getName()+"&type="+food.getType()+"&price="+food.getPrice()+"&image="+food.getImage();
+            String url = "http://10.0.2.2/fyp_connect/update_food.php?id="+food.getId()+"&name="+food.getName()+"&type="+food.getType()+"&price="+food.getPrice()+"&image="+food.getImage();
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
             client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
             client.setRequestMethod("GET");
             client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            JSONObject json = new JSONObject(reply);
         } catch (Exception e1) {
             e1.printStackTrace();
         }
