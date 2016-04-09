@@ -17,6 +17,10 @@ import android.widget.RadioGroup;
 
 import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.JsonClass.GetJson;
+import com.example.brotherj.uidesign.bean.Food;
+
+import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -65,10 +69,9 @@ public class SearchFragment extends Fragment {
         @Override
             public void onClick(View v) {
                 if(type.equals("food"))
-                    SaveData.cusSearchFood = GetJson.searchFood(edtSearch.getText().toString(), type);
+                    SaveData.cusSearchFood = (GetJson.searchFood(edtSearch.getText().toString(), type));
                 if(type.equals("restaurant"))
-                    SaveData.cusSearchFood = GetJson.searchFood(edtSearch.getText().toString(), type);
-
+                    SaveData.cusSearchRestaurant = GetJson.searchRestaurant(edtSearch.getText().toString(), type);
                 SearchResultFragment fragment = new SearchResultFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
