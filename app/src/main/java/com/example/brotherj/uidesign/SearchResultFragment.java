@@ -71,9 +71,9 @@ public class SearchResultFragment extends Fragment {
             });
         }
         if(SaveData.isFood==false){
-            Restaurant[] foodList = new Restaurant[SaveData.cusSearchFood.size()];
-            for (int i = 0; i < SaveData.cusSearchFood.size(); i++)
-                foodList[i] = SaveData.cusSearchFood.get(i);
+            Restaurant[] foodList = new Restaurant[SaveData.cusSearchRestaurant.size()];
+            for (int i = 0; i < SaveData.cusSearchRestaurant.size(); i++)
+                foodList[i] = SaveData.cusSearchRestaurant.get(i);
 
             ListView lstSearchResult = (ListView) view.findViewById(R.id.lstSearchResult);
             ArrayList<String> foodMenu = new ArrayList<String>();
@@ -82,16 +82,18 @@ public class SearchResultFragment extends Fragment {
 
             for (int i = 0; i < foodList.length; i++) {
                 listAdapter.add("Name : " + foodList[i].getName() + "\n"
+                                + "Address : " + foodList[i].getAddress() + "\n"
                                 + "Type : " + foodList[i].getType() + "\n"
-                                + "Price : " + foodList[i].getPrice() + "\n"
+                                + "TelNum : " + foodList[i].getTelNum() + "\n"
                 );
             }
             lstSearchResult.setAdapter(listAdapter);
             lstSearchResult.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                    SaveData.cusChooseFood = (Food) SaveData.cusSearchFood.get(arg2);
-                    FoodDetailFragment fragment = new FoodDetailFragment();
+                    SaveData.cusChooseRestaurant = new Restaurant("null","null","null","null","null","null");
+                    SaveData.cusChooseRestaurant = (Restaurant) SaveData.cusSearchRestaurant.get(arg2);
+                    RestDetailFragment fragment = new RestDetailFragment();
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, fragment);

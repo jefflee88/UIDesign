@@ -18,6 +18,8 @@ public class SaveData {
     public static Driver driver;
     public static Restaurant restaurant;
     public static Food resSearchFood;
+    public static ArrayList<Restaurant> cusSearchRestaurant;
+    public static Restaurant cusChooseRestaurant;
     public static Food cusChooseFood;
     public static ArrayList<Food> cusSearchFood;
 }

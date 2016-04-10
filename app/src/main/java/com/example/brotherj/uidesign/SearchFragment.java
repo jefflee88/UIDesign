@@ -17,6 +17,10 @@ import android.widget.RadioGroup;
 
 import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.JsonClass.GetJson;
+import com.example.brotherj.uidesign.bean.Food;
+
+import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -69,7 +73,7 @@ public class SearchFragment extends Fragment {
                     SaveData.isFood = true;
                 }
                 if (type.equals("restaurant")) {
-                    SaveData.cusSearchFood = GetJson.searchFood(edtSearch.getText().toString(), type);
+                    SaveData.cusSearchRestaurant = GetJson.searchRestaurant(edtSearch.getText().toString(), type);
                     SaveData.isFood = false;
                 }
                 SearchResultFragment fragment = new SearchResultFragment();

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.brotherj.uidesign.Data.SaveData;
+import com.example.brotherj.uidesign.JsonClass.GetJson;
 
 
 /**
@@ -40,7 +41,7 @@ public class FoodDetailFragment extends Fragment {
         Button btnAddToCart = (Button) view.findViewById(R.id.btnAddToCart);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
+                GetJson.creatOrder();
             }
         });
         return view;

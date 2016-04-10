@@ -4,15 +4,45 @@ package com.example.brotherj.uidesign.bean;
  * Created by User on 29/3/2016.
  */
 public class Customer {
-    String id,name,address,email,telNum,Userid;
-    public Customer(String id,String name,String address,String email,String telNum,String Userid){
+    String id,name,address,email,telNum,Userid,payment,credit_card_security_code;
+    int credit_card_number;
+    public Customer(String id,String name,String address,String email,String telNum,String payment,int credit_card_number,String credit_card_security_code,String Userid){
         this.id = id;
         this.name = name;
         this.address = address;
         this.email = email;
         this.telNum = telNum;
+        this.payment = payment;
+        this.credit_card_number = credit_card_number;
+        this.credit_card_security_code = credit_card_security_code;
         this.Userid = Userid;
+
     }
+
+    public int getCredit_card_number() {
+        return credit_card_number;
+    }
+
+    public String getCredit_card_security_code() {
+        return credit_card_security_code;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
+
+    public void setCredit_card_number(int credit_card_number) {
+        this.credit_card_number = credit_card_number;
+    }
+
+    public void setCredit_card_security_code(String credit_card_security_code) {
+        this.credit_card_security_code = credit_card_security_code;
+    }
+
     public String getId(){return id;}
     public String getName(){return name;}
     public String getAddress(){return address;}
