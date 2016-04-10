@@ -207,50 +207,8 @@ public class GetJson {
         return food;
     }
 
-    public static ArrayList<Restaurant> searchRestaurant(String keyword, String type) {
-        ArrayList<Restaurant> obj = new ArrayList<Restaurant>();
-        try {
-            String url = "http://10.0.2.2/fyp_connect/search_details.php?type=" + type + "&keyword=" + keyword;
-            URL urlObj = new URL(url);
-            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
-            client.setDoInput(true);
-            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-            client.setRequestMethod("GET");
-            client.connect();
-            InputStream input = client.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-            StringBuilder result = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                result.append(line);
-            }
-            String reply = result.toString();
-            JSONObject json = new JSONObject(reply);
-            try {
-                if(type.equals("restaurant"))
-                    for (int i = 0; i < json.getJSONArray("restaurant").length(); i++) {
-                        JSONObject jsonObj = json.getJSONArray("restaurant").getJSONObject(i);
-                        String restaurantId = jsonObj.getString("id");
-                        String restaurantName = jsonObj.getString("name");
-                        String restaurantAddress = jsonObj.getString("address");
-                        String restaurantType = jsonObj.getString("type");
-                        String restaurantTelNum = jsonObj.getString("telNum");
-                        String restaurantUserid = jsonObj.getString("Userid");
-                        obj.add(new Restaurant(restaurantId, restaurantName, restaurantAddress, restaurantType, restaurantTelNum, restaurantUserid));
-                    }
-
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-        return obj;
-    }
-
     public static ArrayList<Food> searchFood(String keyword, String type) {
-        ArrayList<Food> obj = new ArrayList<Food>();
+        ArrayList<Food> food = new ArrayList<Food>();
         try {
             String url = "http://10.0.2.2/fyp_connect/search_details.php?type=" + type + "&keyword=" + keyword;
             URL urlObj = new URL(url);
@@ -269,16 +227,17 @@ public class GetJson {
             String reply = result.toString();
             JSONObject json = new JSONObject(reply);
             try {
-                    for (int i = 0; i < json.getJSONArray("food").length(); i++) {
-                        JSONObject jsonObj = json.getJSONArray("food").getJSONObject(i);
-                        String foodId = jsonObj.getString("id");
-                        String foodName = jsonObj.getString("name");
-                        String foodType = jsonObj.getString("type");
-                        String foodPrice = jsonObj.getString("price");
-                        String foodImage = jsonObj.getString("image");
-                        String foodRestId = jsonObj.getString("Restaurantid");
-                        obj.add(new Food(foodId, foodName, foodType, foodPrice, foodImage, foodRestId));
-                    }
+                for (int i = 0; i < json.getJSONArray("food").length(); i++) {
+                    JSONObject jsonObj = json.getJSONArray("food").getJSONObject(i);
+                    String foodId = jsonObj.getString("id");
+                    String foodName = jsonObj.getString("name");
+                    String foodType = jsonObj.getString("type");
+                    String foodPrice = jsonObj.getString("price");
+                    String foodImage = jsonObj.getString("image");
+                    String foodRestId = jsonObj.getString("Restaurantid");
+                    food.add(new Food(foodId, foodName, foodType, foodPrice, foodImage, foodRestId));
+                }
+
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -286,8 +245,9 @@ public class GetJson {
         } catch (Exception e1) {
             e1.printStackTrace();
         }
-        return obj;
+        return food;
     }
+
     public static void modifyFood(Food food) {
         try {
             String url = "http://10.0.2.2/fyp_connect/update_food.php?id=" + food.getId() + "&name=" + food.getName() + "&type=" + food.getType() + "&price=" + food.getPrice() + "&image=" + food.getImage();
