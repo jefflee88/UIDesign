@@ -340,7 +340,7 @@ public class GetJson {
 
     public static void creatOrder(int qty,Food food){
         try {
-            String url = "http://localhost/fyp_connect/create_order.php?customerid="+SaveData.customer.getId();
+            String url = "http://10.0.2.2/fyp_connect/create_order.php?customerid="+SaveData.customer.getId();
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -369,6 +369,25 @@ public class GetJson {
         }
     }
     public static void creatOrderLine(int number,int qty,Food food) {
+        try {
+            String url = "http://10.0.2.2/fyp_connect/create_orderline.php?ordernumber="+number+"&foodid="+food.getId()+"&quanitity="+qty+"&Restaurantid="+food.getRestaurantid();
+            url = url.replaceAll(" ","%20");
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
 
     }
 }

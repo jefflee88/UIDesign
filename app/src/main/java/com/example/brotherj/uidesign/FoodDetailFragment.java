@@ -19,6 +19,7 @@ import com.example.brotherj.uidesign.JsonClass.GetJson;
  */
 public class FoodDetailFragment extends Fragment {
     TextView txtFoodDetailName,txtFoodDetailType,txtFoodDetailPrice,txtFoodDetailRestaurant;
+    int qty;
 
     public FoodDetailFragment() {
         // Required empty public constructor
@@ -38,9 +39,11 @@ public class FoodDetailFragment extends Fragment {
         txtFoodDetailType.setText(SaveData.cusChooseFood.getType());
         txtFoodDetailPrice.setText(SaveData.cusChooseFood.getPrice());
         txtFoodDetailRestaurant.setText(SaveData.cusChooseFood.getRestaurantid());
+        int qty =
         Button btnAddToCart = (Button) view.findViewById(R.id.btnAddToCart);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                GetJson.creatOrder(qty,SaveData.cusChooseFood);
             }
         });
         return view;
