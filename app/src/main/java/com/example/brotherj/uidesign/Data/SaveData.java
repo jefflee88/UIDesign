@@ -13,6 +13,7 @@ import java.util.Objects;
  */
 //杰屎
 public class SaveData {
+    public static boolean isFood;
     public static Customer customer;
     public static Driver driver;
     public static Restaurant restaurant;
