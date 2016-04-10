@@ -338,7 +338,7 @@ public class GetJson {
         }
     }
 
-    public static void creatOrder(){
+    public static void creatOrder(int qty,Food food){
         try {
             String url = "http://localhost/fyp_connect/create_order.php?customerid="+SaveData.customer.getId();
             url = url.replaceAll(" ","%20");
@@ -355,8 +355,20 @@ public class GetJson {
             while ((line = reader.readLine()) != null) {
                 result.append(line);
             }
+            String reply = result.toString();
+            JSONObject json = new JSONObject(reply);
+            int number = 0;
+            try {
+                number = json.getInt("success");
+                creatOrderLine(number,qty,food);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         } catch (Exception e1) {
             e1.printStackTrace();
         }
+    }
+    public static void creatOrderLine(int number,int qty,Food food) {
+
     }
 }
