@@ -20,12 +20,12 @@
         android:layout_below="@+id/txtTitle"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:id="@+id/tableLayout2">
         <TableRow>
             <TextView
                 android:textStyle="bold"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Food name"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
@@ -44,9 +44,10 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
             <TextView
-                android:gravity="center"
+                android:layout_width="40dp"
+                android:gravity="right"
                 android:textStyle="bold"
-                android:layout_weight="1"
+                android:layout_weight="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
         </TableRow>
@@ -249,6 +250,43 @@
                 style="@style/button_text" />
         </TableRow>
 
+        <TableRow>
+            <TextView
+                android:id="@+id/txtName5"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:layout_weight="2"
+                android:text="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtQty5"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="2"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtPrice5"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="3"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <Button
+                android:id="@+id/btnDelete5"
+                android:layout_weight="0"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:background="@drawable/button_style"
+                style="@style/button_text" />
+        </TableRow>
+
     </TableLayout>
 
     </ScrollView>
@@ -280,7 +318,7 @@
         android:layout_below="@+id/view"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:id="@+id/tableLayout3">
         <TableRow>
             <TextView
@@ -309,9 +347,10 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
             <TextView
+                android:layout_width="40dp"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:layout_weight="1"
+                android:layout_weight="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
         </TableRow>

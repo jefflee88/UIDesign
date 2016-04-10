@@ -84,6 +84,9 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
             <TextView
+                android:onClick="onClick"
+                android:clickable="true"
+                android:textColor="#3232FF"
                 android:id="@+id/txtFoodDetailRestaurant"
                 android:text="txtFoodDetailRest"
                 android:textStyle="italic"

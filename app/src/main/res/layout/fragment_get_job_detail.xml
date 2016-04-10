@@ -18,15 +18,11 @@
 
     <TableLayout
         android:stretchColumns="1"
-        android:layout_alignLeft="@+id/imgBtnGallery"
-        android:layout_alignStart="@+id/imgBtnGallery"
         android:layout_below="@+id/textView"
         android:paddingTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="310dp"
-        android:id="@+id/tableLayout"
-        android:layout_alignRight="@+id/imgAddFood"
-        android:layout_alignEnd="@+id/imgAddFood">
+        android:id="@+id/tableLayout">
 
         <TableRow
             android:paddingTop="10dp">

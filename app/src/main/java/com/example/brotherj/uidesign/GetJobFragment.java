@@ -34,9 +34,7 @@ public class GetJobFragment extends Fragment {
 
         ListView lstGetJob = (ListView)view.findViewById(R.id.lstGetJob);
         String[] testList = new String[] {"test 1", "test 2", "test 3",  "test 4",  "test 5"};
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, testList);
-
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, testList);
         lstGetJob.setAdapter(adapter);
         lstGetJob.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

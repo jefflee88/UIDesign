@@ -9,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.AdapterView;
 
+import com.example.brotherj.uidesign.Data.DownloadImageTask;
 import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.JsonClass.GetJson;
 import com.example.brotherj.uidesign.bean.Food;
@@ -24,7 +26,6 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class SearchResultFragment extends Fragment {
-
 
     public SearchResultFragment() {
         // Required empty public constructor
@@ -46,12 +47,13 @@ public class SearchResultFragment extends Fragment {
         ListView lstSearchResult = (ListView)view.findViewById(R.id.lstSearchResult);
         ArrayList<String> foodMenu = new ArrayList<String>();
         ArrayAdapter<String> listAdapter =
-                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, foodMenu);
+                new ArrayAdapter<String>(getActivity(), R.layout.single_row, R.id.txtDetail, foodMenu);
+
         for (int i = 0; i < foodList.length; i++) {
             listAdapter.add("Name : " + foodList[i].getName() + "\n"
                     + "Type : " + foodList[i].getType() + "\n"
                     + "Price : " + foodList[i].getPrice() + "\n"
-                    + "Restaurant Id : " + foodList[i].getRestaurantid());
+           );
         }
         lstSearchResult.setAdapter(listAdapter);
         lstSearchResult.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -85,6 +85,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
             <Spinner
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:gravity="left"
                 android:padding="3dip"
                 android:layout_width="match_parent"

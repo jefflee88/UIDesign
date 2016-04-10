@@ -1,13 +1,117 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.brotherj.uidesign.RestDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="txtRestName"
+        android:textStyle="bold"
+        android:id="@+id/txtRestName"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-</FrameLayout>
+    <TableLayout
+        android:stretchColumns="1"
+        android:layout_below="@+id/txtRestName"
+        android:paddingTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/tableLayout">
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Type : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="4"
+                android:id="@+id/txtRestType"
+                android:text="txtRestType"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Call us : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="4"
+                android:id="@+id/txtRestTel"
+                android:text="txtRestTel"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Address : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="3"
+                android:id="@+id/txtRestAddress"
+                android:text="txtRestAddress"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+            <ImageButton
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_menu_mapmode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgBtnRestAddress" />
+        </TableRow>
+
+    </TableLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"
+        android:layout_below="@+id/tableLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/view" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Restaurant food : "
+        android:textStyle="bold"
+        android:id="@+id/textView4"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_below="@+id/view"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:paddingTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lstRestDetail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView4" />
+
+
+</RelativeLayout>
