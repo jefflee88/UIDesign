@@ -19,6 +19,7 @@ import com.example.brotherj.uidesign.JsonClass.GetJson;
  */
 public class FoodDetailFragment extends Fragment {
     TextView txtFoodDetailName,txtFoodDetailType,txtFoodDetailPrice,txtFoodDetailRestaurant;
+    EditText edtQty;
     int qty;
 
     public FoodDetailFragment() {
@@ -35,11 +36,39 @@ public class FoodDetailFragment extends Fragment {
         txtFoodDetailType = (TextView) view.findViewById(R.id.txtFoodDetailType);
         txtFoodDetailPrice = (TextView) view.findViewById(R.id.txtFoodDetailPrice);
         txtFoodDetailRestaurant = (TextView) view.findViewById(R.id.txtFoodDetailRestaurant);
+        edtQty = (EditText) view.findViewById(R.id.edtQty);
         txtFoodDetailName.setText(SaveData.cusChooseFood.getName());
         txtFoodDetailType.setText(SaveData.cusChooseFood.getType());
         txtFoodDetailPrice.setText(SaveData.cusChooseFood.getPrice());
         txtFoodDetailRestaurant.setText(SaveData.cusChooseFood.getRestaurantid());
-        int qty =
+        qty = Integer.parseInt(edtQty.getText().toString());
+
+        Button btnPlus = (Button) view.findViewById(R.id.btnPlus);
+        btnPlus.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                qty = Integer.parseInt(edtQty.getText().toString());
+                if (qty <= 0){
+
+                }else if ( qty>=1){
+                    qty++;
+                    edtQty.setText(qty);
+                }
+            }
+        });
+
+        Button btnMinus = (Button) view.findViewById(R.id.btnMinus);
+        btnMinus.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                qty = Integer.parseInt(edtQty.getText().toString());
+                if (qty <= 0){
+
+                }else if ( qty>1){
+                    qty--;
+                    edtQty.setText(qty);
+                }
+            }
+        });
+
         Button btnAddToCart = (Button) view.findViewById(R.id.btnAddToCart);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
