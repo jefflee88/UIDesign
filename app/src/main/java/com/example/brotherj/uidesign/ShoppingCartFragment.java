@@ -22,6 +22,7 @@ public class ShoppingCartFragment extends Fragment {
     TextView[] txtQty = new TextView[10];
     TextView[] txtPrice = new TextView[10];
     Button[] btnDelete = new Button[10];
+    TextView txtTotalQty,txtTotalPrice;
     int i;
 
 
@@ -35,6 +36,8 @@ public class ShoppingCartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
+        txtTotalQty = (TextView) view.findViewById(R.id.txtTotalQty);
+        txtTotalPrice = (TextView) view.findViewById(R.id.txtTotalPrice);
         txtName[0] = (TextView) view.findViewById(R.id.txtName0);
         txtName[1] = (TextView) view.findViewById(R.id.txtName1);
         txtName[2] = (TextView) view.findViewById(R.id.txtName2);
@@ -154,12 +157,14 @@ public class ShoppingCartFragment extends Fragment {
         for(i = 0;i< SaveData.cusChooseFoods.size();i++) {
             txtName[i].setText(SaveData.cusChooseFoods.get(i).getFood().getName());
             txtName[i].setVisibility(View.VISIBLE);
-            txtPrice[i].setText(SaveData.cusChooseFoods.get(i).getFood().getPrice());
+            txtPrice[i].setText(String.valueOf((SaveData.cusChooseFoods.get(i).getQty())*(Integer.parseInt(SaveData.cusChooseFoods.get(i).getFood().getPrice()))));
             txtPrice[i].setVisibility(View.VISIBLE);
             txtQty[i].setText(String.valueOf(SaveData.cusChooseFoods.get(i).getQty()));
             txtQty[i].setVisibility(View.VISIBLE);
             btnDelete[i].setVisibility(View.VISIBLE);
         }
+        txtTotalQty.setText(setqty());
+        txtTotalPrice.setText(setPrice());
     }
     public void reset(){
         for(i = 0;i<10;i++) {
@@ -171,6 +176,22 @@ public class ShoppingCartFragment extends Fragment {
             txtQty[i].setVisibility(View.GONE);
             btnDelete[i].setVisibility(View.GONE);
         }
+    }
+    public String setqty(){
+        String setqty = "";
+        int qty = 0;
+        for(int i =0; i<SaveData.cusChooseFoods.size() ; i++)
+            qty += SaveData.cusChooseFoods.get(i).getQty();
+        setqty = String.valueOf(qty);
+        return setqty;
+    }
+    public String setPrice(){
+        String setPrice = "";
+        int pic = 0;
+        for(int i =0; i<SaveData.cusChooseFoods.size() ; i++)
+            pic += Integer.parseInt(SaveData.cusChooseFoods.get(i).getFood().getPrice());
+        setPrice = String.valueOf(pic);
+        return setPrice;
     }
 
 }
