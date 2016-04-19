@@ -51,6 +51,7 @@ public class GetJson {
             }
             String reply = result.toString();
             JSONObject json = new JSONObject(reply);
+            Log.d("user12341  ",json.toString() );
             try {
                 if (type.equals("customer")) {
                     for (int i = 0; i < json.getJSONArray("user").length(); i++) {
@@ -62,9 +63,10 @@ public class GetJson {
                         String telNum = jsonObj.getString("telNum");
                         String payment = jsonObj.getString("payment");
                         int credit_card_number = jsonObj.getInt("credit_card_number");
-                        String credit_card_security_code = jsonObj.getString("credit_card_security_code");
+                        int credit_card_security_code = jsonObj.getInt("credit_card_security_code");
 
                         String Userid = jsonObj.getString("Userid");
+                        Log.d("user12341  ",json.toString() );
                         SaveData.customer = new Customer(id, name, address, email, telNum,payment,credit_card_number,credit_card_security_code, Userid);
                     }
                 }
