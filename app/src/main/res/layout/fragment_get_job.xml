@@ -8,16 +8,72 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Available jobs : "
+        android:text="Please tick the boxes to sort  : "
         android:textStyle="bold"
-        android:id="@+id/textView"
+        android:id="@+id/textView1"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food quantity "
+        android:id="@+id/chkFoodQty"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignStart="@+id/textView1" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order time"
+        android:id="@+id/chkOrderTime"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_alignTop="@+id/chkFoodQty"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_alignEnd="@+id/textView1" />
+
+    <TextView
+        android:paddingTop="15dp"
+        android:textColor="#FF0000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="*All the results are sort from least to greatest"
+        android:id="@+id/textView6"
+        android:layout_below="@+id/chkDistance"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/view" />
+
+    <TextView
+        android:layout_below="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Available jobs : "
+        android:textStyle="bold"
+        android:id="@+id/textView"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_centerHorizontal="true" />
+
     <ListView
-        android:paddingTop="30dp"
+        android:paddingTop="20dp"
         android:layout_below="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="220dp"
@@ -37,5 +93,14 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Distance"
+        android:id="@+id/chkDistance"
+        android:layout_below="@+id/chkFoodQty"
+        android:layout_alignLeft="@+id/chkFoodQty"
+        android:layout_alignStart="@+id/chkFoodQty" />
 
 </RelativeLayout>

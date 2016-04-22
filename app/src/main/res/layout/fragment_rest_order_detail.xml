@@ -298,23 +298,27 @@
             android:paddingTop="10dp">
             <TextView
                 android:textStyle="bold"
-                android:text="Finish in :"
+                android:text="Status : "
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:padding="3dip" />
-            <EditText
-                android:layout_span="4"
-                android:id="@+id/edtModifyFoodName"
-                android:hint="Enter minutes"
+
+            <CheckBox
+                android:textStyle="italic"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:gravity="left"
-                android:padding="3dip" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Completed"
+                android:id="@+id/chkComplete"
+                android:layout_column="1" />
+
         </TableRow>
+
     </TableLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send to driver"
+        android:text="Update order status"
         android:id="@+id/btnSendToDriver"
         android:background="@drawable/button_style"
         style="@style/button_text"

@@ -105,7 +105,7 @@
         android:layout_centerHorizontal="true" />
 
     <ListView
-        android:paddingTop="30dp"
+        android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/lstRestDetail"

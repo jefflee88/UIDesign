@@ -4,10 +4,40 @@
     android:layout_height="match_parent"
     tools:context="com.example.brotherj.uidesign.CustPaymentFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <TabHost
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tabHost">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include
+                    layout="@layout/fragment_pay_by_cash"
+                    android:id="@+id/tabCash"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></include>
+
+                <include
+                    layout="@layout/fragment_pay_by_credit"
+                    android:id="@+id/tabCredit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></include>
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
 </RelativeLayout>
