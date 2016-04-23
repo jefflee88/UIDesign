@@ -5,7 +5,7 @@
     tools:context="com.example.brotherj.uidesign.CustPaymentFragment">
 
 
-    <TabHost
+    <android.support.v4.app.FragmentTabHost
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/tabHost">
@@ -39,5 +39,5 @@
 
             </FrameLayout>
         </LinearLayout>
-    </TabHost>
+    </android.support.v4.app.FragmentTabHost>
 </RelativeLayout>
