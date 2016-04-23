@@ -189,7 +189,7 @@ public class ShoppingCartFragment extends Fragment {
         String setPrice = "";
         int pic = 0;
         for(int i =0; i<SaveData.cusChooseFoods.size() ; i++)
-            pic += Integer.parseInt(SaveData.cusChooseFoods.get(i).getFood().getPrice());
+            pic += Integer.parseInt(SaveData.cusChooseFoods.get(i).getFood().getPrice())*(SaveData.cusChooseFoods.get(i).getQty());
         setPrice = String.valueOf(pic);
         return setPrice;
     }
