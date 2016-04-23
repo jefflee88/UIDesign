@@ -4,15 +4,24 @@ package com.example.brotherj.uidesign.bean;
  * Created by User on 10/4/2016.
  */
 public class Order {
-    int number;
+    int number,order_total;
     String date_time,all_pick_up,received_by_customer,Customerid,Driverid;
-    public Order(int number,String date_time,String all_pick_up,String received_by_customer,String Customerid,String Driverid){
+    public Order(int number,String date_time,String all_pick_up,String received_by_customer,int order_total,String Customerid,String Driverid){
+        this.order_total = order_total;
         this.number = number;
         this.date_time = date_time;
         this.all_pick_up = all_pick_up;
         this.received_by_customer = received_by_customer;
         this.Customerid = Customerid;
         this.Driverid = Driverid;
+    }
+
+    public int getOrder_total() {
+        return order_total;
+    }
+
+    public void setOrder_total(int order_total) {
+        this.order_total = order_total;
     }
 
     public int getNumber() {

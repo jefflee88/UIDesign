@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.brotherj.uidesign.Data.SaveData;
+import com.example.brotherj.uidesign.JsonClass.GetJson;
 
 import org.w3c.dom.Text;
 
@@ -22,6 +24,7 @@ public class ShoppingCartFragment extends Fragment {
     TextView[] txtQty = new TextView[10];
     TextView[] txtPrice = new TextView[10];
     Button[] btnDelete = new Button[10];
+    Button btnTakeOrder;
     TextView txtTotalQty,txtTotalPrice;
     int i;
 
@@ -78,6 +81,20 @@ public class ShoppingCartFragment extends Fragment {
         btnDelete[7] = (Button) view.findViewById(R.id.btnDelete7);
         btnDelete[8] = (Button) view.findViewById(R.id.btnDelete8);
         btnDelete[9] = (Button) view.findViewById(R.id.btnDelete9);
+        btnTakeOrder = (Button) view.findViewById(R.id.btnTakeOrder);
+        btnTakeOrder.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if(SaveData.cusChooseFoods.size()>0) {
+                    GetJson.creatOrder(SaveData.cusChooseFoods, Integer.parseInt(setPrice()));
+                    Toast.makeText(getActivity(), "Order confirm", Toast.LENGTH_SHORT).show();
+                }else
+                    Toast.makeText(getActivity(), "Please add food in shopping cart", Toast.LENGTH_SHORT).show();
+                SaveData.cusChooseFoods.removeAll(SaveData.cusChooseFoods);
+                reset();
+                update();
+            }
+        });
+
         btnDelete[0].setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 SaveData.cusChooseFoods.remove(0);
