@@ -17,6 +17,7 @@ import com.example.brotherj.uidesign.Data.DownloadImageTask;
 import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.JsonClass.GetJson;
 import com.example.brotherj.uidesign.bean.Food;
+import com.example.brotherj.uidesign.bean.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,35 +40,68 @@ public class SearchResultFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_search_result, container, false);
 
         GetJson.changeVersion();
+        if(SaveData.isFood) {
+            Food[] foodList = new Food[SaveData.cusSearchFood.size()];
+            for (int i = 0; i < SaveData.cusSearchFood.size(); i++)
+                foodList[i] = SaveData.cusSearchFood.get(i);
 
-        Food[] foodList = new Food[SaveData.cusSearchFood.size()];
-        for(int i = 0 ;i<SaveData.cusSearchFood.size();i++)
-            foodList[i] = SaveData.cusSearchFood.get(i);
+            ListView lstSearchResult = (ListView) view.findViewById(R.id.lstSearchResult);
+            ArrayList<String> foodMenu = new ArrayList<String>();
+            ArrayAdapter<String> listAdapter =
+                    new ArrayAdapter<String>(getActivity(), R.layout.single_row, R.id.txtDetail, foodMenu);
 
-        ListView lstSearchResult = (ListView)view.findViewById(R.id.lstSearchResult);
-        ArrayList<String> foodMenu = new ArrayList<String>();
-        ArrayAdapter<String> listAdapter =
-                new ArrayAdapter<String>(getActivity(), R.layout.single_row, R.id.txtDetail, foodMenu);
-
-        for (int i = 0; i < foodList.length; i++) {
-            listAdapter.add("Name : " + foodList[i].getName() + "\n"
-                    + "Type : " + foodList[i].getType() + "\n"
-                    + "Price : " + foodList[i].getPrice() + "\n"
-           );
-        }
-        lstSearchResult.setAdapter(listAdapter);
-        lstSearchResult.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                SaveData.cusChooseFood = (Food)SaveData.cusSearchFood.get(arg2);
-                FoodDetailFragment fragment = new FoodDetailFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+            for (int i = 0; i < foodList.length; i++) {
+                listAdapter.add("Name : " + foodList[i].getName() + "\n"
+                                + "Type : " + foodList[i].getType() + "\n"
+                                + "Price : " + foodList[i].getPrice() + "\n"
+                );
             }
-        });
+            lstSearchResult.setAdapter(listAdapter);
+            lstSearchResult.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                    SaveData.cusChooseFood = (Food) SaveData.cusSearchFood.get(arg2);
+                    FoodDetailFragment fragment = new FoodDetailFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            });
+        }
+        if(SaveData.isFood==false){
+            Restaurant[] foodList = new Restaurant[SaveData.cusSearchRestaurant.size()];
+            for (int i = 0; i < SaveData.cusSearchRestaurant.size(); i++)
+                foodList[i] = SaveData.cusSearchRestaurant.get(i);
+
+            ListView lstSearchResult = (ListView) view.findViewById(R.id.lstSearchResult);
+            ArrayList<String> foodMenu = new ArrayList<String>();
+            ArrayAdapter<String> listAdapter =
+                    new ArrayAdapter<String>(getActivity(), R.layout.single_row, R.id.txtDetail, foodMenu);
+
+            for (int i = 0; i < foodList.length; i++) {
+                listAdapter.add("Name : " + foodList[i].getName() + "\n"
+                                + "Address : " + foodList[i].getAddress() + "\n"
+                                + "Type : " + foodList[i].getType() + "\n"
+                                + "TelNum : " + foodList[i].getTelNum() + "\n"
+                );
+            }
+            lstSearchResult.setAdapter(listAdapter);
+            lstSearchResult.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                    SaveData.cusChooseRestaurant = new Restaurant("null","null","null","null","null","null");
+                    SaveData.cusChooseRestaurant = (Restaurant) SaveData.cusSearchRestaurant.get(arg2);
+                    RestDetailFragment fragment = new RestDetailFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            });
+        }
 
         return view;
 

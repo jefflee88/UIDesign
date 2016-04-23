@@ -9,6 +9,7 @@ import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.bean.Customer;
 import com.example.brotherj.uidesign.bean.Driver;
 import com.example.brotherj.uidesign.bean.Food;
+import com.example.brotherj.uidesign.bean.Order;
 import com.example.brotherj.uidesign.bean.Restaurant;
 
 import org.json.JSONObject;
@@ -50,6 +51,7 @@ public class GetJson {
             }
             String reply = result.toString();
             JSONObject json = new JSONObject(reply);
+            Log.d("user12341  ",json.toString() );
             try {
                 if (type.equals("customer")) {
                     for (int i = 0; i < json.getJSONArray("user").length(); i++) {
@@ -59,8 +61,13 @@ public class GetJson {
                         String address = jsonObj.getString("address");
                         String email = jsonObj.getString("email");
                         String telNum = jsonObj.getString("telNum");
+                        String payment = jsonObj.getString("payment");
+                        int credit_card_number = jsonObj.getInt("credit_card_number");
+                        int credit_card_security_code = jsonObj.getInt("credit_card_security_code");
+
                         String Userid = jsonObj.getString("Userid");
-                        SaveData.customer = new Customer(id, name, address, email, telNum, Userid);
+                        Log.d("user12341  ",json.toString() );
+                        SaveData.customer = new Customer(id, name, address, email, telNum,payment,credit_card_number,credit_card_security_code, Userid);
                     }
                 }
                 if (type.equals("restaurant")) {
@@ -331,5 +338,58 @@ public class GetJson {
         } catch (Exception e1) {
             e1.printStackTrace();
         }
+    }
+
+    public static void creatOrder(int qty,Food food){
+        try {
+            String url = "http://10.0.2.2/fyp_connect/create_order.php?customerid="+SaveData.customer.getId();
+            url = url.replaceAll(" ","%20");
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            JSONObject json = new JSONObject(reply);
+            int number = 0;
+            try {
+                number = json.getInt("success");
+                creatOrderLine(number,qty,food);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+    }
+    public static void creatOrderLine(int number,int qty,Food food) {
+        try {
+            String url = "http://10.0.2.2/fyp_connect/create_orderline.php?ordernumber="+number+"&foodid="+food.getId()+"&quanitity="+qty+"&Restaurantid="+food.getRestaurantid();
+            url = url.replaceAll(" ","%20");
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+
     }
 }

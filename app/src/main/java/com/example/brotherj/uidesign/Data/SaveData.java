@@ -4,6 +4,7 @@ import com.example.brotherj.uidesign.bean.Customer;
 import com.example.brotherj.uidesign.bean.Driver;
 import com.example.brotherj.uidesign.bean.Food;
 import com.example.brotherj.uidesign.bean.Restaurant;
+import com.example.brotherj.uidesign.bean.SelectFood;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -13,11 +14,14 @@ import java.util.Objects;
  */
 //杰屎
 public class SaveData {
+    public static boolean isFood;
     public static Customer customer;
     public static Driver driver;
     public static Restaurant restaurant;
     public static Food resSearchFood;
     public static ArrayList<Restaurant> cusSearchRestaurant;
+    public static Restaurant cusChooseRestaurant;
     public static Food cusChooseFood;
     public static ArrayList<Food> cusSearchFood;
+    public static ArrayList<SelectFood> cusChooseFoods = new ArrayList<SelectFood>();
 }

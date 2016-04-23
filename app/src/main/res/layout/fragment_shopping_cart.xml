@@ -67,38 +67,42 @@
 
         <TableRow>
             <TextView
-                android:id="@+id/txtName"
+                android:id="@+id/txtName0"
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:layout_weight="2"
                 android:text="1"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <TextView
-                android:id="@+id/txtQty"
+                android:id="@+id/txtQty0"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_weight="1"
                 android:text="2"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <TextView
-                android:id="@+id/txtPrice"
+                android:id="@+id/txtPrice0"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_weight="1"
                 android:text="3"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <Button
-                android:id="@+id/btnDelete"
+                android:id="@+id/btnDelete0"
                 android:layout_weight="0"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:background="@drawable/button_style"
+                android:visibility="gone"
                 style="@style/button_text" />
         </TableRow>
 
@@ -110,6 +114,7 @@
                 android:layout_weight="2"
                 android:text="1"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <TextView
                 android:id="@+id/txtQty1"
@@ -119,6 +124,7 @@
                 android:layout_weight="1"
                 android:text="2"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <TextView
                 android:id="@+id/txtPrice1"
@@ -128,6 +134,7 @@
                 android:layout_weight="1"
                 android:text="3"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <Button
                 android:id="@+id/btnDelete1"
@@ -136,6 +143,7 @@
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:background="@drawable/button_style"
+                android:visibility="gone"
                 style="@style/button_text" />
         </TableRow>
 
@@ -147,6 +155,7 @@
                 android:layout_weight="2"
                 android:text="1"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <TextView
                 android:id="@+id/txtQty2"
@@ -156,6 +165,7 @@
                 android:layout_weight="1"
                 android:text="2"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <TextView
                 android:id="@+id/txtPrice2"
@@ -165,6 +175,7 @@
                 android:layout_weight="1"
                 android:text="3"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <Button
                 android:id="@+id/btnDelete2"
@@ -173,6 +184,7 @@
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:background="@drawable/button_style"
+                android:visibility="gone"
                 style="@style/button_text" />
         </TableRow>
 
@@ -184,6 +196,7 @@
                 android:layout_weight="2"
                 android:text="1"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <TextView
                 android:id="@+id/txtQty3"
@@ -193,6 +206,7 @@
                 android:layout_weight="1"
                 android:text="2"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <TextView
                 android:id="@+id/txtPrice3"
@@ -202,6 +216,7 @@
                 android:layout_weight="1"
                 android:text="3"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <Button
                 android:id="@+id/btnDelete3"
@@ -210,6 +225,7 @@
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:background="@drawable/button_style"
+                android:visibility="gone"
                 style="@style/button_text" />
         </TableRow>
 
@@ -221,6 +237,7 @@
                 android:layout_weight="2"
                 android:text="1"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <TextView
                 android:id="@+id/txtQty4"
@@ -230,6 +247,7 @@
                 android:layout_weight="1"
                 android:text="2"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <TextView
                 android:id="@+id/txtPrice4"
@@ -239,6 +257,7 @@
                 android:layout_weight="1"
                 android:text="3"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <Button
                 android:id="@+id/btnDelete4"
@@ -247,6 +266,7 @@
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:background="@drawable/button_style"
+                android:visibility="gone"
                 style="@style/button_text" />
         </TableRow>
 
@@ -258,6 +278,7 @@
                 android:layout_weight="2"
                 android:text="1"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <TextView
                 android:id="@+id/txtQty5"
@@ -267,6 +288,7 @@
                 android:layout_weight="1"
                 android:text="2"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <TextView
                 android:id="@+id/txtPrice5"
@@ -276,6 +298,7 @@
                 android:layout_weight="1"
                 android:text="3"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
                 android:padding="3dip" />
             <Button
                 android:id="@+id/btnDelete5"
@@ -284,6 +307,167 @@
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:background="@drawable/button_style"
+                android:visibility="gone"
+                style="@style/button_text" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/txtName6"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:layout_weight="2"
+                android:text="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtQty6"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="2"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtPrice6"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="3"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
+                android:padding="3dip" />
+            <Button
+                android:id="@+id/btnDelete6"
+                android:layout_weight="0"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:background="@drawable/button_style"
+                android:visibility="gone"
+                style="@style/button_text" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/txtName7"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:layout_weight="2"
+                android:text="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtQty7"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="2"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtPrice7"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="3"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
+                android:padding="3dip" />
+            <Button
+                android:id="@+id/btnDelete7"
+                android:layout_weight="0"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:background="@drawable/button_style"
+                android:visibility="gone"
+                style="@style/button_text" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/txtName8"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:layout_weight="2"
+                android:text="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtQty8"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="2"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtPrice8"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="3"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
+                android:padding="3dip" />
+            <Button
+                android:id="@+id/btnDelete8"
+                android:layout_weight="0"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:background="@drawable/button_style"
+                android:visibility="gone"
+                style="@style/button_text" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/txtName9"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:layout_weight="2"
+                android:text="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtQty9"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="2"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
+                android:padding="3dip" />
+            <TextView
+                android:id="@+id/txtPrice9"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="3"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:visibility="gone"
+                android:padding="3dip" />
+            <Button
+                android:id="@+id/btnDelete9"
+                android:layout_weight="0"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:background="@drawable/button_style"
+                android:visibility="gone"
                 style="@style/button_text" />
         </TableRow>
 

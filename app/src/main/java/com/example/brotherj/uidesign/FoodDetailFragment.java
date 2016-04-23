@@ -3,14 +3,19 @@ package com.example.brotherj.uidesign;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.brotherj.uidesign.Data.SaveData;
+import com.example.brotherj.uidesign.JsonClass.GetJson;
+import com.example.brotherj.uidesign.bean.SelectFood;
 
 
 /**
@@ -18,6 +23,8 @@ import com.example.brotherj.uidesign.Data.SaveData;
  */
 public class FoodDetailFragment extends Fragment {
     TextView txtFoodDetailName,txtFoodDetailType,txtFoodDetailPrice,txtFoodDetailRestaurant;
+    EditText edtQty;
+    int qty =1 ;
 
     public FoodDetailFragment() {
         // Required empty public constructor
@@ -33,14 +40,65 @@ public class FoodDetailFragment extends Fragment {
         txtFoodDetailType = (TextView) view.findViewById(R.id.txtFoodDetailType);
         txtFoodDetailPrice = (TextView) view.findViewById(R.id.txtFoodDetailPrice);
         txtFoodDetailRestaurant = (TextView) view.findViewById(R.id.txtFoodDetailRestaurant);
+        edtQty = (EditText) view.findViewById(R.id.edtQty);
         txtFoodDetailName.setText(SaveData.cusChooseFood.getName());
         txtFoodDetailType.setText(SaveData.cusChooseFood.getType());
         txtFoodDetailPrice.setText(SaveData.cusChooseFood.getPrice());
         txtFoodDetailRestaurant.setText(SaveData.cusChooseFood.getRestaurantid());
+
+        Button btnPlus = (Button) view.findViewById(R.id.btnPlus);
+        btnPlus.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                qty = Integer.parseInt(edtQty.getText().toString());
+                if (qty <= 0){
+
+                }else if ( qty>=1){
+                    qty++;
+                    edtQty.setText(Integer.toString(qty));
+                }
+            }
+        });
+
+        Button btnMinus = (Button) view.findViewById(R.id.btnMinus);
+        btnMinus.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                qty = Integer.parseInt(edtQty.getText().toString());
+                if (qty <= 0){
+
+                }else if ( qty>1){
+                    qty--;
+                    edtQty.setText(Integer.toString(qty));
+                }
+            }
+        });
+
         Button btnAddToCart = (Button) view.findViewById(R.id.btnAddToCart);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
+        public void onClick(View view) {
+            if(SaveData.cusChooseFoods.isEmpty()) {
+                SaveData.cusChooseFoods.add(new SelectFood(SaveData.cusChooseFood, qty));
+                Toast.makeText(getActivity(), "Ok", Toast.LENGTH_SHORT).show();
+                SearchResultFragment fragment = new SearchResultFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }else if(SaveData.cusChooseFoods.size()<10) {
+                SaveData.cusChooseFoods.add(new SelectFood(SaveData.cusChooseFood, qty));
+                Toast.makeText(getActivity(), "Ok", Toast.LENGTH_SHORT).show();
+                SearchResultFragment fragment = new SearchResultFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
 
+            }else{
+                Toast.makeText(getActivity(), "one order can take only 10 foods", Toast.LENGTH_SHORT).show();
+            }
+
+            //GetJson.creatOrder(qty,SaveData.cusChooseFood);
             }
         });
         return view;
