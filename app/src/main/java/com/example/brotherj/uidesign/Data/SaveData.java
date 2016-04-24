@@ -3,6 +3,8 @@ package com.example.brotherj.uidesign.Data;
 import com.example.brotherj.uidesign.bean.Customer;
 import com.example.brotherj.uidesign.bean.Driver;
 import com.example.brotherj.uidesign.bean.Food;
+import com.example.brotherj.uidesign.bean.Order;
+import com.example.brotherj.uidesign.bean.Orderline;
 import com.example.brotherj.uidesign.bean.Restaurant;
 import com.example.brotherj.uidesign.bean.SelectFood;
 
@@ -24,4 +26,6 @@ public class SaveData {
     public static Food cusChooseFood;
     public static ArrayList<Food> cusSearchFood;
     public static ArrayList<SelectFood> cusChooseFoods = new ArrayList<SelectFood>();
+    public static ArrayList<Orderline> resOrderline =  new ArrayList<Orderline>();
+    public static Order resOrder;
 }

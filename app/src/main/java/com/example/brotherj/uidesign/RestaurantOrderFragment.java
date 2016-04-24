@@ -13,11 +13,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.brotherj.uidesign.Data.SaveData;
+import com.example.brotherj.uidesign.JsonClass.GetJson;
+import com.example.brotherj.uidesign.bean.Food;
+import com.example.brotherj.uidesign.bean.Order;
+
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class RestaurantOrderFragment extends Fragment {
+    ArrayList<Order> food = new ArrayList<Order>();
 
 
     public RestaurantOrderFragment() {
@@ -30,16 +38,30 @@ public class RestaurantOrderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_restaurant_order, container, false);
+        food = GetJson.restaurantGetOrder(GetJson.restaurantGetOrderline());
 
-        ListView lstRestOrder = (ListView)view.findViewById(R.id.lstRestOrder);
-        String[] testList = new String[] {"test 1", "test 2", "test 3",  "test 4",  "test 5"};
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, testList);
+        Order[] foodList = new Order[food.size()];
+        for(int i = 0 ;i<food.size();i++)
+            foodList[i] = food.get(i);
 
-        lstRestOrder.setAdapter(adapter);
-        lstRestOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ListView lstRestFood = (ListView)view.findViewById(R.id.lstRestOrder);
+        ArrayList<String> foodMenu = new ArrayList<String>();
+        ArrayAdapter<String> listAdapter =
+                new ArrayAdapter<String>(getActivity(), R.layout.single_row, R.id.txtDetail, foodMenu);
+        for (int i = 0; i < foodList.length; i++) {
+            listAdapter.add("Order number : " + foodList[i].getNumber() + "\n"
+                    + "Order Time : " + foodList[i].getDate_time() + "\n"
+                    + "Order Total : " + foodList[i].getOrder_total() + "\n"
+                    + "Customer ID : " + foodList[i].getCustomerid() + "\n"
+                    + "Driver ID : " + foodList[i].getDriverid() + "\n"
+            );
+        }
+        lstRestFood.setAdapter(listAdapter);
+        lstRestFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                SaveData.resOrderline = GetJson.restaurantGetOrderlineForOrder(food.get(arg2));
+                SaveData.resOrder = food.get(arg2);
                 RestOrderDetailFragment fragment = new RestOrderDetailFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

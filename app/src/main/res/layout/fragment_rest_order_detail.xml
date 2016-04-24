@@ -65,6 +65,7 @@
                     android:textStyle="bold"
                     android:layout_weight="2"
                     android:text="1"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
                 <TextView
@@ -74,6 +75,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="2"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
                 <TextView
@@ -83,6 +85,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="3"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
             </TableRow>
@@ -94,6 +97,7 @@
                     android:textStyle="bold"
                     android:layout_weight="2"
                     android:text="1"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
                 <TextView
@@ -103,6 +107,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="2"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
                 <TextView
@@ -112,6 +117,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="3"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
             </TableRow>
@@ -123,6 +129,7 @@
                     android:textStyle="bold"
                     android:layout_weight="2"
                     android:text="1"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
                 <TextView
@@ -132,6 +139,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="2"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
                 <TextView
@@ -141,6 +149,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="3"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
             </TableRow>
@@ -152,6 +161,7 @@
                     android:textStyle="bold"
                     android:layout_weight="2"
                     android:text="1"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
                 <TextView
@@ -161,6 +171,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="2"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
                 <TextView
@@ -170,6 +181,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="3"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
             </TableRow>
@@ -181,6 +193,7 @@
                     android:textStyle="bold"
                     android:layout_weight="2"
                     android:text="1"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
                 <TextView
@@ -190,6 +203,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="2"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
                 <TextView
@@ -199,6 +213,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="3"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
             </TableRow>
@@ -211,6 +226,7 @@
                     android:textStyle="bold"
                     android:layout_weight="2"
                     android:text="1"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
                 <TextView
@@ -220,6 +236,7 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="2"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
                 <TextView
@@ -229,6 +246,132 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:text="3"
+                    android:visibility="gone"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/txtName6"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:layout_weight="2"
+                    android:text="1"
+                    android:visibility="gone"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+                <TextView
+                    android:id="@+id/txtQty6"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:text="2"
+                    android:visibility="gone"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+                <TextView
+                    android:id="@+id/txtType6"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:text="3"
+                    android:visibility="gone"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/txtName7"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:layout_weight="2"
+                    android:text="1"
+                    android:visibility="gone"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+                <TextView
+                    android:id="@+id/txtQty7"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:text="2"
+                    android:visibility="gone"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+                <TextView
+                    android:id="@+id/txtType7"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:text="3"
+                    android:visibility="gone"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/txtName8"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:layout_weight="2"
+                    android:text="1"
+                    android:visibility="gone"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+                <TextView
+                    android:id="@+id/txtQty8"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:text="2"
+                    android:visibility="gone"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+                <TextView
+                    android:id="@+id/txtType8"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:text="3"
+                    android:visibility="gone"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/txtName9"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:layout_weight="2"
+                    android:text="1"
+                    android:visibility="gone"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+                <TextView
+                    android:id="@+id/txtQty9"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:text="2"
+                    android:visibility="gone"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+                <TextView
+                    android:id="@+id/txtType9"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:text="3"
+                    android:visibility="gone"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:padding="3dip" />
             </TableRow>

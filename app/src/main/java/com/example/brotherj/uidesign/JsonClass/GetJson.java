@@ -10,7 +10,9 @@ import com.example.brotherj.uidesign.bean.Customer;
 import com.example.brotherj.uidesign.bean.Driver;
 import com.example.brotherj.uidesign.bean.Food;
 import com.example.brotherj.uidesign.bean.Order;
+import com.example.brotherj.uidesign.bean.Orderline;
 import com.example.brotherj.uidesign.bean.Restaurant;
+import com.example.brotherj.uidesign.bean.SelectFood;
 
 import org.json.JSONObject;
 
@@ -62,8 +64,8 @@ public class GetJson {
                         String email = jsonObj.getString("email");
                         String telNum = jsonObj.getString("telNum");
                         String payment = jsonObj.getString("payment");
-                        int credit_card_number = jsonObj.getInt("credit_card_number");
-                        int credit_card_security_code = jsonObj.getInt("credit_card_security_code");
+                        String credit_card_number = jsonObj.getString("credit_card_number");
+                        String credit_card_security_code = jsonObj.getString("credit_card_security_code");
 
                         String Userid = jsonObj.getString("Userid");
                         Log.d("user12341  ",json.toString() );
@@ -340,9 +342,9 @@ public class GetJson {
         }
     }
 
-    public static void creatOrder(int qty,Food food){
+    public static void creatOrder(ArrayList<SelectFood> food,int total){
         try {
-            String url = "http://10.0.2.2/fyp_connect/create_order.php?customerid="+SaveData.customer.getId();
+            String url = "http://10.0.2.2/fyp_connect/create_order.php?customerid="+SaveData.customer.getId()+"&order_total="+total;
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -361,8 +363,9 @@ public class GetJson {
             JSONObject json = new JSONObject(reply);
             int number = 0;
             try {
-                number = json.getInt("success");
-                creatOrderLine(number,qty,food);
+                number = json.getInt("number");
+                for(int i = 0;i<food.size();i++)
+                creatOrderLine(number,food.get(i).getQty(),food.get(i).getFood());
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -372,7 +375,7 @@ public class GetJson {
     }
     public static void creatOrderLine(int number,int qty,Food food) {
         try {
-            String url = "http://10.0.2.2/fyp_connect/create_orderline.php?ordernumber="+number+"&foodid="+food.getId()+"&quanitity="+qty+"&Restaurantid="+food.getRestaurantid();
+            String url = "http://10.0.2.2/fyp_connect/create_orderline.php?ordernumber="+number+"&foodid="+food.getId()+"&quanitity="+qty+"&item_total="+(Integer.parseInt(food.getPrice())*qty)+"&Restaurantid="+food.getRestaurantid();
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -392,4 +395,235 @@ public class GetJson {
         }
 
     }
-}
+
+
+    public static ArrayList<Orderline> restaurantGetOrderline(){
+        ArrayList<Orderline> obj = new ArrayList<Orderline>();
+        try {
+            String url = "http://10.0.2.2/fyp_connect/restaurant_get_orderline.php?restaurantid="+SaveData.restaurant.getId();
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            JSONObject json = new JSONObject(reply);
+            try {
+                for (int i = 0; i < json.getJSONArray("orderline").length(); i++) {
+                    JSONObject jsonObj = json.getJSONArray("orderline").getJSONObject(i);
+                    int orderNumber = jsonObj.getInt("Ordernumber");
+                    String foodId = jsonObj.getString("Foodid");
+                    String pick_up = jsonObj.getString("pick_up");
+                    String status = jsonObj.getString("status");
+                    int quanitity = jsonObj.getInt("quanitity");
+                    int item_total = jsonObj.getInt("item_total");
+                    String restaurantId = jsonObj.getString("Restaurantid");
+                    obj.add(new Orderline(orderNumber,foodId,quanitity,pick_up,status,item_total,restaurantId)
+                    );
+                }
+
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return obj;
+    }
+    public static ArrayList<Order> restaurantGetOrder(ArrayList<Orderline> odl){
+        ArrayList<Order> obj = new ArrayList<Order>();
+        try {
+            String location = "SELECT * FROM `order` WHERE ";
+            for(int i = 0;i<odl.size(); i++){
+                if(odl.size()-1 != i)
+                    location += "number=" + odl.get(i).getOrderNumber() + " OR ";
+                else if(odl.size()-1 == i)
+                    location += "number=" + odl.get(i).getOrderNumber();
+            }
+            Log.d("location ::::", location);
+            String url = "http://10.0.2.2/fyp_connect/restaurant_get_order.php?sql="+location;
+            url = url.replaceAll(" ","%20");
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            Log.d("reply ::::", reply);
+            JSONObject json = new JSONObject(reply);
+            try {
+                for (int i = 0; i < json.getJSONArray("order").length(); i++) {
+                    JSONObject jsonObj = json.getJSONArray("order").getJSONObject(i);
+                    int number = jsonObj.getInt("number");
+                    String date_time = jsonObj.getString("date_time");
+                    String all_pick_up = jsonObj.getString("all_pick_up");
+                    String received_by_customer = jsonObj.getString("received_by_customer");
+                    int order_total = jsonObj.getInt("order_total");
+                    String Customerid = jsonObj.getString("Customerid");
+                    String Driverid = jsonObj.getString("Driverid");
+                    obj.add(new Order(number,date_time,all_pick_up,received_by_customer,order_total,Customerid,Driverid));
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return obj;
+
+    }
+
+    public static ArrayList<Orderline> restaurantGetOrderlineForOrder(Order order){
+        ArrayList<Orderline> obj = new ArrayList<Orderline>();
+        try {
+            String url = "http://10.0.2.2/fyp_connect/restaurant_ordernumber_get_orderline.php?number="+order.getNumber()+"&restaurantid="+SaveData.restaurant.getId();
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            JSONObject json = new JSONObject(reply);
+            try {
+                for (int i = 0; i < json.getJSONArray("orderline").length(); i++) {
+                    JSONObject jsonObj = json.getJSONArray("orderline").getJSONObject(i);
+                    int orderNumber = jsonObj.getInt("Ordernumber");
+                    String foodId = jsonObj.getString("Foodid");
+                    String pick_up = jsonObj.getString("pick_up");
+                    String status = jsonObj.getString("status");
+                    int quanitity = jsonObj.getInt("quanitity");
+                    int item_total = jsonObj.getInt("item_total");
+                    String restaurantId = jsonObj.getString("Restaurantid");
+                    obj.add(new Orderline(orderNumber,foodId,quanitity,pick_up,status,item_total,restaurantId)
+                    );
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return obj;
+    }
+
+    public static String getFoodType(String food) {
+        String str = "";
+        try {
+            String url = "http://10.0.2.2/fyp_connect/id_get_food_type.php?foodid=" + food;
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            JSONObject json = new JSONObject(reply);
+            try {
+                    str = json.getString("type");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return str;
+    }
+    public static String getFoodName(String food) {
+        String str = "";
+        try {
+            String url = "http://10.0.2.2/fyp_connect/id_get_food_name.php?foodid=" + food;
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            JSONObject json = new JSONObject(reply);
+            try {
+                str = json.getString("name");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return str;
+    }
+
+    public static String getCusLocation(String id) {
+        String str = "";
+        try {
+            String url = "http://10.0.2.2/fyp_connect/id_get_customer_address.php?customerid=" + id;
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            JSONObject json = new JSONObject(reply);
+            try {
+                str = json.getString("address");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return str;
+    }
+
+    }
+

@@ -1,36 +1,71 @@
 package com.example.brotherj.uidesign;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
-import android.hardware.Camera;
+import android.graphics.Color;
 import android.location.Location;
-import android.net.Uri;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationRequest;
+import android.location.Address;
+import android.location.Geocoder;
+import android.os.AsyncTask;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+import java.io.IOException;
+import java.util.List;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import Modules.DirectionFinder;
+import Modules.DirectionFinderListener;
+import Modules.Route;
+
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, DirectionFinderListener {
 
     private GoogleMap mMap;
-    private UiSettings uiSettings;
-    private com.google.android.gms.common.api.GoogleApiClient client;
+    private Button btnShow;
+    private Button btnFindPath;
+    private EditText etOrigin;
+    private EditText etDestination;
+    private EditText etSearch;
+    private List<Marker> originMarkers = new ArrayList<>();
+    private List<Marker> destinationMarkers = new ArrayList<>();
+    private List<Marker> searchMarkers = new ArrayList<>();
+    private List<Polyline> polylinePaths = new ArrayList<>();
+    private ProgressDialog progressDialog;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
@@ -39,86 +74,142 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        client = new com.google.android.gms.common.api.GoogleApiClient.Builder(this).addApi(com.google.android.gms.appindexing.AppIndex.API).build();
+        btnShow = (Button) findViewById(R.id.btnShow);
+        btnFindPath = (Button) findViewById(R.id.btnFindPath);
+        etOrigin = (EditText) findViewById(R.id.etOrigin);
+        etDestination = (EditText) findViewById(R.id.etDestination);
+        etSearch = (EditText) findViewById(R.id.etSearch);
+
+        btnShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shows();
+            }
+        });
+
+        btnFindPath.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendRequest();
+            }
+        });
     }
 
+    private  void shows(){
+        EditText location_tf = (EditText)findViewById(R.id.etSearch);
+        String location = location_tf.getText().toString();
+        List<Address> addressList = null;
+        if(location != null || !location.equals(""))
+        {
+            Geocoder geocoder = new Geocoder(this);
+            try {
+                addressList = geocoder.getFromLocationName(location , 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Address address = addressList.get(0);
+            LatLng latLng = new LatLng(address.getLatitude() , address.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(latLng).title("Here!"));
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+        }
+    }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+    private void sendRequest() {
+        String origin = etOrigin.getText().toString();
+        String destination = etDestination.getText().toString();
+        if (origin.isEmpty()) {
+            Toast.makeText(this, "Please enter origin address!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (destination.isEmpty()) {
+            Toast.makeText(this, "Please enter destination address!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        try {
+            new DirectionFinder(this, origin, destination).execute();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        UiSettings uiSettings = mMap.getUiSettings();
-        LatLng hkty = new LatLng(22.3418508, 114.1067501);
-        moveMap(hkty);
-        addMarker(hkty, "Hong Kong", "Google Maps v2!");
-        uiSettings.setZoomControlsEnabled(true);
-        uiSettings.setMyLocationButtonEnabled(true);
+        LatLng hcmus = new LatLng(22.28, 114.15);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hcmus, 15));
+        originMarkers.add(mMap.addMarker(new MarkerOptions()
+                .title("Hong Kong")
+                .position(hcmus)));
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
     }
 
-    private void moveMap(LatLng hkty){
-        CameraPosition cameraPosition =
-                new CameraPosition.Builder()
-                        .target(hkty)
-                        .zoom(15)
-                        .build();
 
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-    }
+    @Override
+    public void onDirectionFinderStart() {
+        progressDialog = ProgressDialog.show(this, "Please wait.",
+                "Finding direction..!", true);
 
-    private void addMarker(LatLng hkty, String title, String snippet){
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(hkty)
-                .title(title)
-                .snippet(snippet);
+        if (originMarkers != null) {
+            for (Marker marker : originMarkers) {
+                marker.remove();
+            }
+        }
 
-        mMap.addMarker(markerOptions);
+        if (destinationMarkers != null) {
+            for (Marker marker : destinationMarkers) {
+                marker.remove();
+            }
+        }
+
+        if (polylinePaths != null) {
+            for (Polyline polyline:polylinePaths ) {
+                polyline.remove();
+            }
+        }
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onDirectionFinderSuccess(List<Route> routes) {
+        progressDialog.dismiss();
+        polylinePaths = new ArrayList<>();
+        originMarkers = new ArrayList<>();
+        destinationMarkers = new ArrayList<>();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        com.google.android.gms.appindexing.Action viewAction = com.google.android.gms.appindexing.Action.newAction(
-                com.google.android.gms.appindexing.Action.TYPE_VIEW, // TODO: choose an action type.
-                "drivermap Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.example.wilson.justtogo/http/host/path")
-        );
-        com.google.android.gms.appindexing.AppIndex.AppIndexApi.start(client, viewAction);
-    }
+        for (Route route : routes) {
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 16));
+            ((TextView) findViewById(R.id.tvDuration)).setText(route.duration.text);
+            ((TextView) findViewById(R.id.tvDistance)).setText(route.distance.text);
 
-    @Override
-    public void onStop() {
-        super.onStop();
+            originMarkers.add(mMap.addMarker(new MarkerOptions()
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.start_blue))
+                    .title(route.startAddress)
+                    .position(route.startLocation)));
+            destinationMarkers.add(mMap.addMarker(new MarkerOptions()
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.end_green))
+                    .title(route.endAddress)
+                    .position(route.endLocation)));
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        com.google.android.gms.appindexing.Action viewAction = com.google.android.gms.appindexing.Action.newAction(
-                com.google.android.gms.appindexing.Action.TYPE_VIEW, // TODO: choose an action type.
-                "drivermap Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.example.wilson.justtogo/http/host/path")
-        );
-        com.google.android.gms.appindexing.AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
+            PolylineOptions polylineOptions = new PolylineOptions().
+                    geodesic(true).
+                    color(Color.BLUE).
+                    width(10);
+
+            for (int i = 0; i < route.points.size(); i++)
+                polylineOptions.add(route.points.get(i));
+
+            polylinePaths.add(mMap.addPolyline(polylineOptions));
+        }
     }
 }
