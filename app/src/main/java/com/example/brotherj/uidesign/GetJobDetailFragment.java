@@ -32,10 +32,9 @@ public class GetJobDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_get_job_detail, container, false);
-        imgBtnRest = (ImageButton)view.findViewById(R.id.imgBtnRest);
         imgBtnCust = (ImageButton)view.findViewById(R.id.imgBtnCust);
 
-        imgBtnRest.setOnClickListener(new View.OnClickListener() {
+        imgBtnCust.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent Intent = new Intent(view.getContext(), MapsActivity.class);
                 startActivityForResult(Intent, 0);
