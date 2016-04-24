@@ -62,7 +62,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private EditText etSearch;
     private List<Marker> originMarkers = new ArrayList<>();
     private List<Marker> destinationMarkers = new ArrayList<>();
-    private List<Marker> searchnMarkers = new ArrayList<>();
+    private List<Marker> searchMarkers = new ArrayList<>();
     private List<Polyline> polylinePaths = new ArrayList<>();
     private ProgressDialog progressDialog;
 
@@ -78,11 +78,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         btnFindPath = (Button) findViewById(R.id.btnFindPath);
         etOrigin = (EditText) findViewById(R.id.etOrigin);
         etDestination = (EditText) findViewById(R.id.etDestination);
+        etSearch = (EditText) findViewById(R.id.etSearch);
 
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendRequest();
+                shows();
             }
         });
 
@@ -94,14 +95,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
+    private  void shows(){
+        EditText location_tf = (EditText)findViewById(R.id.etSearch);
+        String location = location_tf.getText().toString();
+        List<Address> addressList = null;
+        if(location != null || !location.equals(""))
+        {
+            Geocoder geocoder = new Geocoder(this);
+            try {
+                addressList = geocoder.getFromLocationName(location , 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Address address = addressList.get(0);
+            LatLng latLng = new LatLng(address.getLatitude() , address.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(latLng).title("Here!"));
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+        }
+    }
+
     private void sendRequest() {
         String origin = etOrigin.getText().toString();
         String destination = etDestination.getText().toString();
-        String search = etSearch.getText().toString();
-        if (search.isEmpty()) {
-            Toast.makeText(this, "Please enter origin address!", Toast.LENGTH_SHORT).show();
-            return;
-        }
         if (origin.isEmpty()) {
             Toast.makeText(this, "Please enter origin address!", Toast.LENGTH_SHORT).show();
             return;
@@ -124,7 +139,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LatLng hcmus = new LatLng(22.28, 114.15);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hcmus, 15));
         originMarkers.add(mMap.addMarker(new MarkerOptions()
-                .title("Hong Kong")
+                .title("Đại học Khoa học tự nhiên")
                 .position(hcmus)));
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -145,11 +160,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onDirectionFinderStart() {
         progressDialog = ProgressDialog.show(this, "Please wait.",
                 "Finding direction..!", true);
-        if (searchnMarkers != null) {
-            for (Marker marker : searchnMarkers) {
-                marker.remove();
-            }
-        }
 
         if (originMarkers != null) {
             for (Marker marker : originMarkers) {
@@ -176,18 +186,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         polylinePaths = new ArrayList<>();
         originMarkers = new ArrayList<>();
         destinationMarkers = new ArrayList<>();
-        searchnMarkers = new ArrayList<>();
 
         for (Route route : routes) {
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 16));
             ((TextView) findViewById(R.id.tvDuration)).setText(route.duration.text);
             ((TextView) findViewById(R.id.tvDistance)).setText(route.distance.text);
-
-
-            searchnMarkers.add(mMap.addMarker(new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.Location_marker))
-                    .title("Here!")
-                    .position(route.startLocation)));
 
             originMarkers.add(mMap.addMarker(new MarkerOptions()
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.start_blue))
