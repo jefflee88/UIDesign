@@ -38,7 +38,7 @@ public class RestaurantOrderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_restaurant_order, container, false);
-        food = GetJson.restaurantGetOrder();
+        food = GetJson.restaurantGetOrder(GetJson.restaurantGetOrderline());
 
         Order[] foodList = new Order[food.size()];
         for(int i = 0 ;i<food.size();i++)
@@ -60,6 +60,8 @@ public class RestaurantOrderFragment extends Fragment {
         lstRestFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                SaveData.resOrderline = GetJson.restaurantGetOrderlineForOrder(food.get(arg2));
+                SaveData.resOrder = food.get(arg2);
                 RestOrderDetailFragment fragment = new RestOrderDetailFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
