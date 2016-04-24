@@ -61,7 +61,7 @@
         android:layout_alignParentStart="true" />
 
     <EditText
-        android:hint="Price > $0"
+        android:hint="More than $0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/edtPrice1"
@@ -83,7 +83,7 @@
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:hint="Price < $10000"
+        android:hint="Less than $1000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/edtPrice2"
