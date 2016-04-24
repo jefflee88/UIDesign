@@ -139,7 +139,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LatLng hcmus = new LatLng(22.28, 114.15);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hcmus, 15));
         originMarkers.add(mMap.addMarker(new MarkerOptions()
-                .title("Đại học Khoa học tự nhiên")
+                .title("Hong Kong")
                 .position(hcmus)));
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
