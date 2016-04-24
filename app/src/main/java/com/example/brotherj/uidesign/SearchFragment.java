@@ -1,6 +1,5 @@
 package com.example.brotherj.uidesign;
 
-
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -27,9 +26,10 @@ import java.util.Objects;
  * A simple {@link Fragment} subclass.
  */
 public class SearchFragment extends Fragment {
+
     RadioGroup rdoGroup;
     EditText edtSearch;
-    Button btnSearch;
+    Button btnSearch, btnAdvancedSearch;
     RadioButton rdoFood,rdoRest;
     String type;
 
@@ -43,6 +43,7 @@ public class SearchFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
         GetJson.changeVersion();
+        btnAdvancedSearch = (Button)view.findViewById(R.id.btnAdvancedSearch);
         rdoGroup = (RadioGroup) view.findViewById(R.id.rdoGroup);
         edtSearch = (EditText) view.findViewById(R.id.edtSearch);
         btnSearch = (Button) view.findViewById(R.id.btnSearch);
@@ -61,8 +62,6 @@ public class SearchFragment extends Fragment {
                 }
             }
         });
-
-
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
 
@@ -85,6 +84,18 @@ public class SearchFragment extends Fragment {
             }
         });
 
+        btnAdvancedSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                AdvanceSearchFragment fragment = new AdvanceSearchFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         return view;
     }
 

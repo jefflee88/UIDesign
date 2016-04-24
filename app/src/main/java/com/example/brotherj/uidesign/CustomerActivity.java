@@ -1,5 +1,6 @@
 package com.example.brotherj.uidesign;
 
+import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -111,7 +112,7 @@ public class CustomerActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_orderStatus) {
-            CustPaymentFragment fragment = new CustPaymentFragment();
+            CustOrderStatusFragment fragment = new CustOrderStatusFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();

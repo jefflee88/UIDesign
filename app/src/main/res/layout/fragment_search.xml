@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=" The result only show :        (Optional)"
+        android:text=" The result only show : "
         android:textStyle="bold"
         android:id="@+id/textView3"
         android:layout_below="@+id/edtSearch"
@@ -113,6 +113,5 @@
             android:id="@+id/btnAdvancedSearch"
             android:background="@drawable/button_style"
             style="@style/button_text" />
-
     </TableRow>
 </RelativeLayout>

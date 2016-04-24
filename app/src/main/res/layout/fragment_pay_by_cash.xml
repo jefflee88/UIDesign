@@ -4,22 +4,173 @@
     android:layout_height="match_parent"
     tools:context="com.example.brotherj.uidesign.PayByCashFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Cash :  "
+        android:textStyle="bold"
+        android:id="@+id/textView"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:inputType="numberDecimal"
+        android:paddingBottom="10dp"
+        android:paddingTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtCash"
+        android:hint="Enter how much you will pay"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:paddingTop="15dp"
+        android:textColor="#FF0000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="*It can help driver to give change"
+        android:id="@+id/textView6"
+        android:layout_below="@+id/edtCash"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/view" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Please confirm your ordeer info : "
+        android:textStyle="bold"
+        android:id="@+id/textView7"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_below="@+id/view"
+        android:layout_centerHorizontal="true" />
+
+    <TableLayout
+        android:stretchColumns="1"
+        android:layout_alignLeft="@+id/imgBtnGallery"
+        android:layout_alignStart="@+id/imgBtnGallery"
+        android:layout_below="@+id/textView7"
+        android:paddingTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="cash" />
+        android:layout_height="260dp"
+        android:id="@+id/tableLayout"
+        android:layout_alignRight="@+id/imgAddFood"
+        android:layout_alignEnd="@+id/imgAddFood">
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Total price : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="4"
+                android:id="@+id/txtGetJobTotalQty"
+                android:text="txtPayTotal"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Food quantity : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="4"
+                android:id="@+id/txtGetJobDate"
+                android:text="txtPayQty"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Contact : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="3"
+                android:id="@+id/txtPayTel"
+                android:text="txtPayTel"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Address : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="3"
+                android:id="@+id/txtPayAddress"
+                android:text="txtPayAddress"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+    <TextView
+        android:paddingBottom="10dp"
+        android:textColor="#FF0000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="*** The delivery will take less than 1 hour to finish ***"
+        android:layout_above="@+id/btnPayCash"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button3"
-        android:layout_alignParentTop="true"
+        android:text="Pay for cash"
+        android:id="@+id/btnPayCash"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="205dp"
-        android:layout_marginEnd="205dp"
-        android:layout_marginTop="137dp" />
+        android:background="@drawable/button_style"
+        style="@style/button_text"/>
+
 
 </RelativeLayout>

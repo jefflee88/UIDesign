@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetJobDetailFragment">
-
+    tools:context="com.example.brotherj.uidesign.JobSchecInfoFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -125,8 +124,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get this job"
-        android:id="@+id/btnGetThisJob"
+        android:text="Complete job"
+        android:id="@+id/btnCompleteJob"
         android:background="@drawable/button_style"
         style="@style/button_text"
         android:layout_alignParentLeft="true"
@@ -134,5 +133,30 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true" />
+
+    <TextView
+        android:textColor="#FF0000"
+        android:paddingBottom="20dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="All foods picked up?"
+        android:layout_above="@+id/btnCompleteJob"
+        android:layout_alignLeft="@+id/btnCompleteJob"
+        android:layout_alignStart="@+id/btnCompleteJob"
+        android:id="@+id/textView12" />
+
+    <CheckBox
+        android:textStyle="italic"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:id="@+id/chkYes"
+        android:layout_column="1"
+        android:layout_alignTop="@+id/textView12"
+        android:layout_toRightOf="@+id/textView12"
+        android:layout_toEndOf="@+id/textView12" />
 
 </RelativeLayout>

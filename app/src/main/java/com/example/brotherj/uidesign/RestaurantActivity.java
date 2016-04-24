@@ -110,7 +110,7 @@ public class RestaurantActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_confirmOrder) {
+        } else if (id == R.id.nav_jobOrder) {
 
             RestaurantOrderFragment fragment = new RestaurantOrderFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

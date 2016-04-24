@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CustPaymentFragment extends Fragment {
+public class AdvanceSearchFragment extends Fragment {
 
     private FragmentTabHost mTabHost;
 
-    public CustPaymentFragment() {
+    public AdvanceSearchFragment() {
         // Required empty public constructor
     }
 
@@ -26,11 +26,10 @@ public class CustPaymentFragment extends Fragment {
         mTabHost = new FragmentTabHost(getActivity());
         mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.realtabcontent);
 
-        mTabHost.addTab(mTabHost.newTabSpec("tab1").setIndicator("Cash"),
-                PayByCashFragment.class, null);
-        mTabHost.addTab(mTabHost.newTabSpec("tab2").setIndicator("Credit Card"),
-                PayByCreditFragment.class, null);
-
+        mTabHost.addTab(mTabHost.newTabSpec("tab1").setIndicator("Food"),
+                AdvanceFoodFragment.class, null);
+        mTabHost.addTab(mTabHost.newTabSpec("tab2").setIndicator("Restaurant"),
+                AdvanceRestFragment.class, null);
 
         return mTabHost;
     }

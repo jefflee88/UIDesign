@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetJobFragment">
+    tools:context="com.example.brotherj.uidesign.DriverJobScheFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,9 +21,7 @@
         android:layout_height="wrap_content"
         android:text="Food quantity "
         android:id="@+id/chkFoodQty"
-        android:layout_below="@+id/textView1"
-        android:layout_alignLeft="@+id/btnRefresh"
-        android:layout_alignStart="@+id/btnRefresh" />
+        android:layout_below="@+id/textView1" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -60,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Available jobs : "
+        android:text="My jobs : "
         android:textStyle="bold"
         android:id="@+id/textView"
         android:paddingTop="10dp"
@@ -72,22 +70,10 @@
         android:layout_below="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="220dp"
-        android:id="@+id/lstGetJob"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/btnRefresh" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Refresh"
-        android:id="@+id/btnRefresh"
-        android:background="@drawable/button_style"
-        style="@style/button_text"
+        android:id="@+id/lstJobSchec"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -95,7 +81,7 @@
         android:text="Distance"
         android:id="@+id/chkDistance"
         android:layout_below="@+id/textView1"
-        android:layout_alignRight="@+id/btnRefresh"
-        android:layout_alignEnd="@+id/btnRefresh" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

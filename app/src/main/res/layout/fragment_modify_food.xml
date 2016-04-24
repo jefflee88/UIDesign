@@ -4,7 +4,20 @@
     android:layout_height="match_parent"
     tools:context="com.example.brotherj.uidesign.ModifyFoodFragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Modify food"
+        android:textStyle="bold"
+        android:id="@+id/textView19"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
     <ImageView
+        android:layout_below="@+id/textView19"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="30dp"
         android:layout_width="240dp"
@@ -15,7 +28,6 @@
         android:src="@drawable/no_image"
         android:background="#000000"
         android:padding="2dp"
-        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/imgBtnTakePhoto"
         android:layout_toEndOf="@+id/imgBtnTakePhoto" />
@@ -27,7 +39,7 @@
         android:layout_below="@+id/imgModifyFood"
         android:paddingTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="230dp"
         android:id="@+id/tableLayout"
         android:layout_alignRight="@+id/imgModifyFood"
         android:layout_alignEnd="@+id/imgModifyFood">

@@ -11,9 +11,9 @@
             android:icon="@drawable/ic_menu_add"
             android:title="Add New Food" />
         <item
-            android:id="@+id/nav_confirmOrder"
+            android:id="@+id/nav_jobOrder"
             android:icon="@drawable/ic_menu_agenda"
-            android:title="Confirm Orders" />
+            android:title="Job Orders" />
 
     </group>
 
