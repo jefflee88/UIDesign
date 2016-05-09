@@ -10,8 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.brotherj.uidesign.Data.SaveData;
+import com.example.brotherj.uidesign.JsonClass.GetJson;
 import com.example.brotherj.uidesign.R;
 
 /**
@@ -19,8 +24,10 @@ import com.example.brotherj.uidesign.R;
  */
 public class GetJobDetailFragment extends Fragment {
 
+    TextView txtGetJobOID,txtGetJobTotalQty,txtGetJobDate,txtGetJobDeliverTo;
     ImageButton imgBtnRest;
     ImageButton imgBtnCust;
+    Button btnGetThisJob;
 
     public GetJobDetailFragment() {
         // Required empty public constructor
@@ -32,14 +39,29 @@ public class GetJobDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_get_job_detail, container, false);
+        txtGetJobOID = (TextView)view.findViewById(R.id.txtGetJobOID);
+        txtGetJobTotalQty = (TextView)view.findViewById(R.id.txtGetJobTotalQty);
+        txtGetJobDate = (TextView)view.findViewById(R.id.txtGetJobDate);
+        txtGetJobDeliverTo = (TextView)view.findViewById(R.id.txtGetJobDeliverTo);
+        txtGetJobOID.setText(SaveData.driveChooseOrder.getNumber());
+        txtGetJobTotalQty.setText(SaveData.driveChooseOrder.getOrder_total());
+        txtGetJobDate.setText(SaveData.driveChooseOrder.getDate_time());
+        txtGetJobDeliverTo.setText(GetJson.getCusLocation(SaveData.driveChooseOrder.getCustomerid()));
+        btnGetThisJob = (Button)view.findViewById(R.id.btnGetThisJob);
         imgBtnCust = (ImageButton)view.findViewById(R.id.imgBtnCust);
-
         imgBtnCust.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent Intent = new Intent(view.getContext(), MapsActivity.class);
                 startActivityForResult(Intent, 0);
             }
         });
+        btnGetThisJob.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                GetJson.handle();
+                Toast.makeText(getActivity(), "You are handle this work!!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
         return view;

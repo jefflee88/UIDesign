@@ -30,4 +30,5 @@ public class SaveData {
     public static Order resOrder;
     public static String AllQty;
     public static String AllPrice;
+    public static Order driveChooseOrder;
 }
