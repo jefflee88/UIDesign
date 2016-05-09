@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.JsonClass.GetJson;
@@ -77,8 +78,11 @@ public class RestOrderDetailFragment extends Fragment {
         btnSendToDriver.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (chkComplete.isChecked()) {
+                    GetJson.setCompleted(SaveData.resOrder.getNumber());
+                    Toast.makeText(getActivity(), "Food completed !", Toast.LENGTH_SHORT).show();
 
                 }
+                Toast.makeText(getActivity(), "Please complete the food order !", Toast.LENGTH_SHORT).show();
 
             }
         });

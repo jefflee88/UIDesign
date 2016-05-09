@@ -624,6 +624,35 @@ public class GetJson {
         }
         return str;
     }
+    public static String setCompleted(int ordernum) {
+        String str = "";
+        try {
+            String url = "http://10.0.2.2/fyp_connect/restaurant_update_order_status.php?ordernumber="+ordernum+"&restaurantid="+SaveData.restaurant.getId();
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            JSONObject json = new JSONObject(reply);
+            try {
+                str = json.getString("address");
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
 
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return str;
+    }
     }
 
