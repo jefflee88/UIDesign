@@ -87,7 +87,7 @@
             <TextView
                 android:textStyle="italic"
                 android:layout_span="4"
-                android:id="@+id/txtGetJobTotalQty"
+                android:id="@+id/txtPayTotal"
                 android:text="txtPayTotal"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:gravity="left"
@@ -104,7 +104,7 @@
             <TextView
                 android:textStyle="italic"
                 android:layout_span="4"
-                android:id="@+id/txtGetJobDate"
+                android:id="@+id/txtPayQty"
                 android:text="txtPayQty"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:gravity="left"
