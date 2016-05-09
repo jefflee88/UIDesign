@@ -43,8 +43,8 @@ public class GetJobDetailFragment extends Fragment {
         txtGetJobTotalQty = (TextView)view.findViewById(R.id.txtGetJobTotalQty);
         txtGetJobDate = (TextView)view.findViewById(R.id.txtGetJobDate);
         txtGetJobDeliverTo = (TextView)view.findViewById(R.id.txtGetJobDeliverTo);
-        txtGetJobOID.setText(SaveData.driveChooseOrder.getNumber());
-        txtGetJobTotalQty.setText(SaveData.driveChooseOrder.getOrder_total());
+        txtGetJobOID.setText(Integer.toString(SaveData.driveChooseOrder.getNumber()));
+        txtGetJobTotalQty.setText(Integer.toString(SaveData.driveChooseOrder.getOrder_total()));
         txtGetJobDate.setText(SaveData.driveChooseOrder.getDate_time());
         txtGetJobDeliverTo.setText(GetJson.getCusLocation(SaveData.driveChooseOrder.getCustomerid()));
         btnGetThisJob = (Button)view.findViewById(R.id.btnGetThisJob);
