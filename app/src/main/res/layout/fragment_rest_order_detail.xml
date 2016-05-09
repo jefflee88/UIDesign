@@ -50,8 +50,7 @@
         android:layout_height="300px"
         android:layout_width="fill_parent"
         android:layout_below="@+id/tableLayout2"
-        android:id="@+id/scrol"
-        >
+        android:id="@+id/scrol">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -389,6 +388,12 @@
         android:layout_alignParentStart="true"
         android:id="@+id/view" />
 
+    <ScrollView
+        android:layout_height="350px"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/view"
+        android:id="@+id/scrol2">
+
     <TableLayout
         android:paddingTop="10dp"
         android:stretchColumns="1"
@@ -458,10 +463,12 @@
 
     </TableLayout>
 
+    </ScrollView>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update order status"
+        android:text="Update status"
         android:id="@+id/btnSendToDriver"
         android:background="@drawable/button_style"
         style="@style/button_text"
