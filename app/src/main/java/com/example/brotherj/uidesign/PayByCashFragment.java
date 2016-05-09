@@ -53,7 +53,7 @@ public class PayByCashFragment extends Fragment {
                         GetJson.creatOrder(SaveData.cusChooseFoods, Integer.parseInt(SaveData.AllPrice));
                         Toast.makeText(getActivity(), "Order confirm", Toast.LENGTH_SHORT).show();
                         SaveData.cusChooseFoods.removeAll(SaveData.cusChooseFoods);
-                        GetJson.setCustomerPayment("Cash", null, null);
+                        GetJson.setCustomerPayment("Cash", "NULL", "NULL");
                         SaveData.AllPrice = null;
                         SaveData.AllQty = null;
                         BlankFragment fragment = new BlankFragment();
