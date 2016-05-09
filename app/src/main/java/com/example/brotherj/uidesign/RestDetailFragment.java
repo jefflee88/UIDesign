@@ -56,7 +56,7 @@ public class RestDetailFragment extends Fragment {
         ListView lstRestFood = (ListView)view.findViewById(R.id.lstRestDetail);
         ArrayList<String> foodMenu = new ArrayList<String>();
         ArrayAdapter<String> listAdapter =
-                new ArrayAdapter<String>(getActivity(), R.layout.single_row, R.id.txtDetail, foodMenu);
+                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, foodMenu);
         for (int i = 0; i < foodList.length; i++) {
             listAdapter.add("Name : " + foodList[i].getName() + "\n"
                     + "Type : " + foodList[i].getType() + "\n"

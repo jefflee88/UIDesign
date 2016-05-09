@@ -10,9 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.brotherj.uidesign.Data.DownloadImageTask;
 import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.JsonClass.GetJson;
 import com.example.brotherj.uidesign.bean.SelectFood;
@@ -24,6 +26,7 @@ import com.example.brotherj.uidesign.bean.SelectFood;
 public class FoodDetailFragment extends Fragment {
     TextView txtFoodDetailName,txtFoodDetailType,txtFoodDetailPrice,txtFoodDetailRestaurant;
     EditText edtQty;
+    ImageView imgFoodDetail;
     int qty =1 ;
 
     public FoodDetailFragment() {
@@ -41,10 +44,12 @@ public class FoodDetailFragment extends Fragment {
         txtFoodDetailPrice = (TextView) view.findViewById(R.id.txtFoodDetailPrice);
         txtFoodDetailRestaurant = (TextView) view.findViewById(R.id.txtFoodDetailRestaurant);
         edtQty = (EditText) view.findViewById(R.id.edtQty);
+        imgFoodDetail = (ImageView)view.findViewById(R.id.imgFoodDetail);
         txtFoodDetailName.setText(SaveData.cusChooseFood.getName());
         txtFoodDetailType.setText(SaveData.cusChooseFood.getType());
         txtFoodDetailPrice.setText(SaveData.cusChooseFood.getPrice());
         txtFoodDetailRestaurant.setText(SaveData.cusChooseFood.getRestaurantid());
+        new DownloadImageTask(imgFoodDetail).execute("http://10.0.2.2/fyp_connect/image/"+SaveData.cusChooseFood.getRestaurantid()+"/"+SaveData.cusChooseFood.getImage());
 
         Button btnPlus = (Button) view.findViewById(R.id.btnPlus);
         btnPlus.setOnClickListener(new View.OnClickListener() {

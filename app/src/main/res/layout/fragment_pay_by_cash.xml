@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Please confirm your ordeer info : "
+        android:text="Please confirm your order info : "
         android:textStyle="bold"
         android:id="@+id/textView7"
         android:paddingTop="10dp"
@@ -162,7 +162,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pay for cash"
+        android:text="Pay by cash"
         android:id="@+id/btnPayCash"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

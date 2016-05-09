@@ -1,6 +1,5 @@
 package com.example.brotherj.uidesign;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +14,7 @@ import android.widget.AdapterView;
 
 import com.example.brotherj.uidesign.Data.DownloadImageTask;
 import com.example.brotherj.uidesign.Data.SaveData;
+import com.example.brotherj.uidesign.Data.SingleRow;
 import com.example.brotherj.uidesign.JsonClass.GetJson;
 import com.example.brotherj.uidesign.bean.Food;
 import com.example.brotherj.uidesign.bean.Restaurant;
@@ -27,6 +27,9 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class SearchResultFragment extends Fragment {
+
+    String [] food;
+    String [] imgpath;
 
     public SearchResultFragment() {
         // Required empty public constructor
@@ -45,17 +48,25 @@ public class SearchResultFragment extends Fragment {
             for (int i = 0; i < SaveData.cusSearchFood.size(); i++)
                 foodList[i] = SaveData.cusSearchFood.get(i);
 
-            ListView lstSearchResult = (ListView) view.findViewById(R.id.lstSearchResult);
-            ArrayList<String> foodMenu = new ArrayList<String>();
-            ArrayAdapter<String> listAdapter =
-                    new ArrayAdapter<String>(getActivity(), R.layout.single_row, R.id.txtDetail, foodMenu);
+            food = new String[foodList.length];
 
             for (int i = 0; i < foodList.length; i++) {
-                listAdapter.add("Name : " + foodList[i].getName() + "\n"
-                                + "Type : " + foodList[i].getType() + "\n"
-                                + "Price : " + foodList[i].getPrice() + "\n"
-                );
+                               food[i] = "Name : " + foodList[i].getName() + "\n"
+                                           + "Type : " + foodList[i].getType() + "\n"
+                                            + "Price : " + foodList[i].getPrice() + "\n";
             }
+
+            imgpath = new String[foodList.length];
+
+            for (int i = 0; i < foodList.length; i++) {
+                imgpath[i] = "http://10.0.2.2/fyp_connect/image/"+foodList[i].getRestaurantid()+"/"+foodList[i].getImage();
+            }
+
+            ListView lstSearchResult = (ListView) view.findViewById(R.id.lstSearchResult);
+            SingleRow listAdapter=new SingleRow(getActivity(), food, imgpath);
+           // ArrayList<String> foodMenu = new ArrayList<String>();
+           // ArrayAdapter<String> listAdapter =
+                  //  new ArrayAdapter<String>(getActivity(), R.layout.single_row, R.id.txtDetail, foodMenu);
             lstSearchResult.setAdapter(listAdapter);
             lstSearchResult.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

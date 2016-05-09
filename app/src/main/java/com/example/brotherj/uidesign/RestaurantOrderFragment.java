@@ -47,7 +47,7 @@ public class RestaurantOrderFragment extends Fragment {
         ListView lstRestFood = (ListView)view.findViewById(R.id.lstRestOrder);
         ArrayList<String> foodMenu = new ArrayList<String>();
         ArrayAdapter<String> listAdapter =
-                new ArrayAdapter<String>(getActivity(), R.layout.single_row, R.id.txtDetail, foodMenu);
+                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, foodMenu);
         for (int i = 0; i < foodList.length; i++) {
             listAdapter.add("Order number : " + foodList[i].getNumber() + "\n"
                     + "Order Time : " + foodList[i].getDate_time() + "\n"

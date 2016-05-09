@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.brotherj.uidesign.Data.SaveData;
+import com.example.brotherj.uidesign.Data.SingleRow;
 import com.example.brotherj.uidesign.JsonClass.GetJson;
 import com.example.brotherj.uidesign.bean.Food;
 
@@ -25,6 +26,8 @@ import java.util.ArrayList;
  */
 public class ManageFoodFragment extends Fragment {
 
+    String [] myfood;
+    String [] imgpath;
     ArrayList<Food> food = new ArrayList<Food>();
 
     public ManageFoodFragment() {
@@ -43,15 +46,23 @@ public class ManageFoodFragment extends Fragment {
         for(int i = 0 ;i<food.size();i++)
             foodList[i] = food.get(i);
 
-        ListView lstRestFood = (ListView)view.findViewById(R.id.lstRestFood);
-        ArrayList<String> foodMenu = new ArrayList<String>();
-        ArrayAdapter<String> listAdapter =
-                new ArrayAdapter<String>(getActivity(), R.layout.single_row, R.id.txtDetail, foodMenu);
+        myfood = new String[foodList.length];
+
         for (int i = 0; i < foodList.length; i++) {
-            listAdapter.add("Name : " + foodList[i].getName() + "\n"
+            myfood[i] = "Name : " + foodList[i].getName() + "\n"
                     + "Type : " + foodList[i].getType() + "\n"
-                    + "Price : " + foodList[i].getPrice() + "\n");
+                    + "Price : " + foodList[i].getPrice() + "\n";
         }
+
+        imgpath = new String[foodList.length];
+
+        for (int i = 0; i < foodList.length; i++) {
+            imgpath[i] = "http://10.0.2.2/fyp_connect/image/"+foodList[i].getRestaurantid()+"/"+foodList[i].getImage();
+        }
+
+        ListView lstRestFood = (ListView)view.findViewById(R.id.lstRestFood);
+        SingleRow listAdapter=new SingleRow(getActivity(), myfood, imgpath);
+
         lstRestFood.setAdapter(listAdapter);
         lstRestFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

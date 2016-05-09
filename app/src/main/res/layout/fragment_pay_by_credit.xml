@@ -68,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Please confirm your ordeer info : "
+        android:text="Please confirm your order info : "
         android:textStyle="bold"
         android:id="@+id/textView7"
         android:paddingTop="10dp"
@@ -173,7 +173,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pay for credit card"
+        android:text="Pay by credit card"
         android:id="@+id/btnPayCredit"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

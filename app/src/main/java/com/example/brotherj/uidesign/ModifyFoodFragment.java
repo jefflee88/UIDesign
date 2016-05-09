@@ -11,11 +11,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.brotherj.uidesign.Data.DownloadImageTask;
 import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.JsonClass.GetJson;
 import com.example.brotherj.uidesign.bean.Food;
@@ -28,6 +30,7 @@ public class ModifyFoodFragment extends Fragment {
     TextView txtModifyFoodId;
     EditText edtModifyFoodName,edtModifyFoodPrice;
     Spinner spinType;
+    ImageView imgModifyFood;
 
 
     public ModifyFoodFragment() {
@@ -40,6 +43,7 @@ public class ModifyFoodFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_modify_food, container, false);
         GetJson.changeVersion();
+        imgModifyFood = (ImageView)view.findViewById(R.id.imgModifyFood);
         txtModifyFoodId = (TextView) view.findViewById(R.id.txtModifyFoodId);
         edtModifyFoodName = (EditText) view.findViewById(R.id.edtModifyFoodName);
         edtModifyFoodPrice = (EditText) view.findViewById(R.id.edtModifyFoodPrice);
@@ -64,6 +68,7 @@ public class ModifyFoodFragment extends Fragment {
         txtModifyFoodId.setText(SaveData.resSearchFood.getId());
         edtModifyFoodName.setText(SaveData.resSearchFood.getName());
         edtModifyFoodPrice.setText(SaveData.resSearchFood.getPrice());
+        new DownloadImageTask(imgModifyFood).execute("http://10.0.2.2/fyp_connect/image/" + SaveData.resSearchFood.getRestaurantid() + "/" + SaveData.resSearchFood.getImage());
         Button btnModifySave = (Button) view.findViewById(R.id.btnModifySave);
         btnModifySave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
