@@ -74,16 +74,18 @@ public class RestOrderDetailFragment extends Fragment {
         txtRestTotalQty.setText(update());
         txtRestOrderDeliver.setText(GetJson.getCusLocation(SaveData.resOrder.getCustomerid()));
         chkComplete = (CheckBox)view.findViewById(R.id.chkComplete);
-        btnSendToDriver = (Button)view.findViewById(R.id.chkComplete);
+        btnSendToDriver = (Button)view.findViewById(R.id.btnSendToDriver);
+
         btnSendToDriver.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 if (chkComplete.isChecked()) {
                     GetJson.setCompleted(SaveData.resOrder.getNumber());
                     Toast.makeText(getActivity(), "Food completed !", Toast.LENGTH_SHORT).show();
-
                 }
-                Toast.makeText(getActivity(), "Please complete the food order !", Toast.LENGTH_SHORT).show();
-
+                else{
+                    Toast.makeText(getActivity(), "Please complete the food order !", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
