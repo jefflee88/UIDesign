@@ -60,6 +60,22 @@
                 android:padding="3dip" />
         </TableRow>
 
+        <TableRow
+            android:paddingTop="10dp">
+            <TextView
+                android:textStyle="bold"
+                android:text="Total \nrestaurant : "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:padding="3dip" />
+            <TextView
+                android:textStyle="italic"
+                android:layout_span="4"
+                android:id="@+id/txtGetJobRestTotal"
+                android:text="txtGetJobRestTotal"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
 
         <TableRow
             android:paddingTop="10dp">
