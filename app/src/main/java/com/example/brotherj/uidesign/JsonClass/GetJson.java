@@ -648,7 +648,7 @@ public class GetJson {
     }
     public static void setCustomerPayment(String payment,String Credit_card_number,String Credit_card_security_code){
         try {
-        String url = "http://10.0.2.2/fyp_connect/update_customer.php?id="+SaveData.customer.getId()+"&name="+SaveData.customer.getName()+"&address="+SaveData.customer.getAddress()+"&telNum="+SaveData.customer.getTelNum()+"&payment="+payment+"&cardnumber="+Credit_card_number+"&securitycode="+Credit_card_security_code;
+        String url = "http://10.0.2.2/fyp_connect/update_customer.php?id="+SaveData.customer.getId()+"&name="+SaveData.customer.getName()+"&address="+SaveData.customer.getAddress()+"&email="+SaveData.customer.getEmail()+"&telNum="+SaveData.customer.getTelNum()+"&payment="+payment+"&cardnumber="+Credit_card_number+"&securitycode="+Credit_card_security_code;
         url = url.replaceAll(" ","%20");
         URL urlObj = new URL(url);
         HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();

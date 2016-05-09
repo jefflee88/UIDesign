@@ -50,8 +50,18 @@ public class PayByCashFragment extends Fragment {
             public void onClick(View view) {
                 try {
                     if (Integer.parseInt(SaveData.AllPrice) < Integer.parseInt(edtCash.getText().toString())) {
-                        Toast.makeText(getActivity(), "Ok", Toast.LENGTH_SHORT).show();
-                        GetJson.setCustomerPayment("Cash", "Null", "Null");
+                        GetJson.creatOrder(SaveData.cusChooseFoods, Integer.parseInt(SaveData.AllPrice));
+                        Toast.makeText(getActivity(), "Order confirm", Toast.LENGTH_SHORT).show();
+                        SaveData.cusChooseFoods.removeAll(SaveData.cusChooseFoods);
+                        GetJson.setCustomerPayment("Cash", null, null);
+                        SaveData.AllPrice = null;
+                        SaveData.AllQty = null;
+                        BlankFragment fragment = new BlankFragment();
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_container, fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
 
                     } else {
                         Toast.makeText(getActivity(), "Not enough money", Toast.LENGTH_SHORT).show();

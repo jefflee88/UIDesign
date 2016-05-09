@@ -3,6 +3,8 @@ package com.example.brotherj.uidesign;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,8 +50,18 @@ public class PayByCreditFragment extends Fragment {
             public void onClick(View view) {
                 try {
                 if((16==(long)Math.log10(Long.parseLong(edtCardNum.getText().toString()))+1)&&((3==(int)Math.log10(Integer.parseInt(edtSC.getText().toString()))+1)||(4==(int)Math.log10(Integer.parseInt(edtSC.getText().toString()))+1))) {
-                    Toast.makeText(getActivity(), "Ok", Toast.LENGTH_SHORT).show();
+                    GetJson.creatOrder(SaveData.cusChooseFoods, Integer.parseInt(SaveData.AllPrice));
+                    Toast.makeText(getActivity(), "Order confirm", Toast.LENGTH_SHORT).show();
+                    SaveData.cusChooseFoods.removeAll(SaveData.cusChooseFoods);
                     GetJson.setCustomerPayment("Credit Card", edtCardNum.getText().toString(), edtSC.getText().toString());
+                    SaveData.AllPrice = null;
+                    SaveData.AllQty = null;
+                    BlankFragment fragment = new BlankFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
                 }else{
                     Toast.makeText(getActivity(), "Credit Card error", Toast.LENGTH_SHORT).show();
 
