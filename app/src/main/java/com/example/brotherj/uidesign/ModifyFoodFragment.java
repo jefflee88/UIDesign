@@ -1,7 +1,10 @@
 package com.example.brotherj.uidesign;
 
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -11,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -28,6 +33,9 @@ public class ModifyFoodFragment extends Fragment {
     TextView txtModifyFoodId;
     EditText edtModifyFoodName,edtModifyFoodPrice;
     Spinner spinType;
+    ImageButton imgBtnTakePhoto,imgBtnGallery;
+    ImageView imgModifyFood;
+    private  static final  int CAM_REQUEST = 1313;
 
 
     public ModifyFoodFragment() {
@@ -76,9 +84,44 @@ public class ModifyFoodFragment extends Fragment {
                 SaveData.resSearchFood = modifyFood;
             }
         });
+
+        imgModifyFood = (ImageView) view.findViewById(R.id.imgModifyFood);
+        imgBtnTakePhoto =(ImageButton) view.findViewById(R.id.imgBtnTakePhoto);
+        imgBtnGallery = (ImageButton) view.findViewById(R.id.imgBtnGallery);
+        imgBtnTakePhoto.setOnClickListener(new imgBtnTakePhotoClicker());
+        imgBtnGallery.setOnClickListener(new imgBtnGalleryClicker());
+
         return view;
+    }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == CAM_REQUEST) {
+            if (data != null) {
+                Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+                imgModifyFood.setImageBitmap(thumbnail);
+            }
+        }
+        if(requestCode == 1){
+            imgModifyFood.setImageURI(data.getData());
+        }
+    }
+
+    class imgBtnTakePhotoClicker implements Button.OnClickListener{
+        public void onClick(View v){
+            Intent cameraintent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(cameraintent, CAM_REQUEST);
+        }
+    }
+
+    class imgBtnGalleryClicker implements Button.OnClickListener{
+        public void  onClick(View v){
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, "Select Image"),1);
+        }
     }
 
 }
