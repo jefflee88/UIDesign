@@ -28,4 +28,7 @@ public class SaveData {
     public static ArrayList<SelectFood> cusChooseFoods = new ArrayList<SelectFood>();
     public static ArrayList<Orderline> resOrderline =  new ArrayList<Orderline>();
     public static Order resOrder;
+    public static String AllQty;
+    public static String AllPrice;
+    public static Order driveChooseOrder;
 }

@@ -87,19 +87,19 @@ public class ShoppingCartFragment extends Fragment {
         btnTakeOrder.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if(SaveData.cusChooseFoods.size()>0) {
-                    GetJson.creatOrder(SaveData.cusChooseFoods, Integer.parseInt(setPrice()));
-                    Toast.makeText(getActivity(), "Order confirm", Toast.LENGTH_SHORT).show();
+                    SaveData.AllQty = setqty();
+                    SaveData.AllPrice = setPrice();
+                    CustPaymentFragment fragment = new CustPaymentFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+
                 }else
                     Toast.makeText(getActivity(), "Please add food in shopping cart", Toast.LENGTH_SHORT).show();
-                SaveData.cusChooseFoods.removeAll(SaveData.cusChooseFoods);
                 reset();
                 update();
-                CustPaymentFragment fragment = new CustPaymentFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
             }
         });
 

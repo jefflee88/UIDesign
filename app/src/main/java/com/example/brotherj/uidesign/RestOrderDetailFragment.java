@@ -3,10 +3,15 @@ package com.example.brotherj.uidesign;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.JsonClass.GetJson;
@@ -20,6 +25,8 @@ public class RestOrderDetailFragment extends Fragment {
     TextView[] txtQty = new TextView[10];
     TextView[] txtType = new TextView[10];
     TextView txtRestTotalQty,txtRestOrderDeliver;
+    CheckBox chkComplete;
+    Button btnSendToDriver;
     int i;
 
 
@@ -66,6 +73,21 @@ public class RestOrderDetailFragment extends Fragment {
         txtType[9] = (TextView) view.findViewById(R.id.txtType9);
         txtRestTotalQty.setText(update());
         txtRestOrderDeliver.setText(GetJson.getCusLocation(SaveData.resOrder.getCustomerid()));
+        chkComplete = (CheckBox)view.findViewById(R.id.chkComplete);
+        btnSendToDriver = (Button)view.findViewById(R.id.btnSendToDriver);
+
+        btnSendToDriver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (chkComplete.isChecked()) {
+                    GetJson.setCompleted(SaveData.resOrder.getNumber());
+                    Toast.makeText(getActivity(), "Food completed !", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getActivity(), "Please complete the food order !", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         return view;
     }
