@@ -12,12 +12,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.brotherj.uidesign.JsonClass.GetJson;
+import com.example.brotherj.uidesign.bean.Restaurant;
+
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class JobSchecRestFragment extends Fragment {
-
+    ArrayList<Restaurant> restaurant;
 
     public JobSchecRestFragment() {
         // Required empty public constructor
@@ -27,11 +32,14 @@ public class JobSchecRestFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        restaurant =  GetJson.driGetRestaurant();
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_job_schec_rest, container, false);
 
         ListView lstGetJob = (ListView)view.findViewById(R.id.lstRestDist);
-        String[] testList = new String[] {"test 1", "test 2", "test 3",  "test 4",  "test 5"};
+        String[] testList = new String[restaurant.size()];
+        for(int i = 0;i<restaurant.size();i++)
+            testList[i] = "name : "+restaurant.get(i).getName() + "\n" + "Address : "+restaurant.get(i).getAddress();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, testList);
         lstGetJob.setAdapter(adapter);
         lstGetJob.setOnItemClickListener(new AdapterView.OnItemClickListener() {
