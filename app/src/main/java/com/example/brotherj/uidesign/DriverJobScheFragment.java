@@ -12,11 +12,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.brotherj.uidesign.Data.SaveData;
+import com.example.brotherj.uidesign.JsonClass.GetJson;
+import com.example.brotherj.uidesign.bean.Order;
+
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DriverJobScheFragment extends Fragment {
+    ArrayList<Order> order;
 
 
     public DriverJobScheFragment() {
@@ -31,12 +38,21 @@ public class DriverJobScheFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_driver_job_sche, container, false);
 
         ListView lstGetJob = (ListView)view.findViewById(R.id.lstJobSchec);
-        String[] testList = new String[] {"test 1", "test 2", "test 3",  "test 4",  "test 5"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, testList);
+        order= GetJson.driveGetMyOrder();
+        String[] orderlist = new String[order.size()];
+        for(int i =0;i<order.size();i++) {
+            orderlist[i] = "Order number : " + order.get(i).getNumber() + "\n"
+                    + "Order Time : " + order.get(i).getDate_time() + "\n"
+                    + "Order Total : " + order.get(i).getOrder_total() + "\n"
+                    + "Customer ID : " + order.get(i).getCustomerid() + "\n"
+                    + "Driver ID : " + order.get(i).getDriverid() + "\n";
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, orderlist);
         lstGetJob.setAdapter(adapter);
         lstGetJob.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                SaveData.driveChooseMyOrder = order.get(arg2);
                 DriverJobSchecDetailFragment fragment = new DriverJobSchecDetailFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
