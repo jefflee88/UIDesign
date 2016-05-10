@@ -57,7 +57,7 @@ public class ModifyFoodFragment extends Fragment {
         String [] types = new String[5];
         for(int i = 0; i<5 ; i++)
         types[i] = SaveData.resSearchFood.getType();
-        String[] items={ "Fried Food", "Italian Food", "Drink", "Korean Food", "Dessert"};
+        String[] items={ "Bread", "Drink", "Meat", "Noodles", "Pizza","Rice","Seafood","Snacks","Soup","Sushi"};
         int y =0;
         for(int i = 0; i<5; i++) {
             if (SaveData.resSearchFood.getType().equals(items[i])==false) {
