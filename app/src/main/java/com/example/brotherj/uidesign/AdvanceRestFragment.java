@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,9 +42,7 @@ public class AdvanceRestFragment extends Fragment {
         spinner = (Spinner)view.findViewById(R.id.spinner);
         spinner2 = (Spinner)view.findViewById(R.id.spinner2);
         button3 = (Button)view.findViewById(R.id.button3);
-        keyword = edtSearch.getText().toString();
-
-        String[] items={ "American", "Chinese", "Freanch", "Italian", "Japanese","Korean"};
+        String[] items={ "American", "Chinese", "Freanch", "Itailan", "Japanese","Korean"};
         ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, items);
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(LTRadapter);
@@ -55,20 +54,24 @@ public class AdvanceRestFragment extends Fragment {
 
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+
                 keyword = edtSearch.getText().toString();
                 if (keyword == null && keyword.isEmpty()) {
                     keyword = "null";
                 }
+
                 type = spinner.getSelectedItem().toString();
                 if (type == null && type.isEmpty()) {
                     type = "null";
                 }
+
                 dis = spinner2.getSelectedItem().toString();
                 if (dis == null && dis.isEmpty()) {
                     dis = "null";
                 }
 
                 SaveData.cusSearchRestaurant = GetJson.cusSearchRestaurant(keyword, type, dis);
+                Log.d("saveddd ::::::::::: ", SaveData.cusSearchRestaurant.get(0).getName());
                 SaveData.isFood = false;
                 SearchResultFragment fragment = new SearchResultFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
