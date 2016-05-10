@@ -132,16 +132,15 @@
 
     <TextView
         android:textColor="#FF0000"
-        android:paddingBottom="20dp"
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="All foods picked up?"
+        android:id="@+id/textView12"
         android:layout_above="@+id/btnCompleteJob"
         android:layout_alignLeft="@+id/btnCompleteJob"
-        android:layout_alignStart="@+id/btnCompleteJob"
-        android:id="@+id/textView12" />
+        android:layout_alignStart="@+id/btnCompleteJob" />
 
     <CheckBox
         android:textStyle="italic"

@@ -61,21 +61,13 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
         String[] AfterSplit = mustSplitString.split(",");
         String answer = "";
 
-        if (SaveData.tempCheck.equals("rest")) {
-            for (int i = 1; i < AfterSplit.length; i++) {
-                if (i != AfterSplit.length - 1)
-                    answer += AfterSplit[i] + ",";
-                else
-                    answer += AfterSplit[i];
-            }
-        }else if(SaveData.tempCheck.equals("cust")){
             for (int i = 2; i < AfterSplit.length; i++) {
                 if (i != AfterSplit.length - 1)
                     answer += AfterSplit[i] + ",";
                 else
                     answer += AfterSplit[i];
             }
-        }
+
 
 
         Log.d("111111111111",answer);
