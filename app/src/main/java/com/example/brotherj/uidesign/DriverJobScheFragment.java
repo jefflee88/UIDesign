@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 
@@ -29,6 +30,8 @@ public class DriverJobScheFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_driver_job_sche, container, false);
+        CheckBox chkFoodQty = (CheckBox)view.findViewById(R.id.chkFoodQty);
+        CheckBox chkOrderTime = (CheckBox)view.findViewById(R.id.chkOrderTime);
 
         ListView lstGetJob = (ListView)view.findViewById(R.id.lstJobSchec);
         String[] testList = new String[] {"test 1", "test 2", "test 3",  "test 4",  "test 5"};

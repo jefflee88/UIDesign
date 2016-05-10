@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.example.brotherj.uidesign.Data.SaveData;
@@ -36,7 +37,9 @@ public class GetJobFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_get_job, container, false);
+        final View view = inflater.inflate(R.layout.fragment_get_job, container, false);
+        CheckBox chkFoodQty = (CheckBox)view.findViewById(R.id.chkFoodQty);
+        CheckBox chkOrderTime = (CheckBox)view.findViewById(R.id.chkOrderTime);
 
         ListView lstGetJob = (ListView)view.findViewById(R.id.lstGetJob);
 
@@ -44,6 +47,37 @@ public class GetJobFragment extends Fragment {
         String[] orderlist = new String[order.size()];
         for(int i =0;i<order.size();i++)
             orderlist[i] = "Order time : "+order.get(i).getDate_time()+".";
+
+        chkFoodQty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ListView lstGetJob = (ListView)view.findViewById(R.id.lstGetJob);
+
+                order= GetJson.driveGetTotalOrder();
+                String[] orderlist = new String[order.size()];
+                for(int i =0;i<order.size();i++)
+                    orderlist[i] = "Order time : "+order.get(i).getDate_time()+".";
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, orderlist);
+                lstGetJob.setAdapter(adapter);
+            }
+        });
+
+        chkOrderTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ListView lstGetJob = (ListView)view.findViewById(R.id.lstGetJob);
+
+                order= GetJson.driveGetTimeOrder();
+                String[] orderlist = new String[order.size()];
+                for(int i =0;i<order.size();i++)
+                    orderlist[i] = "Order time : "+order.get(i).getDate_time()+".";
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, orderlist);
+                lstGetJob.setAdapter(adapter);
+            }
+        });
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, orderlist);
         lstGetJob.setAdapter(adapter);

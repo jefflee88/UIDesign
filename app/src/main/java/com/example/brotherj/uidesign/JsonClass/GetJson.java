@@ -491,6 +491,112 @@ public class GetJson {
 
     }
 
+    public static ArrayList<Order> restaurantOrderTotalGetOrder(ArrayList<Orderline> odl){
+        ArrayList<Order> obj = new ArrayList<Order>();
+        try {
+            String location = "SELECT * FROM `order` WHERE ";
+            for(int i = 0;i<odl.size(); i++){
+                if(odl.size()-1 != i)
+                    location += "number=" + odl.get(i).getOrderNumber() + " OR ";
+                else if(odl.size()-1 == i)
+                    location += "number=" + odl.get(i).getOrderNumber();
+            }
+            location += " ORDER BY order_total";
+            Log.d("location ::::", location);
+            String url = "http://10.0.2.2/fyp_connect/restaurant_get_order.php?sql="+location;
+            url = url.replaceAll(" ","%20");
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            Log.d("reply ::::", reply);
+            JSONObject json = new JSONObject(reply);
+            try {
+                for (int i = 0; i < json.getJSONArray("order").length(); i++) {
+                    JSONObject jsonObj = json.getJSONArray("order").getJSONObject(i);
+                    int number = jsonObj.getInt("number");
+                    String date_time = jsonObj.getString("date_time");
+                    String all_pick_up = jsonObj.getString("all_pick_up");
+                    String received_by_customer = jsonObj.getString("received_by_customer");
+                    int order_total = jsonObj.getInt("order_total");
+                    String Customerid = jsonObj.getString("Customerid");
+                    String Driverid = jsonObj.getString("Driverid");
+                    obj.add(new Order(number,date_time,all_pick_up,received_by_customer,order_total,Customerid,Driverid));
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return obj;
+
+    }
+
+    public static ArrayList<Order> restaurantOrderTimeGetOrder(ArrayList<Orderline> odl){
+        ArrayList<Order> obj = new ArrayList<Order>();
+        try {
+            String location = "SELECT * FROM `order` WHERE ";
+            for(int i = 0;i<odl.size(); i++){
+                if(odl.size()-1 != i)
+                    location += "number=" + odl.get(i).getOrderNumber() + " OR ";
+                else if(odl.size()-1 == i)
+                    location += "number=" + odl.get(i).getOrderNumber();
+            }
+            location += " ORDER BY date_time";
+            Log.d("location ::::", location);
+            String url = "http://10.0.2.2/fyp_connect/restaurant_get_order.php?sql="+location;
+            url = url.replaceAll(" ","%20");
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            Log.d("reply ::::", reply);
+            JSONObject json = new JSONObject(reply);
+            try {
+                for (int i = 0; i < json.getJSONArray("order").length(); i++) {
+                    JSONObject jsonObj = json.getJSONArray("order").getJSONObject(i);
+                    int number = jsonObj.getInt("number");
+                    String date_time = jsonObj.getString("date_time");
+                    String all_pick_up = jsonObj.getString("all_pick_up");
+                    String received_by_customer = jsonObj.getString("received_by_customer");
+                    int order_total = jsonObj.getInt("order_total");
+                    String Customerid = jsonObj.getString("Customerid");
+                    String Driverid = jsonObj.getString("Driverid");
+                    obj.add(new Order(number,date_time,all_pick_up,received_by_customer,order_total,Customerid,Driverid));
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return obj;
+
+    }
+
     public static ArrayList<Orderline> restaurantGetOrderlineForOrder(Order order){
         ArrayList<Orderline> obj = new ArrayList<Orderline>();
         try {
@@ -711,6 +817,90 @@ public class GetJson {
         }
         return obj;
     }
+
+    public static ArrayList<Order> driveGetTotalOrder(){
+        ArrayList<Order> obj = new ArrayList<Order>();
+        try {
+            String url = "http://10.0.2.2/fyp_connect/driver_get_order_qty.php";
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            JSONObject json = new JSONObject(reply);
+            try {
+                for (int i = 0; i < json.getJSONArray("order").length(); i++) {
+                    JSONObject jsonObj = json.getJSONArray("order").getJSONObject(i);
+                    int number = jsonObj.getInt("number");
+                    String date_time = jsonObj.getString("date_time");
+                    String all_pick_up = jsonObj.getString("all_pick_up");
+                    String received_by_customer = jsonObj.getString("received_by_customer");
+                    int order_total = jsonObj.getInt("order_total");
+                    String Customerid = jsonObj.getString("Customerid");
+                    String Driverid = jsonObj.getString("Driverid");
+                    obj.add(new Order(number,date_time,all_pick_up,received_by_customer,order_total,Customerid,Driverid));
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return obj;
+    }
+
+    public static ArrayList<Order> driveGetTimeOrder(){
+        ArrayList<Order> obj = new ArrayList<Order>();
+        try {
+            String url = "http://10.0.2.2/fyp_connect/driver_get_order_time.php";
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            String reply = result.toString();
+            JSONObject json = new JSONObject(reply);
+            try {
+                for (int i = 0; i < json.getJSONArray("order").length(); i++) {
+                    JSONObject jsonObj = json.getJSONArray("order").getJSONObject(i);
+                    int number = jsonObj.getInt("number");
+                    String date_time = jsonObj.getString("date_time");
+                    String all_pick_up = jsonObj.getString("all_pick_up");
+                    String received_by_customer = jsonObj.getString("received_by_customer");
+                    int order_total = jsonObj.getInt("order_total");
+                    String Customerid = jsonObj.getString("Customerid");
+                    String Driverid = jsonObj.getString("Driverid");
+                    obj.add(new Order(number,date_time,all_pick_up,received_by_customer,order_total,Customerid,Driverid));
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return obj;
+    }
+
+
     public static void handle(){
         http://localhost/fyp_connect/driver_handle_order.php?driverid=d0001&number=1
         try {
