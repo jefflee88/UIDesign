@@ -1177,7 +1177,6 @@ public class GetJson {
             String reply = result.toString();
             JSONObject json = new JSONObject(reply);
             try {
-                if(type.equals("restaurant"))
                     for (int i = 0; i < json.getJSONArray("restaurant").length(); i++) {
                         JSONObject jsonObj = json.getJSONArray("restaurant").getJSONObject(i);
                         String restaurantId = jsonObj.getString("id");
