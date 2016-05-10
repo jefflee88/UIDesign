@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.example.brotherj.uidesign.Data.SaveData;
@@ -37,7 +38,10 @@ public class RestaurantOrderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_restaurant_order, container, false);
+        final View view = inflater.inflate(R.layout.fragment_restaurant_order, container, false);
+        CheckBox chkFoodQty = (CheckBox)view.findViewById(R.id.chkFoodQty);
+        CheckBox chkOrderTime = (CheckBox)view.findViewById(R.id.chkOrderTime);
+
         food = GetJson.restaurantGetOrder(GetJson.restaurantGetOrderline());
 
         Order[] foodList = new Order[food.size()];
@@ -56,6 +60,57 @@ public class RestaurantOrderFragment extends Fragment {
                     + "Driver ID : " + foodList[i].getDriverid() + "\n"
             );
         }
+
+        chkFoodQty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                food = GetJson.restaurantGetTotalOrder(GetJson.restaurantGetOrderline());
+
+                Order[] foodList = new Order[food.size()];
+                for(int i = 0 ;i<food.size();i++)
+                    foodList[i] = food.get(i);
+
+                ListView lstRestFood = (ListView)view.findViewById(R.id.lstRestOrder);
+                ArrayList<String> foodMenu = new ArrayList<String>();
+                ArrayAdapter<String> listAdapter =
+                        new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, foodMenu);
+                for (int i = 0; i < foodList.length; i++) {
+                    listAdapter.add("Order number : " + foodList[i].getNumber() + "\n"
+                                    + "Order Time : " + foodList[i].getDate_time() + "\n"
+                                    + "Order Total : " + foodList[i].getOrder_total() + "\n"
+                                    + "Customer ID : " + foodList[i].getCustomerid() + "\n"
+                                    + "Driver ID : " + foodList[i].getDriverid() + "\n"
+                    );
+                }
+                lstRestFood.setAdapter(listAdapter);
+            }
+        });
+
+        chkOrderTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                food = GetJson.restaurantGetTimeOrder(GetJson.restaurantGetOrderline());
+
+                Order[] foodList = new Order[food.size()];
+                for(int i = 0 ;i<food.size();i++)
+                    foodList[i] = food.get(i);
+
+                ListView lstRestFood = (ListView)view.findViewById(R.id.lstRestOrder);
+                ArrayList<String> foodMenu = new ArrayList<String>();
+                ArrayAdapter<String> listAdapter =
+                        new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, foodMenu);
+                for (int i = 0; i < foodList.length; i++) {
+                    listAdapter.add("Order number : " + foodList[i].getNumber() + "\n"
+                                    + "Order Time : " + foodList[i].getDate_time() + "\n"
+                                    + "Order Total : " + foodList[i].getOrder_total() + "\n"
+                                    + "Customer ID : " + foodList[i].getCustomerid() + "\n"
+                                    + "Driver ID : " + foodList[i].getDriverid() + "\n"
+                    );
+                }
+                lstRestFood.setAdapter(listAdapter);
+            }
+        });
+
         lstRestFood.setAdapter(listAdapter);
         lstRestFood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

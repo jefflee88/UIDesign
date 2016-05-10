@@ -21,7 +21,9 @@
         android:layout_height="wrap_content"
         android:text="Food quantity "
         android:id="@+id/chkFoodQty"
-        android:layout_below="@+id/textView1" />
+        android:layout_alignTop="@+id/chkOrderTime"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignStart="@+id/textView1" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -29,7 +31,8 @@
         android:text="Order time"
         android:id="@+id/chkOrderTime"
         android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/textView6"
+        android:layout_alignEnd="@+id/textView6" />
 
     <TextView
         android:paddingTop="15dp"
@@ -39,9 +42,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="*All the results are sort from least to greatest"
         android:id="@+id/textView6"
-        android:layout_below="@+id/chkDistance"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/chkFoodQty"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignStart="@+id/textView1" />
 
     <View
         android:layout_width="fill_parent"
@@ -72,15 +75,6 @@
         android:layout_height="220dp"
         android:id="@+id/lstJobSchec"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Distance"
-        android:id="@+id/chkDistance"
-        android:layout_below="@+id/textView1"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
