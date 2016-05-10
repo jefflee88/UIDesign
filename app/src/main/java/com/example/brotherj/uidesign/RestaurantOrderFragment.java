@@ -27,11 +27,9 @@ import java.util.ArrayList;
 public class RestaurantOrderFragment extends Fragment {
     ArrayList<Order> food = new ArrayList<Order>();
 
-
     public RestaurantOrderFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -1,6 +1,7 @@
 package com.example.brotherj.uidesign;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,7 @@ import com.example.brotherj.uidesign.JsonClass.GetJson;
  * A simple {@link Fragment} subclass.
  */
 public class RestOrderDetailFragment extends Fragment {
+    ImageButton imgBtnCust;
     TextView[] txtName = new TextView[10];
     TextView[] txtQty = new TextView[10];
     TextView[] txtType = new TextView[10];
@@ -38,7 +41,7 @@ public class RestOrderDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_rest_order_detail, container, false);
+        final View view = inflater.inflate(R.layout.fragment_rest_order_detail, container, false);
         txtRestTotalQty = (TextView) view.findViewById(R.id.txtRestTotalQty);
         txtRestOrderDeliver = (TextView) view.findViewById(R.id.txtRestOrderDeliver);
         txtName[0] = (TextView) view.findViewById(R.id.txtName);
@@ -75,6 +78,15 @@ public class RestOrderDetailFragment extends Fragment {
         txtRestOrderDeliver.setText(GetJson.getCusLocation(SaveData.resOrder.getCustomerid()));
         chkComplete = (CheckBox)view.findViewById(R.id.chkComplete);
         btnSendToDriver = (Button)view.findViewById(R.id.btnSendToDriver);
+        imgBtnCust = (ImageButton)view.findViewById(R.id.imgBtnCust);
+
+        imgBtnCust.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Intent = new Intent(view.getContext(), LocationActivity.class);
+                startActivityForResult(Intent, 0);
+            }
+        });
 
         btnSendToDriver.setOnClickListener(new View.OnClickListener() {
             @Override
