@@ -55,6 +55,7 @@ public class AdvanceRestFragment extends Fragment {
 
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                keyword = edtSearch.getText().toString();
                 if (keyword == null && keyword.isEmpty()) {
                     keyword = "null";
                 }
