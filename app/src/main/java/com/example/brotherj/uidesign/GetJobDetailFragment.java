@@ -51,7 +51,6 @@ public class GetJobDetailFragment extends Fragment {
         imgBtnCust = (ImageButton)view.findViewById(R.id.imgBtnCust);
         imgBtnCust.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                SaveData.tempCheck = "cust";
                 SaveData.location = GetJson.getCusLocation(SaveData.driveChooseOrder.getCustomerid());
                 Intent Intent = new Intent(view.getContext(), LocationActivity.class);
                 startActivityForResult(Intent, 0);

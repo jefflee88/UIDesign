@@ -33,5 +33,4 @@ public class SaveData {
     public static Order driveChooseOrder;
     public static Order driveChooseMyOrder;
     public static String location;
-    public static String tempCheck;
 }

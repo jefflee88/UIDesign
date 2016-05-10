@@ -92,7 +92,6 @@ public class RestDetailFragment extends Fragment {
 
         imgBtnRestAddress.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                SaveData.tempCheck = "rest";
                 SaveData.location = SaveData.cusChooseRestaurant.getAddress();
                 Intent Intent = new Intent(view.getContext(), LocationActivity.class);
                 startActivityForResult(Intent, 0);

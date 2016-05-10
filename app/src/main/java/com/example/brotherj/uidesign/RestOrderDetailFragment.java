@@ -84,7 +84,6 @@ public class RestOrderDetailFragment extends Fragment {
         imgBtnCust.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SaveData.tempCheck = "cust";
                 SaveData.location = GetJson.getCusLocation(SaveData.resOrder.getCustomerid());
                 Intent Intent = new Intent(view.getContext(), LocationActivity.class);
                 startActivityForResult(Intent, 0);
