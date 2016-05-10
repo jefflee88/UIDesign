@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 
@@ -38,6 +39,8 @@ public class GetJobFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_get_job, container, false);
+
+        Button btnRefresh = (Button)view.findViewById(R.id.btnRefresh);
         CheckBox chkFoodQty = (CheckBox)view.findViewById(R.id.chkFoodQty);
         CheckBox chkOrderTime = (CheckBox)view.findViewById(R.id.chkOrderTime);
 
@@ -51,14 +54,12 @@ public class GetJobFragment extends Fragment {
         chkFoodQty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ListView lstGetJob = (ListView)view.findViewById(R.id.lstGetJob);
-
                 order= GetJson.driveGetTotalOrder();
                 String[] orderlist = new String[order.size()];
                 for(int i =0;i<order.size();i++)
                     orderlist[i] = "Order time : "+order.get(i).getDate_time()+".";
-
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, orderlist);
+                ListView lstGetJob = (ListView)view.findViewById(R.id.lstGetJob);
                 lstGetJob.setAdapter(adapter);
             }
         });
@@ -66,14 +67,25 @@ public class GetJobFragment extends Fragment {
         chkOrderTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ListView lstGetJob = (ListView)view.findViewById(R.id.lstGetJob);
-
                 order= GetJson.driveGetTimeOrder();
                 String[] orderlist = new String[order.size()];
                 for(int i =0;i<order.size();i++)
                     orderlist[i] = "Order time : "+order.get(i).getDate_time()+".";
-
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, orderlist);
+                ListView lstGetJob = (ListView)view.findViewById(R.id.lstGetJob);
+                lstGetJob.setAdapter(adapter);
+            }
+        });
+
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                order= GetJson.driveGetOrder();
+                String[] orderlist = new String[order.size()];
+                for(int i =0;i<order.size();i++)
+                    orderlist[i] = "Order time : "+order.get(i).getDate_time()+".";
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, orderlist);
+                ListView lstGetJob = (ListView)view.findViewById(R.id.lstGetJob);
                 lstGetJob.setAdapter(adapter);
             }
         });

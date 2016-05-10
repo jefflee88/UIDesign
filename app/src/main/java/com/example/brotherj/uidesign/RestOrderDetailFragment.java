@@ -23,13 +23,13 @@ import com.example.brotherj.uidesign.JsonClass.GetJson;
  * A simple {@link Fragment} subclass.
  */
 public class RestOrderDetailFragment extends Fragment {
-    ImageButton imgBtnCust;
     TextView[] txtName = new TextView[10];
     TextView[] txtQty = new TextView[10];
     TextView[] txtType = new TextView[10];
     TextView txtRestTotalQty,txtRestOrderDeliver;
     CheckBox chkComplete;
     Button btnSendToDriver;
+    ImageButton imgBtnCust;
     int i;
 
 
@@ -78,6 +78,7 @@ public class RestOrderDetailFragment extends Fragment {
         txtRestOrderDeliver.setText(GetJson.getCusLocation(SaveData.resOrder.getCustomerid()));
         chkComplete = (CheckBox)view.findViewById(R.id.chkComplete);
         btnSendToDriver = (Button)view.findViewById(R.id.btnSendToDriver);
+
         imgBtnCust = (ImageButton)view.findViewById(R.id.imgBtnCust);
 
         imgBtnCust.setOnClickListener(new View.OnClickListener() {

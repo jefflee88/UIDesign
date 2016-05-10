@@ -46,7 +46,7 @@ public class AddFoodFragment extends Fragment {
         edtModifyFoodName = (EditText) view.findViewById(R.id.edtAddFoodName);
         edtModifyFoodPrice = (EditText) view.findViewById(R.id.edtAddFoodPrice);
         spinType=(Spinner) view.findViewById(R.id.spinType);
-        String[] items={ "french fries", "chicken", "drink", "food", "dessert"};
+        String[] items={ "Bread", "Drink", "Meat", "Noodles", "Pizza","Rice","Seafood","Snacks","Soup","Sushi"};
         ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, items);
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinType.setAdapter(LTRadapter);

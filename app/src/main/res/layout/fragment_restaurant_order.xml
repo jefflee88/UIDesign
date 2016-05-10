@@ -46,9 +46,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="*All the results are sort from least to greatest"
         android:id="@+id/textView6"
-        android:layout_below="@+id/chkOrderTime"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/chkFoodQty"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
 
     <View
         android:layout_width="fill_parent"
