@@ -90,6 +90,7 @@ public class RestOrderDetailFragment extends Fragment {
             }
         });
 
+
         btnSendToDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
