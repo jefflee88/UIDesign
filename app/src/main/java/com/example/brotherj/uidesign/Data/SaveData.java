@@ -31,4 +31,5 @@ public class SaveData {
     public static String AllQty;
     public static String AllPrice;
     public static Order driveChooseOrder;
+    public static String location;
 }

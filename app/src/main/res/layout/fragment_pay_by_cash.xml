@@ -65,89 +65,95 @@
         android:layout_below="@+id/view"
         android:layout_centerHorizontal="true" />
 
-    <TableLayout
-        android:stretchColumns="1"
-        android:layout_alignLeft="@+id/imgBtnGallery"
-        android:layout_alignStart="@+id/imgBtnGallery"
+    <ScrollView
+        android:layout_height="400px"
+        android:layout_width="fill_parent"
         android:layout_below="@+id/textView7"
-        android:paddingTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:id="@+id/tableLayout"
-        android:layout_alignRight="@+id/imgAddFood"
-        android:layout_alignEnd="@+id/imgAddFood">
+        android:id="@+id/scrol">
 
-        <TableRow
-            android:paddingTop="10dp">
-            <TextView
-                android:textStyle="bold"
-                android:text="Total price : "
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:padding="3dip" />
-            <TextView
-                android:textStyle="italic"
-                android:layout_span="4"
-                android:id="@+id/txtPayTotal"
-                android:text="txtPayTotal"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:gravity="left"
-                android:padding="3dip" />
-        </TableRow>
+        <TableLayout
+            android:stretchColumns="1"
+            android:layout_alignLeft="@+id/imgBtnGallery"
+            android:layout_alignStart="@+id/imgBtnGallery"
+            android:layout_below="@+id/textView7"
+            android:paddingTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:id="@+id/tableLayout"
+            android:layout_alignRight="@+id/imgAddFood"
+            android:layout_alignEnd="@+id/imgAddFood">
 
-        <TableRow
-            android:paddingTop="10dp">
-            <TextView
-                android:textStyle="bold"
-                android:text="Food quantity : "
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:padding="3dip" />
-            <TextView
-                android:textStyle="italic"
-                android:layout_span="4"
-                android:id="@+id/txtPayQty"
-                android:text="txtPayQty"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:gravity="left"
-                android:padding="3dip" />
-        </TableRow>
+            <TableRow
+                android:paddingTop="10dp">
+                <TextView
+                    android:textStyle="bold"
+                    android:text="Total price : "
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+                <TextView
+                    android:textStyle="italic"
+                    android:layout_span="4"
+                    android:id="@+id/txtPayTotal"
+                    android:text="txtPayTotal"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:gravity="left"
+                    android:padding="3dip" />
+            </TableRow>
 
-        <TableRow
-            android:paddingTop="10dp">
-            <TextView
-                android:textStyle="bold"
-                android:text="Contact : "
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:padding="3dip" />
-            <TextView
-                android:textStyle="italic"
-                android:layout_span="3"
-                android:id="@+id/txtPayTel"
-                android:text="txtPayTel"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:gravity="left"
-                android:padding="3dip" />
-        </TableRow>
+            <TableRow
+                android:paddingTop="10dp">
+                <TextView
+                    android:textStyle="bold"
+                    android:text="Food quantity : "
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+                <TextView
+                    android:textStyle="italic"
+                    android:layout_span="4"
+                    android:id="@+id/txtPayQty"
+                    android:text="txtPayQty"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:gravity="left"
+                    android:padding="3dip" />
+            </TableRow>
 
-        <TableRow
-            android:paddingTop="10dp">
-            <TextView
-                android:textStyle="bold"
-                android:text="Address : "
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:padding="3dip" />
-            <TextView
-                android:textStyle="italic"
-                android:layout_span="3"
-                android:id="@+id/txtPayAddress"
-                android:text="txtPayAddress"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:gravity="left"
-                android:padding="3dip" />
+            <TableRow
+                android:paddingTop="10dp">
+                <TextView
+                    android:textStyle="bold"
+                    android:text="Contact : "
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+                <TextView
+                    android:textStyle="italic"
+                    android:layout_span="3"
+                    android:id="@+id/txtPayTel"
+                    android:text="txtPayTel"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:gravity="left"
+                    android:padding="3dip" />
+            </TableRow>
 
-        </TableRow>
+            <TableRow
+                android:paddingTop="10dp">
+                <TextView
+                    android:textStyle="bold"
+                    android:text="Address : "
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:padding="3dip" />
+                <TextView
+                    android:textStyle="italic"
+                    android:layout_span="3"
+                    android:id="@+id/txtPayAddress"
+                    android:text="txtPayAddress"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:gravity="left"
+                    android:padding="3dip" />
 
+            </TableRow>
+        </TableLayout>
 
-    </TableLayout>
+    </ScrollView>
 
     <TextView
         android:paddingBottom="10dp"

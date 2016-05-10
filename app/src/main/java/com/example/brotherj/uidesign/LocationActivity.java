@@ -8,6 +8,7 @@ import android.location.Geocoder;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,7 +42,6 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        shows();
     }
 
     /**
@@ -56,27 +56,18 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng hcmus = new LatLng(22.28, 114.15);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hcmus, 15));
-        originMarkers.add(mMap.addMarker(new MarkerOptions()
-                .title("Hong Kong")
-                .position(hcmus)));
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+        String mustSplitString = SaveData.location;
+        String[] AfterSplit = mustSplitString.split(",");
+        String answer = "";
+        for(int i = 2; i< AfterSplit.length;i++){
+            if(i != AfterSplit.length-1)
+                answer += AfterSplit[i] + ",";
+            else
+                answer += AfterSplit[i];
         }
-        mMap.setMyLocationEnabled(true);
-    }
-
-    private  void shows(){
-        String location = GetJson.getCusLocation(SaveData.resOrder.getCustomerid());
+        Log.d("111111111111",answer);
+        String location = answer;
         List<Address> addressList = null;
         if(location != null || !location.equals(""))
         {
@@ -87,10 +78,26 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
                 e.printStackTrace();
             }
             Address address = addressList.get(0);
+
             LatLng latLng = new LatLng(address.getLatitude() , address.getLongitude());
+
             mMap.addMarker(new MarkerOptions().position(latLng).title("Here!"));
-            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
+            //mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
         }
+
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            mMap.setMyLocationEnabled(true);
+
     }
 
 }
