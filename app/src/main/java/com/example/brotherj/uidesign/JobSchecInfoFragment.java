@@ -1,6 +1,7 @@
 package com.example.brotherj.uidesign;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,7 +19,7 @@ import com.example.brotherj.uidesign.JsonClass.GetJson;
  * A simple {@link Fragment} subclass.
  */
 public class JobSchecInfoFragment extends Fragment {
-
+    ImageButton imgBtnCust;
     TextView txtGetJobOID,txtGetJobTotalQty,txtGetJobDate,txtGetJobDeliverTo;
     public JobSchecInfoFragment() {
         // Required empty public constructor
@@ -37,6 +38,16 @@ public class JobSchecInfoFragment extends Fragment {
         txtGetJobTotalQty.setText(GetJson.orderGetOrderlineTotal(SaveData.driveChooseMyOrder.getNumber()));
         txtGetJobDate.setText(SaveData.driveChooseMyOrder.getDate_time());
         txtGetJobDeliverTo.setText(GetJson.getCusLocation(SaveData.driveChooseMyOrder.getCustomerid()));
+
+        imgBtnCust = (ImageButton)view.findViewById(R.id.imgBtnCust);
+        imgBtnCust.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                SaveData.tempCheck = "cust";
+                SaveData.location = GetJson.getCusLocation(SaveData.driveChooseMyOrder.getCustomerid());
+                Intent Intent = new Intent(view.getContext(), LocationActivity.class);
+                startActivityForResult(Intent, 0);
+            }
+        });
         return view;
     }
 

@@ -1,6 +1,7 @@
 package com.example.brotherj.uidesign;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,6 +28,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class RestDetailFragment extends Fragment {
+    ImageButton imgBtnRestAddress;
     TextView txtRestType,txtRestName,txtRestTel,txtRestAddress;
     ArrayList<Food> food = new ArrayList<Food>();
     String [] myfood;
@@ -41,6 +44,7 @@ public class RestDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_rest_detail, container, false);
+        imgBtnRestAddress = (ImageButton)view.findViewById(R.id.imgBtnRestAddress);
         txtRestType = (TextView) view.findViewById(R.id.txtRestType);
         txtRestName = (TextView) view.findViewById(R.id.txtRestName);
         txtRestTel = (TextView) view.findViewById(R.id.txtRestTel);
@@ -83,6 +87,15 @@ public class RestDetailFragment extends Fragment {
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+            }
+        });
+
+        imgBtnRestAddress.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                SaveData.tempCheck = "rest";
+                SaveData.location = SaveData.cusChooseRestaurant.getAddress();
+                Intent Intent = new Intent(view.getContext(), LocationActivity.class);
+                startActivityForResult(Intent, 0);
             }
         });
         return view;
