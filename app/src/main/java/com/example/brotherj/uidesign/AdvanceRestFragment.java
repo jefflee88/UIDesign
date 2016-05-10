@@ -36,7 +36,7 @@ public class AdvanceRestFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_advance_rest, container, false);
         edtSearch = (EditText) view.findViewById(R.id.edtSearch);
         spinner = (Spinner)view.findViewById(R.id.spinner);
         spinner2 = (Spinner)view.findViewById(R.id.spinner2);
@@ -53,19 +53,19 @@ public class AdvanceRestFragment extends Fragment {
         LTRadapter2.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner2.setAdapter(LTRadapter2);
 
-        if (keyword != null && !keyword.isEmpty()) {
-            keyword = "null";
-        }
-        type = spinner.getSelectedItem().toString();
-        if (type != null && !type.isEmpty()) {
-            type = "null";
-        }
-        dis = spinner2.getSelectedItem().toString();
-        if (dis != null && !dis.isEmpty()) {
-            dis = "null";
-        }
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                if (keyword == null && keyword.isEmpty()) {
+                    keyword = "null";
+                }
+                type = spinner.getSelectedItem().toString();
+                if (type == null && type.isEmpty()) {
+                    type = "null";
+                }
+                dis = spinner2.getSelectedItem().toString();
+                if (dis == null && dis.isEmpty()) {
+                    dis = "null";
+                }
 
                 SaveData.cusSearchRestaurant = GetJson.cusSearchRestaurant(keyword, type, dis);
                 SaveData.isFood = false;

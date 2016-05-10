@@ -38,7 +38,7 @@ public class AdvanceFoodFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_advance_food, container, false);
 
         edtSearch = (EditText) view.findViewById(R.id.edtSearch);
         edtPrice1 = (EditText) view.findViewById(R.id.edtPrice1);
@@ -51,24 +51,24 @@ public class AdvanceFoodFragment extends Fragment {
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(LTRadapter);
 
-        Keyword = edtSearch.getText().toString();
-        if (Keyword != null && !Keyword.isEmpty()) {
-            Keyword = "null";
-        }
-        type = spinner.getSelectedItem().toString();
-        if (type != null && !type.isEmpty()) {
-            type = "null";
-        }
-        min = edtPrice1.getText().toString();
-        if (min != null && !min.isEmpty()) {
-            min = "null";
-        }
-        max =edtPrice2.getText().toString();
-        if (max != null && !max.isEmpty()) {
-            max = "null";
-        }
         btnSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                Keyword = edtSearch.getText().toString();
+                if (Keyword == null && Keyword.isEmpty()) {
+                    Keyword = "null";
+                }
+                type = spinner.getSelectedItem().toString();
+                if (type == null && type.isEmpty()) {
+                    type = "null";
+                }
+                min = edtPrice1.getText().toString();
+                if (min == null && min.isEmpty()) {
+                    min = "null";
+                }
+                max =edtPrice2.getText().toString();
+                if (max == null && max.isEmpty()) {
+                    max = "null";
+                }
                 SaveData.cusSearchFood = GetJson.cusSearchFood(Keyword,type,min,max);
                 SaveData.isFood = true;
                 SearchResultFragment fragment = new SearchResultFragment();
