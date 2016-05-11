@@ -33,4 +33,6 @@ public class SaveData {
     public static Order driveChooseOrder;
     public static Order driveChooseMyOrder;
     public static String location;
+    public static double mylong;
+    public static double mylat;
 }
