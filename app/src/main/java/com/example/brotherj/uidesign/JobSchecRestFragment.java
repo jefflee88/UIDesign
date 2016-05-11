@@ -27,8 +27,6 @@ import java.util.ArrayList;
  */
 public class JobSchecRestFragment extends Fragment {
 
-    ImageButton imgBtnCustDist;
-
     ArrayList<Restaurant> restaurant;
 
     public JobSchecRestFragment() {
@@ -43,8 +41,6 @@ public class JobSchecRestFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_job_schec_rest, container, false);
 
-        imgBtnCustDist = (ImageButton)view.findViewById(R.id.imgBtnCustDist);
-
         ListView lstGetJob = (ListView)view.findViewById(R.id.lstRestDist);
         String[] testList = new String[restaurant.size()];
         for(int i = 0;i<restaurant.size();i++)
@@ -54,13 +50,7 @@ public class JobSchecRestFragment extends Fragment {
         lstGetJob.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-
-            }
-        });
-
-        imgBtnCustDist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                SaveData.shortpath = restaurant.get(arg2).getAddress();
                 Intent Intent = new Intent(view.getContext(), MapsActivity.class);
                 startActivityForResult(Intent, 0);
             }

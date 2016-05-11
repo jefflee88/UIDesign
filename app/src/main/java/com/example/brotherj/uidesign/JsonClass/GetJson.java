@@ -37,7 +37,8 @@ public class GetJson {
 
     public static void getUserDetail(String userId, String userPw, String type) {
         try {
-            String url = "http://10.0.2.2/fyp_connect/get_user_details.php?id=" + userId + "&password=" + userPw;
+            String url = "http://" +
+                    "pub/fyp_connect/get_user_details.php?id=" + userId + "&password=" + userPw;
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -108,7 +109,8 @@ public class GetJson {
     public static boolean CheckUser(String userId, String userPw) {
         boolean check = false;
         try {
-            String url = "http://10.0.2.2/fyp_connect/get_user_details.php?id=" + userId + "&password=" + userPw;
+            String url = "http://" +
+                    "pub/fyp_connect/get_user_details.php?id=" + userId + "&password=" + userPw;
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -141,7 +143,8 @@ public class GetJson {
     public static String CheckUserType(String userId, String userPw) {
         String type = "";
         try {
-            String url = "http://10.0.2.2/fyp_connect/get_user_details.php?id=" + userId + "&password=" + userPw;
+            String url = "http://" +
+                    "pub/fyp_connect/get_user_details.php?id=" + userId + "&password=" + userPw;
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -178,7 +181,8 @@ public class GetJson {
     public static ArrayList<Food> getRestFoodDetail(String userId) {
         ArrayList<Food> food = new ArrayList<Food>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/get_restaurant_food.php?userid=" + userId;
+            String url = "http://" +
+                    "pub/fyp_connect/get_restaurant_food.php?userid=" + userId;
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -220,7 +224,8 @@ public class GetJson {
     public static ArrayList<Restaurant> searchRestaurant(String keyword, String type) {
         ArrayList<Restaurant> obj = new ArrayList<Restaurant>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/search_details.php?type=" + type + "&keyword=" + keyword;
+            String url = "http://" +
+                    "pub/fyp_connect/search_details.php?type=" + type + "&keyword=" + keyword;
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -263,7 +268,8 @@ public class GetJson {
     public static ArrayList<Food> searchFood(String keyword, String type) {
         ArrayList<Food> obj = new ArrayList<Food>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/search_details.php?type=" + type + "&keyword=" + keyword;
+            String url = "http://" +
+                    "pub/fyp_connect/search_details.php?type=" + type + "&keyword=" + keyword;
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -301,7 +307,8 @@ public class GetJson {
     }
     public static void modifyFood(Food food) {
         try {
-            String url = "http://10.0.2.2/fyp_connect/update_food.php?id=" + food.getId() + "&name=" + food.getName() + "&type=" + food.getType() + "&price=" + food.getPrice() + "&image=" + food.getImage();
+            String url = "http://" +
+                    "pub/fyp_connect/update_food.php?id=" + food.getId() + "&name=" + food.getName() + "&type=" + food.getType() + "&price=" + food.getPrice() + "&image=" + food.getImage();
             url = url.replaceAll(" ","%20");
             Log.d("Url   :::::::", url);
             URL urlObj = new URL(url);
@@ -324,7 +331,8 @@ public class GetJson {
 
     public static void addFood(Food food) {
         try {
-            String url = "http://10.0.2.2/fyp_connect/create_food.php?name=" + food.getName() + "&type=" + food.getType() + "&price=" + food.getPrice() + "&image=" + food.getImage()+"&Restaurantid="+SaveData.restaurant.getId();
+            String url = "http://" +
+                    "pub/fyp_connect/create_food.php?name=" + food.getName() + "&type=" + food.getType() + "&price=" + food.getPrice() + "&image=" + food.getImage()+"&Restaurantid="+SaveData.restaurant.getId();
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -346,7 +354,8 @@ public class GetJson {
 
     public static void creatOrder(ArrayList<SelectFood> food,int total){
         try {
-            String url = "http://10.0.2.2/fyp_connect/create_order.php?customerid="+SaveData.customer.getId()+"&order_total="+total;
+            String url = "http://" +
+                    "pub/fyp_connect/create_order.php?customerid="+SaveData.customer.getId()+"&order_total="+total;
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -377,7 +386,8 @@ public class GetJson {
     }
     public static void creatOrderLine(int number,int qty,Food food) {
         try {
-            String url = "http://10.0.2.2/fyp_connect/create_orderline.php?ordernumber="+number+"&foodid="+food.getId()+"&quanitity="+qty+"&item_total="+(Integer.parseInt(food.getPrice())*qty)+"&Restaurantid="+food.getRestaurantid();
+            String url = "http://" +
+                    "pub/fyp_connect/create_orderline.php?ordernumber="+number+"&foodid="+food.getId()+"&quanitity="+qty+"&item_total="+(Integer.parseInt(food.getPrice())*qty)+"&Restaurantid="+food.getRestaurantid();
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -402,7 +412,8 @@ public class GetJson {
     public static ArrayList<Orderline> restaurantGetOrderline(){
         ArrayList<Orderline> obj = new ArrayList<Orderline>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/restaurant_get_orderline.php?restaurantid="+SaveData.restaurant.getId();
+            String url = "http://" +
+                    "pub/fyp_connect/restaurant_get_orderline.php?restaurantid="+SaveData.restaurant.getId();
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -454,7 +465,8 @@ public class GetJson {
                     location += "number=" + odl.get(i).getOrderNumber();
             }
             Log.d("location ::::", location);
-            String url = "http://10.0.2.2/fyp_connect/restaurant_get_order.php?sql="+location;
+            String url = "http://" +
+                    "pub/fyp_connect/restaurant_get_order.php?sql="+location;
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -507,7 +519,8 @@ public class GetJson {
             }
             location += " ORDER BY order_total";
             Log.d("location ::::", location);
-            String url = "http://10.0.2.2/fyp_connect/restaurant_get_order.php?sql="+location;
+            String url = "http://" +
+                    "pub/fyp_connect/restaurant_get_order.php?sql="+location;
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -560,7 +573,8 @@ public class GetJson {
             }
             location += " ORDER BY date_time";
             Log.d("location ::::", location);
-            String url = "http://10.0.2.2/fyp_connect/restaurant_get_order.php?sql="+location;
+            String url = "http://" +
+                    "pub/fyp_connect/restaurant_get_order.php?sql="+location;
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -604,7 +618,8 @@ public class GetJson {
     public static ArrayList<Orderline> restaurantGetOrderlineForOrder(Order order){
         ArrayList<Orderline> obj = new ArrayList<Orderline>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/restaurant_ordernumber_get_orderline.php?number="+order.getNumber()+"&restaurantid="+SaveData.restaurant.getId();
+            String url = "http://" +
+                    "pub/fyp_connect/restaurant_ordernumber_get_orderline.php?number="+order.getNumber()+"&restaurantid="+SaveData.restaurant.getId();
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -646,7 +661,8 @@ public class GetJson {
     public static String getFoodType(String food) {
         String str = "";
         try {
-            String url = "http://10.0.2.2/fyp_connect/id_get_food_type.php?foodid=" + food;
+            String url = "http://" +
+                    "pub/fyp_connect/id_get_food_type.php?foodid=" + food;
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -676,7 +692,8 @@ public class GetJson {
     public static String getFoodName(String food) {
         String str = "";
         try {
-            String url = "http://10.0.2.2/fyp_connect/id_get_food_name.php?foodid=" + food;
+            String url = "http://" +
+                    "pub/fyp_connect/id_get_food_name.php?foodid=" + food;
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -707,7 +724,8 @@ public class GetJson {
     public static String getCusLocation(String id) {
         String str = "";
         try {
-            String url = "http://10.0.2.2/fyp_connect/id_get_customer_address.php?customerid=" + id;
+            String url = "http://" +
+                    "pub/fyp_connect/id_get_customer_address.php?customerid=" + id;
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -736,7 +754,8 @@ public class GetJson {
     }
     public static void setCompleted(int ordernum) {
         try {
-            String url = "http://10.0.2.2/fyp_connect/restaurant_update_order_status.php?ordernumber="+ordernum+"&restaurantid="+SaveData.restaurant.getId();
+            String url = "http://" +
+                    "pub/fyp_connect/restaurant_update_order_status.php?ordernumber="+ordernum+"&restaurantid="+SaveData.restaurant.getId();
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -758,7 +777,8 @@ public class GetJson {
     }
     public static void setCustomerPayment(String payment,String Credit_card_number,String Credit_card_security_code){
         try {
-        String url = "http://10.0.2.2/fyp_connect/update_customer.php?id="+SaveData.customer.getId()+"&name="+SaveData.customer.getName()+"&address="+SaveData.customer.getAddress()+"&email="+SaveData.customer.getEmail()+"&telNum="+SaveData.customer.getTelNum()+"&payment="+payment+"&cardnumber="+Credit_card_number+"&securitycode="+Credit_card_security_code;
+        String url = "http://" +
+                "pub/fyp_connect/update_customer.php?id="+SaveData.customer.getId()+"&name="+SaveData.customer.getName()+"&address="+SaveData.customer.getAddress()+"&email="+SaveData.customer.getEmail()+"&telNum="+SaveData.customer.getTelNum()+"&payment="+payment+"&cardnumber="+Credit_card_number+"&securitycode="+Credit_card_security_code;
         url = url.replaceAll(" ","%20");
         URL urlObj = new URL(url);
         HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -784,7 +804,8 @@ public class GetJson {
     public static ArrayList<Order> driveGetOrder(){
         ArrayList<Order> obj = new ArrayList<Order>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/driver_get_order.php";
+            String url = "http://" +
+                    "pub/fyp_connect/driver_get_order.php";
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -825,7 +846,8 @@ public class GetJson {
     public static ArrayList<Order> driveGetTotalOrder(){
         ArrayList<Order> obj = new ArrayList<Order>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/driver_get_order_qty.php";
+            String url = "http://" +
+                    "pub/fyp_connect/driver_get_order_qty.php";
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -866,7 +888,8 @@ public class GetJson {
     public static ArrayList<Order> driveGetTimeOrder(){
         ArrayList<Order> obj = new ArrayList<Order>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/driver_get_order_time.php";
+            String url = "http://" +
+                    "pub/fyp_connect/driver_get_order_time.php";
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -906,7 +929,8 @@ public class GetJson {
 
     public static void handle(){
         try {
-            String url = "http://10.0.2.2/fyp_connect/driver_handle_order.php?driverid="+SaveData.driver.getId()+"&number="+SaveData.driveChooseOrder.getNumber();
+            String url = "http://" +
+                    "pub/fyp_connect/driver_handle_order.php?driverid="+SaveData.driver.getId()+"&number="+SaveData.driveChooseOrder.getNumber();
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -930,7 +954,8 @@ public class GetJson {
     public static ArrayList<Order> cusGetOrder(){
         ArrayList<Order> obj = new ArrayList<Order>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/customer_get_order2.php?id="+SaveData.customer.getId();
+            String url = "http://" +
+                    "pub/fyp_connect/customer_get_order2.php?id="+SaveData.customer.getId();
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -970,7 +995,8 @@ public class GetJson {
     public static String orderGetOrderlineTotal(int id){
         String obj = "";
         try {
-            String url = "http://10.0.2.2/fyp_connect/get_order_count.php?number="+id;
+            String url = "http://" +
+                    "pub/fyp_connect/get_order_count.php?number="+id;
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -997,7 +1023,8 @@ public class GetJson {
     public static ArrayList<Order> driveGetMyOrder(){
         ArrayList<Order> obj = new ArrayList<Order>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/driver_get_order2.php?id="+SaveData.driver.getId();
+            String url = "http://" +
+                    "pub/fyp_connect/driver_get_order2.php?id="+SaveData.driver.getId();
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -1038,7 +1065,8 @@ public class GetJson {
     public static ArrayList<Order> driveGetTotalMyOrder(){
         ArrayList<Order> obj = new ArrayList<Order>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/driver_get_order2_qty.php?id="+SaveData.driver.getId();
+            String url = "http://" +
+                    "pub/fyp_connect/driver_get_order2_qty.php?id="+SaveData.driver.getId();
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -1079,7 +1107,8 @@ public class GetJson {
     public static ArrayList<Order> driveGetTimeMyOrder(){
         ArrayList<Order> obj = new ArrayList<Order>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/driver_get_order2_time.php?id="+SaveData.driver.getId();
+            String url = "http://" +
+                    "pub/fyp_connect/driver_get_order2_time.php?id="+SaveData.driver.getId();
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
             client.setDoInput(true);
@@ -1119,7 +1148,8 @@ public class GetJson {
     public static ArrayList<Food> cusSearchFood(String keyword, String type,String min,String max) {
         ArrayList<Food> obj = new ArrayList<Food>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/advance_search_food.php?keyword="+keyword+"&type="+type+"&min="+min+"&max="+max;
+            String url = "http://" +
+                    "pub/fyp_connect/advance_search_food.php?keyword="+keyword+"&type="+type+"&min="+min+"&max="+max;
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -1159,7 +1189,8 @@ public class GetJson {
     public static ArrayList<Restaurant> cusSearchRestaurant(String keyword, String type,String district) {
         ArrayList<Restaurant> obj = new ArrayList<Restaurant>();
         try {
-            String url = "http://10.0.2.2/fyp_connect/advance_search_restaurant.php?keyword="+keyword+"&type="+type+"&district=" + district;
+            String url = "http://" +
+                    "pub/fyp_connect/advance_search_restaurant.php?keyword="+keyword+"&type="+type+"&district=" + district;
             url = url.replaceAll(" ","%20");
             URL urlObj = new URL(url);
             HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
@@ -1274,6 +1305,50 @@ public class GetJson {
             }
             return obj;
 
+    }
+    public static void updataOrderPickUpTime(){
+        try {
+            String url = "http://10.0.2.2/fyp_connect/driver_update_order_pick_time.php?driverid='"+SaveData.driver.getId()+"'&number="+SaveData.driveChooseMyOrder.getNumber();
+            url = url.replaceAll(" ","%20");
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+    }
+    public static void updataOrderRec(){
+        try {
+            String url = "http://10.0.2.2/fyp_connect/driver_update_order_receive.php?driverid='"+SaveData.driver.getId()+"'&number="+SaveData.driveChooseMyOrder.getNumber();
+            url = url.replaceAll(" ","%20");
+            URL urlObj = new URL(url);
+            HttpURLConnection client = (HttpURLConnection) urlObj.openConnection();
+            client.setDoInput(true);
+            client.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            client.setRequestMethod("GET");
+            client.connect();
+            InputStream input = client.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
     }
     public static ArrayList<String> driGetRestaurantId() {
         ArrayList<String> obj = new ArrayList<String>();

@@ -35,4 +35,5 @@ public class SaveData {
     public static String location;
     public static double mylong;
     public static double mylat;
+    public static String shortpath;
 }

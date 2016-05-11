@@ -77,7 +77,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
 
         String origin = "20 Tsing Yi Road,Tsing Yi Island,New Territories";
-        String destination =  "74 Hak Po St,Mong Kok";
+
+        String mustSplitString = SaveData.shortpath;
+        String[] AfterSplit = mustSplitString.split(",");
+        String destination = "";
+
+        for (int i = 2; i < AfterSplit.length; i++) {
+            if (i != AfterSplit.length - 1)
+                destination += AfterSplit[i] + ",";
+            else
+                destination += AfterSplit[i];
+        }
 
         try {
             new DirectionFinder(this, origin, destination).execute();

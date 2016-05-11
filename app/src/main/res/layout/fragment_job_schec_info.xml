@@ -25,8 +25,7 @@
         android:id="@+id/tableLayout"
         android:layout_above="@+id/btnGetThisJob">
 
-        <TableRow
-            android:paddingTop="10dp">
+        <TableRow>
             <TextView
                 android:textStyle="bold"
                 android:text="Order ID : "
@@ -42,8 +41,7 @@
                 android:padding="3dip" />
         </TableRow>
 
-        <TableRow
-            android:paddingTop="10dp">
+        <TableRow>
             <TextView
                 android:textStyle="bold"
                 android:text="Total food : "
@@ -59,8 +57,7 @@
                 android:padding="3dip" />
         </TableRow>
 
-        <TableRow
-            android:paddingTop="10dp">
+        <TableRow>
             <TextView
                 android:textStyle="bold"
                 android:text="Total \nrestaurant : "
@@ -76,8 +73,7 @@
                 android:padding="3dip" />
         </TableRow>
 
-        <TableRow
-            android:paddingTop="10dp">
+        <TableRow>
             <TextView
                 android:textStyle="bold"
                 android:text="Date / Time : "
@@ -93,8 +89,7 @@
                 android:padding="3dip" />
         </TableRow>
 
-        <TableRow
-            android:paddingTop="10dp">
+        <TableRow>
             <TextView
                 android:textStyle="bold"
                 android:text="Deliver to : "

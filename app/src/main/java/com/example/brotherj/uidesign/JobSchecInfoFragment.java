@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.brotherj.uidesign.Data.SaveData;
 import com.example.brotherj.uidesign.JsonClass.GetJson;
@@ -21,6 +23,7 @@ import com.example.brotherj.uidesign.JsonClass.GetJson;
 public class JobSchecInfoFragment extends Fragment {
     ImageButton imgBtnCust;
     TextView txtGetJobOID,txtGetJobTotalQty,txtGetJobDate,txtGetJobDeliverTo,txtGetJobRestTotal;
+    Button btnCompleteJob;
     public JobSchecInfoFragment() {
         // Required empty public constructor
     }
@@ -47,6 +50,20 @@ public class JobSchecInfoFragment extends Fragment {
                 SaveData.location = GetJson.getCusLocation(SaveData.driveChooseMyOrder.getCustomerid());
                 Intent Intent = new Intent(view.getContext(), LocationActivity.class);
                 startActivityForResult(Intent, 0);
+            }
+        });
+        CheckBox chkYes = (CheckBox)view.findViewById(R.id.chkYes);
+        chkYes.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                GetJson.updataOrderPickUpTime();
+                Toast.makeText(getActivity(), "All food is pick up by driver", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnCompleteJob = (Button)view.findViewById(R.id.btnCompleteJob);
+        btnCompleteJob.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                GetJson.updataOrderRec();
+                Toast.makeText(getActivity(), "This order has completed", Toast.LENGTH_SHORT).show();
             }
         });
         return view;
