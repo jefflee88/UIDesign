@@ -24,7 +24,7 @@ import com.example.brotherj.uidesign.R;
  */
 public class GetJobDetailFragment extends Fragment {
 
-    TextView txtGetJobOID,txtGetJobTotalQty,txtGetJobDate,txtGetJobDeliverTo;
+    TextView txtGetJobOID,txtGetJobTotalQty,txtGetJobDate,txtGetJobDeliverTo,txtGetJobRestTotal;
     ImageButton imgBtnRest;
     ImageButton imgBtnCust;
     Button btnGetThisJob;
@@ -43,6 +43,8 @@ public class GetJobDetailFragment extends Fragment {
         txtGetJobTotalQty = (TextView)view.findViewById(R.id.txtGetJobTotalQty);
         txtGetJobDate = (TextView)view.findViewById(R.id.txtGetJobDate);
         txtGetJobDeliverTo = (TextView)view.findViewById(R.id.txtGetJobDeliverTo);
+        txtGetJobRestTotal = (TextView)view.findViewById(R.id.txtGetJobRestTotal);
+        txtGetJobRestTotal.setText(GetJson.getResNum(SaveData.driveChooseMyOrder.getNumber()));
         txtGetJobOID.setText(Integer.toString(SaveData.driveChooseOrder.getNumber()));
         txtGetJobTotalQty.setText(GetJson.orderGetOrderlineTotal(SaveData.driveChooseOrder.getNumber()));
         txtGetJobDate.setText(SaveData.driveChooseOrder.getDate_time());

@@ -71,7 +71,6 @@ public class AdvanceRestFragment extends Fragment {
                 }
 
                 SaveData.cusSearchRestaurant = GetJson.cusSearchRestaurant(keyword, type, dis);
-                Log.d("saveddd ::::::::::: ", SaveData.cusSearchRestaurant.get(0).getName());
                 SaveData.isFood = false;
                 SearchResultFragment fragment = new SearchResultFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

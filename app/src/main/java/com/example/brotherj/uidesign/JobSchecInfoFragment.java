@@ -20,7 +20,7 @@ import com.example.brotherj.uidesign.JsonClass.GetJson;
  */
 public class JobSchecInfoFragment extends Fragment {
     ImageButton imgBtnCust;
-    TextView txtGetJobOID,txtGetJobTotalQty,txtGetJobDate,txtGetJobDeliverTo;
+    TextView txtGetJobOID,txtGetJobTotalQty,txtGetJobDate,txtGetJobDeliverTo,txtGetJobRestTotal;
     public JobSchecInfoFragment() {
         // Required empty public constructor
     }
@@ -34,6 +34,8 @@ public class JobSchecInfoFragment extends Fragment {
         txtGetJobTotalQty = (TextView)view.findViewById(R.id.txtGetJobTotalQty);
         txtGetJobDate = (TextView)view.findViewById(R.id.txtGetJobDate);
         txtGetJobDeliverTo = (TextView)view.findViewById(R.id.txtGetJobDeliverTo);
+        txtGetJobRestTotal = (TextView)view.findViewById(R.id.txtGetJobRestTotal);
+        txtGetJobRestTotal.setText(GetJson.getResNum(SaveData.driveChooseMyOrder.getNumber()));
         txtGetJobOID.setText(Integer.toString(SaveData.driveChooseMyOrder.getNumber()));
         txtGetJobTotalQty.setText(GetJson.orderGetOrderlineTotal(SaveData.driveChooseMyOrder.getNumber()));
         txtGetJobDate.setText(SaveData.driveChooseMyOrder.getDate_time());
